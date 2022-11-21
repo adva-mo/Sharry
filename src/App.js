@@ -1,7 +1,8 @@
-// import { async } from "@firebase/util";
 import { useState } from "react";
 import "./App.css";
 import GetUsers from "../src/components/async/GetUsers";
+import AddNewUser from "./components/async/AddNewUser";
+import UpdateUser from "./components/async/UpdateUser";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -10,7 +11,8 @@ function App() {
     <div>
       sharry
       <GetUsers setUsers={setUsers} />
-      {users.length > 0 && <p>ok</p>}
+      {/* {users.length > 0 && <AddNewUser />} */}
+      {/* {users.length > 0 && <UpdateUser />} */}
     </div>
   );
 }
