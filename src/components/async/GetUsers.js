@@ -1,15 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../utils/database-config";
 
 function GetUsers({ setUsers }) {
   const usersCollection = collection(db, "users");
 
-  useEffect(() => {
-    getUsers();
-  }, []);
-
-  const getUsers = async () => {
+  const getUsers = useCallback(async () => {
     try {
       const response = await getDocs(usersCollection);
 
@@ -18,8 +14,12 @@ function GetUsers({ setUsers }) {
       setUsers(state);
     } catch (e) {
       console.log(e);
-    }
-  };
+    } // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    getUsers();
+  }, [getUsers]);
 
   return <div>GetUsers</div>;
 }
