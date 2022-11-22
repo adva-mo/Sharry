@@ -17,8 +17,8 @@ function Register() {
 
   const register = async () => {
     console.log("register func");
-    // const email = "example2@example2.com";
-    // const password = "test12345";
+    const email = "example2@example2.com";
+    const password = "test12345";
     try {
       //*when creating a new account, the user will be logged in authomatically and the
       //* user information will be stored in the user variable
@@ -29,12 +29,13 @@ function Register() {
       //*firebase does the validations for email
       // "test@test.com" - passed
       // !an existing user cant be made twice;
+      // ! password must be 6 chars at least
       console.log(e.message);
     }
   };
   return (
     <div>
-      <p>registered: {user.email}</p>
+      <p>registered: {user?.email}</p>
       <button onClick={() => register()}>register</button>
     </div>
   );
