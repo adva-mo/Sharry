@@ -6,7 +6,7 @@ import { deleteDoc, collection, doc } from "firebase/firestore";
 
 function DeleteUser() {
   const usersCollection = collection(db, "users");
-  //   const usertodelete = { name: "ella", lastName: "mozes" };
+  const usertodelete = { name: "ella", lastName: "mozes" };
 
   useEffect(() => {
     deleteUser();
