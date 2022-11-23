@@ -3,7 +3,7 @@ import "./NewRecipeForm.css";
 
 //!todo: find a way to capture dish types
 
-function NewRecipeForm() {
+function NewRecipeForm({ setNewRecipe }) {
   const recipeForm = useRef();
   const dishTypes = useRef();
 
@@ -14,6 +14,7 @@ function NewRecipeForm() {
     // console.log(newRecipe);
     // console.log(dishTypes.current);
     recipeForm.current.reset();
+    setNewRecipe(newRecipe);
   };
   return (
     <form
