@@ -5,9 +5,10 @@ import Explore from "./pages/Explore";
 import LoginPage from "./pages/LoginPage";
 import UserProfile from "./pages/UserProfile";
 import RecipeProfile from "./pages/RecipeProfile";
-import NewRecipe from "./pages/NewRecipe";
+import NewRecipe from "./pages/NewRecipePage";
 
 import "./App.css";
+import "./utils/utils.css";
 
 function App() {
   return (
