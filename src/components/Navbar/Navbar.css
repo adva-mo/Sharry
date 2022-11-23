@@ -1,0 +1,12 @@
+.navbar-ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+.navbar-ul a.active {
+  color: rgba(7, 62, 193, 0.96);
+}
+.navbar-ul a {
+  color: rgba(66, 115, 228, 0.96);
+  text-decoration: none;
+}

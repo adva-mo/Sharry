@@ -5,13 +5,13 @@ import Explore from "./pages/Explore";
 import LoginPage from "./pages/LoginPage";
 import UserProfile from "./pages/UserProfile";
 import RecipeProfile from "./pages/RecipeProfile";
+import NewRecipe from "./pages/NewRecipe";
 
 import "./App.css";
 
 function App() {
   return (
-    <div>
-      sharry
+    <>
       <Navbar />
       <main>
         <Routes>
@@ -22,9 +22,10 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/profile/:id" element={<UserProfile />} />
           <Route path="/recipe/:id" element={<RecipeProfile />} />
+          <Route path="/new-recipe" element={<NewRecipe />} />
         </Routes>
       </main>
-    </div>
+    </>
   );
 }
 
