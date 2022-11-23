@@ -14,7 +14,9 @@ function AddNewUser() {
   const createUser = async () => {
     try {
       await addDoc(usersCollection, newUser); //first arg: user colection ref,second arg: user data object
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return <div>addNewUser</div>;

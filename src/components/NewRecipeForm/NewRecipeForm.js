@@ -1,11 +1,14 @@
 import React, { useRef } from "react";
+import { auth } from "../../utils/database-config";
 import "./NewRecipeForm.css";
 
 //!todo: find a way to capture dish types
+//!todo: find a way for the user to upload a photo
 
 function NewRecipeForm({ setNewRecipe }) {
   const recipeForm = useRef();
   const dishTypes = useRef();
+  const currentUserId = auth.currentUser?.uid || null;
 
   const saveHandler = () => {
     // console.log(recipeForm);
@@ -14,7 +17,7 @@ function NewRecipeForm({ setNewRecipe }) {
     // console.log(newRecipe);
     // console.log(dishTypes.current);
     recipeForm.current.reset();
-    setNewRecipe(newRecipe);
+    setNewRecipe({ ...newRecipe, owner: currentUserId });
   };
   return (
     <form
@@ -67,14 +70,20 @@ function NewRecipeForm({ setNewRecipe }) {
         vegeterian
         <input type="checkbox" name="dish-type" value="bread" />
         bread
+        <input type="checkbox" name="dish-type" value="asian" />
+        asian
       </div>
       <div>
-        <label>ingrediants</label>
+        <label>ingrediants </label>
         <input type="text" name="ingrediants" />
       </div>
       <div>
-        <label>instructions</label>
+        <label>instructions </label>
         <textarea type="text" name="instructions" />
+      </div>
+      <div>
+        <label htmlFor="img">image link </label>
+        <input type="text" name="img" />
       </div>
       <button onClick={saveHandler}>save</button>
     </form>

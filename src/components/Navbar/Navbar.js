@@ -35,7 +35,7 @@ function Navbar() {
           className={(navData) => (navData.isActive ? "active" : "")}
           to={"login"}
         >
-          {auth.currentUser.uid && (
+          {auth.currentUser?.uid && (
             <span>logged: {auth.currentUser.email}</span>
           )}
         </NavLink>

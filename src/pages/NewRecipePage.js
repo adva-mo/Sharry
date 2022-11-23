@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from "react";
 import NewRecipeForm from "../components/NewRecipeForm/NewRecipeForm";
-import { auth } from "../utils/database-config";
 import Login from "../components/authentication/Login";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../utils/database-config";
 
 function NewRecipePage() {
-  const [newRecipe, setNewRecipe] = useState();
-  const currentUser = auth.currentUser?.uid || null;
+  const recipesCollection = collection(db, "recipes");
+  const [newRecipe, setNewRecipe] = useState(null);
 
   useEffect(() => {
-    //send recipe to DB
+    if (!newRecipe) return;
+    createRecipe();
   }, [newRecipe]);
+
+  const createRecipe = async () => {
+    try {
+      await addDoc(recipesCollection, newRecipe); //first arg: user colection ref,second arg: user data object
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <div>
