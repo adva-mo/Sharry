@@ -1,19 +1,29 @@
-import { useState } from "react";
-import "./App.css";
-import GetUsers from "../src/components/async/GetUsers";
-import Register from "./components/authentication/Register";
-import Logout from "./components/authentication/Logout";
-import Login from "./components/authentication/Login";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-function App() {
-  const [users, setUsers] = useState([]);
+import Home from "./pages/Home";
+import Explore from "./pages/Explore";
+import LoginPage from "./pages/LoginPage";
+import UserProfile from "./pages/UserProfile";
+import RecipeProfile from "./pages/RecipeProfile";
 
+import "./App.css";
+
+function App() {
   return (
     <div>
       sharry
       <Navbar />
-      <GetUsers setUsers={setUsers} />
-      {users && <p>fetched all users</p>}
+      <main>
+        <Routes>
+          <Route path="/" element={<Navigate replace to="/home" />} />
+          <Route path="*" element={<Navigate replace to="/home" />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/profile/:id" element={<UserProfile />} />
+          <Route path="/recipe/:id" element={<RecipeProfile />} />
+        </Routes>
+      </main>
     </div>
   );
 }

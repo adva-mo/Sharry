@@ -23,8 +23,8 @@ function Register() {
       //*when creating a new account, the user will be logged in authomatically and the
       //* user information will be stored in the user variable
       const user = await createUserWithEmailAndPassword(auth, email, password);
-      console.log(user);
-      const userUID = user.user.uid;
+      // console.log(user);
+      // const userUID = user.user.uid;
     } catch (e) {
       //*firebase does the validations for email
       // "test@test.com" - passed
