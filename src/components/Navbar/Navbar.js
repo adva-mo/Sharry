@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { auth } from "../../utils/database-config";
 import "./Navbar.css";
 
 function Navbar() {
@@ -34,7 +35,9 @@ function Navbar() {
           className={(navData) => (navData.isActive ? "active" : "")}
           to={"login"}
         >
-          login
+          {auth.currentUser.uid && (
+            <span>logged: {auth.currentUser.email}</span>
+          )}
         </NavLink>
       </li>
     </ul>
