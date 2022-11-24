@@ -1,8 +1,8 @@
-import React, { useEffect, useCallback, useState } from "react";
+import { useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../utils/database-config";
 
-function useGet(collectionName, applyData) {
+function useGet(collectionName, dispatch) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const requiredCollection = collection(db, collectionName);
@@ -13,8 +13,7 @@ function useGet(collectionName, applyData) {
     try {
       const response = await getDocs(requiredCollection);
       const data = response.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-      console.log(data);
-      applyData(data);
+      dispatch({ type: "GET", playload: [...data] });
     } catch (e) {
       console.log(e);
     }

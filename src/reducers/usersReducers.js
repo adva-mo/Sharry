@@ -1,12 +1,12 @@
-export const usersReducer = (state, action) => {
+export const usersReducers = (state, action) => {
   switch (action.type) {
-    case "GET-USERS":
+    case "GET":
       return [...action.playload];
-    case "DELETE-USER":
+    case "DELETE":
       return deleteUser(action.playload, state);
-    case "ADD-USER":
+    case "ADD":
       return addUser(action.playload, state);
-    case "EDIT-USER":
+    case "EDIT":
       return editUser(action.playload, state);
     default:
       return state;

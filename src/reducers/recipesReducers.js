@@ -1,12 +1,12 @@
 export const recipesReducers = (state, action) => {
   switch (action.type) {
-    case "GET-RECIPES":
+    case "GET":
       return [...action.playload];
-    case "DELETE-RECIPE":
+    case "DELETE":
       return deleteRecipe(action.playload, state);
-    case "ADD-RECIPE":
+    case "ADD":
       return addRecipe(action.playload, state);
-    case "EDIT-RECIPE":
+    case "EDIT":
       return editRecipe(action.playload, state);
     default:
       return state;
@@ -15,6 +15,6 @@ export const recipesReducers = (state, action) => {
 
 export const deleteRecipe = (id, state) => {};
 
-export const addRecipe = (obj, state) => {};
+export const addRecipe = (obj, state) => [...state, obj];
 
 export const editRecipe = ({ recipeObj, id }, state) => {};

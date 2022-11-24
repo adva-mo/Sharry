@@ -4,18 +4,19 @@ import Home from "./pages/Home";
 import Explore from "./pages/ExplorePage";
 import LoginPage from "./pages/LoginPage";
 import UserProfile from "./pages/UserProfile";
+import NewRecipePage from "./pages/NewRecipePage";
 import RecipeProfile from "./pages/RecipeProfile";
-import NewRecipe from "./pages/NewRecipePage";
 import { recipesReducers } from "./reducers/recipesReducers.js";
 import { useReducer } from "react";
-// import { usersReducers } from "./reducers/usersReducers.js";
+import { usersReducers } from "./reducers/usersReducers";
 
 import "./App.css";
 import "./utils/utils.css";
 
 function App() {
-  const [recipes, setRecipes] = useReducer(recipesReducers, null);
-  // const [users, setUsers] = useReducer(usersReducers, null);
+  const [recipes, dispatchRecipes] = useReducer(recipesReducers, null);
+  const [users, dispatchUsers] = useReducer(usersReducers, null);
+
   return (
     <>
       <Navbar />
@@ -25,18 +26,26 @@ function App() {
           <Route path="*" element={<Navigate replace to="/home" />} />
           <Route
             path="/home"
-            element={<Home />}
-            recipes={recipes}
-            setRecipes={setRecipes}
+            element={
+              <Home
+                recipes={recipes}
+                dispatchRecipes={dispatchRecipes}
+                users={users}
+                dispatchUsers={dispatchUsers}
+              />
+            }
           />
           <Route
             path="/explore"
-            element={<Explore recipes={recipes} setRecipes={setRecipes} />}
+            element={<Explore recipes={recipes} users={users} />}
           />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/profile/:id" element={<UserProfile />} />
+          <Route path="/users/:id" element={<UserProfile />} />
           <Route path="/recipe/:id" element={<RecipeProfile />} />
-          <Route path="/new-recipe" element={<NewRecipe />} />
+          <Route
+            path="/new-recipe"
+            element={<NewRecipePage dispatchRecipes={dispatchRecipes} />}
+          />
         </Routes>
       </main>
     </>

@@ -17,7 +17,8 @@ function NewRecipeForm({ setNewRecipe }) {
     // console.log(newRecipe);
     // console.log(dishTypes.current);
     recipeForm.current.reset();
-    setNewRecipe({ ...newRecipe, owner: currentUserId });
+    console.log(newRecipe);
+    setNewRecipe((prev) => ({ ...newRecipe, owner: currentUserId }));
   };
   return (
     <form

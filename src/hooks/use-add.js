@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { getDocs, collection } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { db } from "../utils/database-config";
 
-function useAdd(collectionName, dispatch) {
+function useAdd(collectionName, dispatch, newObj) {
+  //   console.log(newObj);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const requiredCollection = collection(db, collectionName);
@@ -11,9 +12,9 @@ function useAdd(collectionName, dispatch) {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await getDocs(requiredCollection);
-      const data = response.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-      dispatch({ type: "GET", playload: [...data] });
+      await addDoc(requiredCollection, newObj);
+      console.log("doc added to DB");
+      dispatch({ type: "ADD", playload: newObj });
     } catch (e) {
       console.log(e);
     }

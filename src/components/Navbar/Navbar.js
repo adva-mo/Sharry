@@ -33,6 +33,14 @@ function Navbar() {
       <li>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "")}
+          to={`/users/${auth.currentUser?.uid}`}
+        >
+          profile
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={(navData) => (navData.isActive ? "active" : "")}
           to={"login"}
         >
           {auth.currentUser?.uid && (
