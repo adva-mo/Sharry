@@ -6,6 +6,7 @@
   --gary: rgba(217, 217, 217, 1);
   --red: rgba(218, 80, 75, 1);
   --black: rgba(33, 36, 39, 1);
+  --light-blue: rgba(230, 247, 251, 1);
 }
 body {
   font-family: "Poppins", sans-serif;

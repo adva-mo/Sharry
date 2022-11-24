@@ -48,7 +48,6 @@ function Navbar() {
               className="small-profile-pic"
               src={process.env.PUBLIC_URL + "/profile-pic.png"}
             />
-            // <span>logged: {auth.currentUser.email}</span>
           )}
         </NavLink>
       </li>
@@ -57,7 +56,7 @@ function Navbar() {
           className={(navData) => (navData.isActive ? "active" : "")}
           to={"/explore"}
         >
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <i className="fa-solid fa-magnifying-glass"></i>
         </NavLink>
       </li>
     </ul>

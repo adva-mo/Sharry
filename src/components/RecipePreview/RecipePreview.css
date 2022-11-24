@@ -1,0 +1,15 @@
+.recipe-preview {
+  width: 10rem;
+  border-radius: 10px;
+  background-color: var(--light-blue);
+  padding-bottom: 0.5rem;
+  margin: 0.8rem;
+}
+.recipe-preview-pic {
+  width: 10rem;
+  border-radius: 10px 10px 0 0;
+}
+.recipes-container {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
