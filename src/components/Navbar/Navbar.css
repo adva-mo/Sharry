@@ -2,11 +2,20 @@
   list-style: none;
   display: flex;
   justify-content: space-around;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
 }
 .navbar-ul a.active {
-  color: rgba(7, 62, 193, 0.96);
+  text-decoration: underline;
 }
 .navbar-ul a {
-  color: rgba(66, 115, 228, 0.96);
+  color: var(--black);
   text-decoration: none;
+  border: 2px solid var(--gary);
+  border-width: 0 0 2px 0;
+}
+.small-profile-pic {
+  width: 1.7rem;
+  height: 2rem;
+  border-radius: 90%;
 }

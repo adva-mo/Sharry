@@ -41,11 +41,23 @@ function Navbar() {
       <li>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "")}
-          to={"login"}
+          to={`/users/${auth.currentUser?.uid}`}
         >
           {auth.currentUser?.uid && (
-            <span>logged: {auth.currentUser.email}</span>
+            <img
+              className="small-profile-pic"
+              src={process.env.PUBLIC_URL + "/profile-pic.png"}
+            />
+            // <span>logged: {auth.currentUser.email}</span>
           )}
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={(navData) => (navData.isActive ? "active" : "")}
+          to={"/explore"}
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
         </NavLink>
       </li>
     </ul>
