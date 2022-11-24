@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getDocs } from "firebase/firestore";
 import useGet from "../components/hooks/use-get.js";
 
-function Explore() {
+function ExplorePage() {
   const [recipes, setrecipes] = useState([]);
   const {
     isLoading,
@@ -22,4 +21,4 @@ function Explore() {
   );
 }
 
-export default Explore;
+export default ExplorePage;
