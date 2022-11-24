@@ -3,6 +3,8 @@
 //      - get recipe by id
 //       -get all recipes
 
+//* convert the async component to custom hooks components and re-usable
+
 const recipe = {
   id: "some-id",
   owner: "userid",
