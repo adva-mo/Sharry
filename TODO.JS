@@ -3,7 +3,8 @@
 //      - get recipe by id
 //       -get all recipes
 
-//* convert the async component to custom hooks components and re-usable
+//* convert the all async component to custom hooks components and re-usable
+//* build reducers
 
 const recipe = {
   id: "some-id",

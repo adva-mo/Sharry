@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
-import { db } from "../../utils/database-config";
+import { db } from "../utils/database-config";
 
 function useGet(collectionName, applyData) {
   const [isLoading, setIsLoading] = useState(false);

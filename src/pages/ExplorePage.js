@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
-import useGet from "../components/hooks/use-get.js";
+import React, { useEffect, useReducer, useState } from "react";
+import useGet from "../hooks/use-get";
+// import { recipesReducers } from "../reducers/recipesReducers";
 
-function ExplorePage() {
-  const [recipes, setrecipes] = useState([]);
+function ExplorePage({ setstatefunction, recipes }) {
+  // const [recipes, setRecipes] = useReducer(recipesReducers, null);
   const {
     isLoading,
     error,
     getFromCollection: getRecipes,
-  } = useGet("recipes", setrecipes);
+  } = useGet("recipes", setstatefunction);
 
   useEffect(() => {
     getRecipes();
@@ -16,7 +17,7 @@ function ExplorePage() {
   return (
     <div>
       Explore
-      {recipes.length > 0 && <p>ok</p>}
+      {recipes?.length > 0 && <p>ok</p>}
     </div>
   );
 }
