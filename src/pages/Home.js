@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
+import useDelete from "../hooks/use-delete";
 import useGet from "../hooks/use-get";
+import DeleteUser from "../components/async/DeleteUser";
 
 function Home({ recipes, dispatchRecipes, dispatchUsers, users }) {
   const {
@@ -19,6 +21,8 @@ function Home({ recipes, dispatchRecipes, dispatchUsers, users }) {
     <div>
       <h2>Home</h2>
       {console.log(recipes)}
+      {console.log(users)}
+      {/* <DeleteUser /> */}
       {recipes && <p>recepies fetched</p>}
       {users && <p>users fetched</p>}
     </div>

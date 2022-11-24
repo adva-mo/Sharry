@@ -13,8 +13,13 @@ export const usersReducers = (state, action) => {
   }
 };
 
-export const deleteUser = (id, state) => {};
+export const deleteUser = (id, state) => {
+  console.log("in delete");
+  return state.filter((member) => {
+    return id !== member.id;
+  });
+};
 
-export const addUser = (obj, state) => {};
+export const addUser = (obj, state) => [...state, obj]; //todo test this function
 
 export const editUser = ({ recipeObj }, state) => {};

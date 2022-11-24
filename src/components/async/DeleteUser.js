@@ -5,8 +5,8 @@ import { deleteDoc, collection, doc } from "firebase/firestore";
 //!this component recieves id of the user (the user doc) in order to delete user
 
 function DeleteUser() {
-  const usersCollection = collection(db, "users");
-  const usertodelete = { name: "ella", lastName: "mozes" };
+  // const usersCollection = collection(db, "users");
+  const usertodelete = { email: "email" };
 
   useEffect(() => {
     deleteUser();
@@ -14,7 +14,7 @@ function DeleteUser() {
 
   const deleteUser = async () => {
     try {
-      const userDoc = doc(db, "users", "wyYI6GI8X3VsdldKJtNn");
+      const userDoc = doc(db, "users", "QVlJPdxDU6RJuxKQeAkVI8xW9dg1");
       await deleteDoc(userDoc, usertodelete);
       console.log("deleted");
     } catch (e) {}
