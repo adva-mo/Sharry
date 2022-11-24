@@ -20,6 +20,6 @@ export const deleteUser = (id, state) => {
   });
 };
 
-export const addUser = (obj, state) => [...state, obj]; //todo test this function
+export const addUser = (obj, state) => [...state, obj];
 
 export const editUser = ({ recipeObj }, state) => {};

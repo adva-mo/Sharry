@@ -1,0 +1,8 @@
+.big-profile-pic {
+  border-radius: 90%;
+  /* height: 50%; */
+  width: 80%;
+}
+.profile-main-box {
+  justify-content: space-between !important;
+}

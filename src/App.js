@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
 import Explore from "./pages/ExplorePage";
 import LoginPage from "./pages/LoginPage";
-import UserProfile from "./pages/UserProfile";
 import NewRecipePage from "./pages/NewRecipePage";
 import RecipeProfile from "./pages/RecipeProfile";
 import { recipesReducers } from "./reducers/recipesReducers.js";
@@ -12,6 +11,7 @@ import { usersReducers } from "./reducers/usersReducers";
 
 import "./App.css";
 import "./utils/utils.css";
+import UserProfilePage from "./pages/UserProfilePage";
 
 function App() {
   const [recipes, dispatchRecipes] = useReducer(recipesReducers, null);
@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <main>
+      <>
         <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
           <Route path="*" element={<Navigate replace to="/home" />} />
@@ -40,14 +40,14 @@ function App() {
             element={<Explore recipes={recipes} users={users} />}
           />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/users/:id" element={<UserProfile />} />
+          <Route path="/users/:id" element={<UserProfilePage />} />
           <Route path="/recipe/:id" element={<RecipeProfile />} />
           <Route
             path="/new-recipe"
             element={<NewRecipePage dispatchRecipes={dispatchRecipes} />}
           />
         </Routes>
-      </main>
+      </>
     </>
   );
 }

@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import useDelete from "../hooks/use-delete";
+import useAdd from "../hooks/use-add";
 import useGet from "../hooks/use-get";
-import DeleteUser from "../components/async/DeleteUser";
+// import DeleteUser from "../components/async/DeleteUser";
+// import useAdd from "../hooks/use-add";
 
 function Home({ recipes, dispatchRecipes, dispatchUsers, users }) {
   const {
