@@ -20,7 +20,6 @@ function App() {
   return (
     <>
       <Navbar />
-      <Logout />
       <>
         <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />

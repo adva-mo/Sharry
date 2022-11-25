@@ -1,14 +1,21 @@
 import React, { useState, useRef } from "react";
 import "./LoginCard.css";
+// import { auth } from "../../utils/database-config";
 
 //todo: user feedbacks
 
-function LoginCard({ setPasswordToRegister, setEmailToRegister }) {
+function LoginCard({
+  setPasswordToRegister,
+  setEmailToRegister,
+  isNewUser,
+  setIsNewUser,
+}) {
+  // const [isNewUser, setIsNewUser] = useState(true);
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredEmailTouched, setEnteredEmailTouched] = useState(false);
 
   const enteredEmailIsValid = enteredEmail.trim() !== "";
-  const emailIsNotValid = !enteredEmailIsValid && enteredEmailTouched;
+  // const emailIsNotValid = !enteredEmailIsValid && enteredEmailTouched;
 
   const [enteredPassword, setEnteredPassword] = useState("");
   const [enteredPasswordIsValid, setEnteredPasswordIsValid] = useState(false);
@@ -47,34 +54,47 @@ function LoginCard({ setPasswordToRegister, setEmailToRegister }) {
   };
 
   return (
-    <form onSubmit={formSubmissionHandler} className="flex-column login-card">
-      <h3>Login and start Sharrying!</h3>
-      <label htmlFor="email">email</label>
-      <input
-        ref={emailRef}
-        className={"bottom-border"}
-        placeholder="enter your email"
-        type="email"
-        name="email"
-        onChange={emailInputChangeHandler}
-      />
-      {/* {!enteredEmailIsValid && enteredEmailTouched && (
+    <>
+      <form onSubmit={formSubmissionHandler} className="flex-column login-card">
+        <h3>{isNewUser ? "Sign in" : "Login"} and start Sharrying!</h3>
+        <label htmlFor="email">email</label>
+        <input
+          ref={emailRef}
+          className={"bottom-border"}
+          placeholder="enter your email"
+          type="email"
+          name="email"
+          onChange={emailInputChangeHandler}
+        />
+        {/* {!enteredEmailIsValid && enteredEmailTouched && (
         // <p className="error-text">EMAIL MUST NOT BE EMPTY</p>
       )} */}
-      <label htmlFor="password">password</label>
-      <input
-        className={"bottom-border"}
-        ref={passwordRef}
-        placeholder="enter your password"
-        type="password"
-        name="password"
-        onChange={passwordInputChangeHandler}
-      />
-      {/* {!enteredPasswordIsValid && enteredPasswordTouched && (
+        <label htmlFor="password">password</label>
+        <input
+          className={"bottom-border"}
+          ref={passwordRef}
+          placeholder="enter your password"
+          type="password"
+          name="password"
+          onChange={passwordInputChangeHandler}
+        />
+        {/* {!enteredPasswordIsValid && enteredPasswordTouched && (
         <p className="error-text">PASSWORD MUST NOT BE EMPTY</p>
       )} */}
-      <button className="red-round-btn">Log in</button>
-    </form>
+        <button className="red-round-btn">
+          {isNewUser ? "Sign up" : "Login"}
+        </button>
+      </form>
+      <div>
+        <button
+          onClick={() => {
+            setIsNewUser((prev) => !prev);
+          }}
+        >
+          {isNewUser ? "already have an acount" : "new account"}
+        </button>
+      </div>
+    </>
   );
 }
 export default LoginCard;

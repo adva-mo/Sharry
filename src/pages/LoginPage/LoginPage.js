@@ -2,18 +2,23 @@ import React, { useEffect, useState } from "react";
 import "./LoginPage.css";
 import LoginCard from "../../components/LoginCard/LoginCard";
 import useRegister from "../../hooks/use-register";
+import useLogin from "../../hooks/use-login";
 
 function LoginPage() {
+  const [isNewUser, setIsNewUser] = useState(true);
+
   const [emailToRegister, setEmailToRegister] = useState(null);
   const [passwordToRegister, setPasswordToRegister] = useState(null);
 
   const { register, user } = useRegister(emailToRegister, passwordToRegister);
+  const { login, loggedUser } = useLogin(emailToRegister, passwordToRegister);
 
   useEffect(() => {
     if (emailToRegister === null || passwordToRegister === null) return;
     console.log("in use efect");
-    register();
-  }, [emailToRegister, passwordToRegister, register]);
+    isNewUser ? register() : login();
+    // register(); login()
+  }, [emailToRegister, passwordToRegister, register, login]);
 
   return (
     <div className="login-page">
@@ -25,8 +30,11 @@ function LoginPage() {
       <LoginCard
         setEmailToRegister={setEmailToRegister}
         setPasswordToRegister={setPasswordToRegister}
+        isNewUser={isNewUser}
+        setIsNewUser={setIsNewUser}
       />
       {user && console.log(user)}
+      {loggedUser && console.log(loggedUser)}
     </div>
   );
 }

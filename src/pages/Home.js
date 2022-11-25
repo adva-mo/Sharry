@@ -24,9 +24,6 @@ function Home({ recipes, dispatchRecipes, dispatchUsers, users }) {
         className="hero-img"
         src={process.env.PUBLIC_URL + "/assets/home-hero.png"}
       />
-      {console.log(recipes)}
-      {console.log(users)}
-      {/* <DeleteUser /> */}
       {recipes && <p>recepies fetched</p>}
       {users && <p>users fetched</p>}
     </div>

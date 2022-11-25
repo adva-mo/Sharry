@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { auth } from "../../utils/database-config";
+import Logout from "../authentication/Logout";
 import "./Navbar.css";
 
 function Navbar() {
@@ -11,7 +12,7 @@ function Navbar() {
           className={(navData) => (navData.isActive ? "active" : "")}
           to={"/home"}
         >
-          home
+          Home
         </NavLink>
       </li>
       <li>
@@ -27,29 +28,29 @@ function Navbar() {
           className={(navData) => (navData.isActive ? "active" : "")}
           to={"/new-recipe"}
         >
-          add new recipe
+          Add new recipe
         </NavLink>
       </li>
       <li>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "")}
-          to={`/users/${auth.currentUser?.uid}`}
+          to={auth.currentUser ? `/users/${auth.currentUser.uid}` : "/login"}
         >
-          profile
+          {auth.currentUser ? "Profile" : "Login"}
         </NavLink>
       </li>
       <li>
-        <NavLink
-          className={(navData) => (navData.isActive ? "active" : "")}
-          to={`/users/${auth.currentUser?.uid}`}
-        >
-          {auth.currentUser?.uid && (
+        {auth.currentUser && (
+          <NavLink
+            className={(navData) => (navData.isActive ? "active" : "")}
+            to={`/users/${auth.currentUser?.uid}`}
+          >
             <img
               className="small-profile-pic"
               src={process.env.PUBLIC_URL + "/profile-pic.png"}
             />
-          )}
-        </NavLink>
+          </NavLink>
+        )}
       </li>
       <li>
         <NavLink
@@ -58,6 +59,7 @@ function Navbar() {
         >
           <i className="fa-solid fa-magnifying-glass"></i>
         </NavLink>
+        {auth.currentUser && <Logout />}
       </li>
     </ul>
   );
