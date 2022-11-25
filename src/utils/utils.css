@@ -77,3 +77,10 @@ input {
   text-align: center;
   margin: 1rem;
 }
+.error-text {
+  color: var(--pink);
+  font-size: small;
+}
+.error-input {
+  border-color: var(--pink);
+}

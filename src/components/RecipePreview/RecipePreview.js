@@ -17,7 +17,7 @@ function RecipePreview({ color, name, type, img, id }) {
         <div>
           <h3>{name}</h3>
           <p>{type}</p>
-          <a>READ MORE</a>
+          <h4>READ MORE</h4>
         </div>
       </Link>
     </div>
