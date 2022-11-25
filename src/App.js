@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Explore from "./pages/ExplorePage";
 import LoginPage from "./pages/LoginPage";
 import NewRecipePage from "./pages/NewRecipePage";
-import RecipeProfile from "./pages/RecipeProfile";
+import RecipeProfile from "./pages/recipeProfilePage/RecipeProfile";
 import { recipesReducers } from "./reducers/recipesReducers.js";
 import { useReducer } from "react";
 import { usersReducers } from "./reducers/usersReducers";

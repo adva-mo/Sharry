@@ -1,0 +1,20 @@
+.recipe-settings {
+  margin: 1rem;
+  margin-bottom: 3rem;
+}
+.big-recipe-img {
+  width: 50%;
+}
+.big-recipe-img-container {
+  position: relative;
+}
+.big-recipe-img-container::after {
+  content: "";
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  width: 90%;
+  height: 80%;
+  background-color: var(--light-gray);
+  z-index: -1;
+}

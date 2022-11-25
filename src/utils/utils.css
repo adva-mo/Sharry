@@ -8,6 +8,7 @@
   --black: rgba(33, 36, 39, 1);
   --light-blue: rgba(230, 247, 251, 1);
   --pink: rgba(255, 124, 140, 1);
+  --light-gray: rgba(241, 241, 241, 1);
 }
 body {
   font-family: "Poppins", sans-serif;
@@ -23,7 +24,7 @@ input {
 }
 .flex {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
 }
@@ -65,4 +66,14 @@ input {
   outline: none;
   font-size: large;
   font-weight: 600;
+}
+.red {
+  color: var(--red);
+}
+.gap {
+  gap: 1rem;
+}
+.sub-title {
+  text-align: center;
+  margin: 1rem;
 }

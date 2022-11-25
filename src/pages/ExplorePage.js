@@ -13,7 +13,7 @@ function ExplorePage({ recipes, users }) {
       <SearchDish />
       <div className="recipes-container flex">
         {" "}
-        {recipes.map((recipe) => {
+        {recipes?.map((recipe) => {
           return <RecipePreview key={recipe.id} color={"pink"} {...recipe} />;
         })}
       </div>
