@@ -17,8 +17,7 @@ function LoginPage() {
     if (emailToRegister === null || passwordToRegister === null) return;
     console.log("in use efect");
     isNewUser ? register() : login();
-    // register(); login()
-  }, [emailToRegister, passwordToRegister, register, login]);
+  }, [emailToRegister, passwordToRegister, register, login, isNewUser]);
 
   return (
     <div className="login-page">

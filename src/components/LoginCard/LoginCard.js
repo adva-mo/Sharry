@@ -87,8 +87,11 @@ function LoginCard({
       </form>
       <div>
         <button
+          className="red-round-btn"
           onClick={() => {
             setIsNewUser((prev) => !prev);
+            setPasswordToRegister(null);
+            setEmailToRegister(null);
           }}
         >
           {isNewUser ? "already have an acount" : "new account"}

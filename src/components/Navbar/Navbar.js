@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { auth } from "../../utils/database-config";
-import Logout from "../authentication/Logout";
+import Logout from "../../hooks/Logout";
 import "./Navbar.css";
 
 function Navbar() {
@@ -52,6 +52,7 @@ function Navbar() {
           </NavLink>
         )}
       </li>
+      {auth.currentUser && <Logout />}
       <li>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "")}
@@ -59,7 +60,6 @@ function Navbar() {
         >
           <i className="fa-solid fa-magnifying-glass"></i>
         </NavLink>
-        {auth.currentUser && <Logout />}
       </li>
     </ul>
   );

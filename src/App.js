@@ -1,14 +1,14 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
-import Explore from "./pages/ExplorePage";
+import Explore from "./pages/ExplorePage/ExplorePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import NewRecipePage from "./pages/NewRecipePage";
 import RecipeProfile from "./pages/recipeProfilePage/RecipeProfile";
 import { recipesReducers } from "./reducers/recipesReducers.js";
 import { useReducer } from "react";
 import { usersReducers } from "./reducers/usersReducers";
-import Logout from "./components/authentication/Logout";
+import Logout from "./hooks/Logout";
 import "./App.css";
 import "./utils/utils.css";
 import UserProfilePage from "./pages/UserProfilePage";

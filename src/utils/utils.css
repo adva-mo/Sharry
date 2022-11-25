@@ -20,7 +20,6 @@ a {
 }
 input {
   outline: none;
-  /* border: none; */
 }
 .flex {
   display: flex;
@@ -54,7 +53,6 @@ input {
 }
 .hero-img {
   width: 100vw;
-  /* width: auto; */
   height: 30rem;
 }
 .red-round-btn {
@@ -83,4 +81,10 @@ input {
 }
 .error-input {
   border-color: var(--pink);
+}
+.logout-btn {
+  background-color: var(--light-blue);
+  border-radius: 20px;
+  border: none;
+  padding: 0.5rem;
 }

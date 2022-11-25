@@ -1,6 +1,6 @@
 import React from "react";
-import SearchDish from "../components/SearchDish/SearchDish";
-import RecipePreview from "../components/RecipePreview/RecipePreview";
+import SearchDish from "../../components/SearchDish/SearchDish";
+import RecipePreview from "../../components/RecipePreview/RecipePreview";
 import "./ExplrePage.css";
 
 function ExplorePage({ recipes, users }) {
@@ -9,6 +9,7 @@ function ExplorePage({ recipes, users }) {
       <img
         className="hero-img"
         src={process.env.PUBLIC_URL + "/assets/explore-hero.png"}
+        alt=""
       />
       <SearchDish />
       <div className="recipes-container flex">

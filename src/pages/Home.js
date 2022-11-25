@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
-import useAdd from "../hooks/use-add";
 import useGet from "../hooks/use-get";
-// import DeleteUser from "../components/async/DeleteUser";
-// import useAdd from "../hooks/use-add";
 
 function Home({ recipes, dispatchRecipes, dispatchUsers, users }) {
   const {
@@ -24,8 +21,6 @@ function Home({ recipes, dispatchRecipes, dispatchUsers, users }) {
         className="hero-img"
         src={process.env.PUBLIC_URL + "/assets/home-hero.png"}
       />
-      {recipes && <p>recepies fetched</p>}
-      {users && <p>users fetched</p>}
     </div>
   );
 }
