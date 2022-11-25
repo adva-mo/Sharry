@@ -1,0 +1,24 @@
+.login-card {
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  background-color: white;
+  /* margin-left: auto; */
+  border-radius: 20px;
+  padding: 2rem 1rem;
+  gap: 1rem;
+}
+.login-card h3,
+.login-card input {
+  margin-bottom: 1rem;
+}
+.login-card button {
+  padding: 0.5rem 2rem;
+}
+.login-card input {
+  width: 90%;
+  padding: 0.5rem 0;
+}
+.login-card button:hover {
+  background-color: rgb(211, 61, 56);
+}

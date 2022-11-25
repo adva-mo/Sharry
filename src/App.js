@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
 import Explore from "./pages/ExplorePage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 import NewRecipePage from "./pages/NewRecipePage";
 import RecipeProfile from "./pages/recipeProfilePage/RecipeProfile";
 import { recipesReducers } from "./reducers/recipesReducers.js";
