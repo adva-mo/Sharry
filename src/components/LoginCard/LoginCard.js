@@ -3,7 +3,7 @@ import "./LoginCard.css";
 
 //todo: user feedbacks
 
-function LoginCard() {
+function LoginCard({ setPasswordToRegister, setEmailToRegister }) {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredEmailTouched, setEnteredEmailTouched] = useState(false);
 
@@ -42,6 +42,8 @@ function LoginCard() {
 
     console.log(`enteredEmail: ${enteredEmail}`);
     console.log(`enteredPassword: ${enteredPassword}`);
+    setPasswordToRegister(enteredPassword);
+    setEmailToRegister(enteredEmail);
   };
 
   return (
