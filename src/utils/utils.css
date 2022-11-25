@@ -3,10 +3,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  --gary: rgba(217, 217, 217, 1);
+  --gray: rgba(217, 217, 217, 1);
   --red: rgba(218, 80, 75, 1);
   --black: rgba(33, 36, 39, 1);
   --light-blue: rgba(230, 247, 251, 1);
+  --pink: rgba(255, 124, 140, 1);
 }
 body {
   font-family: "Poppins", sans-serif;
@@ -15,6 +16,10 @@ body {
 a {
   color: var(--black);
   text-decoration: none;
+}
+input {
+  outline: none;
+  /* border: none; */
 }
 .flex {
   display: flex;
@@ -35,7 +40,7 @@ a {
   padding: 1rem;
 }
 .bottom-border {
-  border: 2px solid var(--gary);
+  border: 2px solid var(--gray);
   border-width: 0 0 2px 0;
 }
 .btn-pic {
@@ -45,4 +50,19 @@ a {
 .red-round-bg {
   background-color: var(--red);
   border-radius: 10px;
+}
+.hero-img {
+  width: 100vw;
+  /* width: auto; */
+  height: 30rem;
+}
+.red-round-btn {
+  background-color: var(--red);
+  border-radius: 20px;
+  border: none;
+  padding: 0.5rem;
+  color: white;
+  outline: none;
+  font-size: large;
+  font-weight: 600;
 }

@@ -20,7 +20,10 @@ function Home({ recipes, dispatchRecipes, dispatchUsers, users }) {
 
   return (
     <div>
-      <h2>Home</h2>
+      <img
+        className="hero-img"
+        src={process.env.PUBLIC_URL + "/assets/home-hero.png"}
+      />
       {console.log(recipes)}
       {console.log(users)}
       {/* <DeleteUser /> */}

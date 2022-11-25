@@ -1,0 +1,10 @@
+.explore-hero::after {
+  content: "FIND YOUR NEXT  AWESOME DISH";
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  z-index: 1;
+  color: cornsilk;
+  font-size: 4rem;
+  font-weight: 600;
+}
