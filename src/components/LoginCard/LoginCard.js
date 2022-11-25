@@ -1,56 +1,58 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import "./LoginCard.css";
-// import { auth } from "../../utils/database-config";
-
+import useInput from "../../hooks/use-input";
 //todo: user feedbacks
 
-function LoginCard({
+const isEmailInputValid = (value) => value.trim() !== "" && value.includes("@");
+const isPasswordInputValid = (value) =>
+  value.trim() !== "" && value.length >= 6;
+
+function Logincard({
   setPasswordToRegister,
   setEmailToRegister,
   isNewUser,
   setIsNewUser,
 }) {
-  // const [isNewUser, setIsNewUser] = useState(true);
-  const [enteredEmail, setEnteredEmail] = useState("");
-  const [enteredEmailTouched, setEnteredEmailTouched] = useState(false);
+  const {
+    value: emailValue,
+    isValid: isEmailValid,
+    hasError: emailHasError,
+    valueChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHndler,
+    reset: resetEmail,
+  } = useInput(isEmailInputValid);
 
-  const enteredEmailIsValid = enteredEmail.trim() !== "";
-  // const emailIsNotValid = !enteredEmailIsValid && enteredEmailTouched;
+  const {
+    value: passwordValue,
+    isValid: isPasswordValid,
+    hasError: passwordHasError,
+    valueChangeHandler: passwordChangeHandler,
+    inputBlurHandler: passwordBlurHandler,
+    reset: resetPassword,
+  } = useInput(isPasswordInputValid);
 
-  const [enteredPassword, setEnteredPassword] = useState("");
-  const [enteredPasswordIsValid, setEnteredPasswordIsValid] = useState(false);
-  //   const [enteredEmailIsValid, setEnteredEmailIsValid] = useState(false);
-  //   const [enteredPasswordTouched, setEnteredPasswordTouched] = useState(false);
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const emailClasses = emailHasError
+    ? "error-class and bottom-border"
+    : "bottom-border";
+  const passwordClasses = passwordHasError
+    ? "error-class and bottom-border"
+    : "bottom-border";
+  let isFormValid = false;
 
-  const emailInputChangeHandler = ({ target }) => {
-    setEnteredEmail(target.value);
-  };
-  const passwordInputChangeHandler = ({ target }) => {
-    setEnteredPassword(target.value);
-  };
+  if (isEmailValid && isPasswordValid) {
+    isFormValid = true;
+  }
 
   const formSubmissionHandler = (e) => {
     e.preventDefault();
-    setEnteredEmailTouched(true);
-    // setEnteredPasswordTouched(true);
-    if (!enteredEmailIsValid) return;
-    // }
-    setEnteredEmail("");
-    if (enteredPassword.trim() === "" || enteredPassword.length < 6) {
-      setEnteredPasswordIsValid(false);
-      console.log("password not valid");
-      return;
-    }
-    // setEnteredPasswordIsValid(true);
-    emailRef.current.value = "";
-    passwordRef.current.value = "";
 
-    console.log(`enteredEmail: ${enteredEmail}`);
-    console.log(`enteredPassword: ${enteredPassword}`);
-    setPasswordToRegister(enteredPassword);
-    setEmailToRegister(enteredEmail);
+    if (!isFormValid) return;
+    console.log("submitted");
+    console.log(emailValue, passwordValue);
+    resetEmail();
+    resetPassword();
+    setPasswordToRegister(passwordValue);
+    setEmailToRegister(emailValue);
   };
 
   return (
@@ -59,34 +61,38 @@ function LoginCard({
         <h3>{isNewUser ? "Sign in" : "Login"} and start Sharrying!</h3>
         <label htmlFor="email">email</label>
         <input
-          ref={emailRef}
-          className={"bottom-border"}
+          className={emailClasses}
           placeholder="enter your email"
           type="email"
           name="email"
-          onChange={emailInputChangeHandler}
+          value={emailValue}
+          onChange={emailChangeHandler}
+          onBlur={emailBlurHndler}
         />
-        {/* {!enteredEmailIsValid && enteredEmailTouched && (
-        // <p className="error-text">EMAIL MUST NOT BE EMPTY</p>
-      )} */}
+        {emailHasError && (
+          <p>please enter a valid email, for example: example@example.com</p>
+        )}
         <label htmlFor="password">password</label>
         <input
-          className={"bottom-border"}
-          ref={passwordRef}
+          className={passwordClasses}
           placeholder="enter your password"
           type="password"
           name="password"
-          onChange={passwordInputChangeHandler}
+          value={passwordValue}
+          onChange={passwordChangeHandler}
+          onBlur={passwordBlurHandler}
         />
-        {/* {!enteredPasswordIsValid && enteredPasswordTouched && (
-        <p className="error-text">PASSWORD MUST NOT BE EMPTY</p>
-      )} */}
-        <button className="red-round-btn">
+        {passwordHasError && (
+          <p>
+            please enter a valid password, must contain at least 6 characters
+          </p>
+        )}
+
+        <button disabled={!isFormValid} className="red-round-btn">
           {isNewUser ? "Sign up" : "Login"}
         </button>
-      </form>
-      <div>
         <button
+          type="button"
           className="red-round-btn"
           onClick={() => {
             setIsNewUser((prev) => !prev);
@@ -94,10 +100,10 @@ function LoginCard({
             setEmailToRegister(null);
           }}
         >
-          {isNewUser ? "already have an acount" : "new account"}
+          {isNewUser ? "already have an account" : "new account"}
         </button>
-      </div>
+      </form>
     </>
   );
 }
-export default LoginCard;
+export default Logincard;

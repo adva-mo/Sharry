@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./LoginPage.css";
 import LoginCard from "../../components/LoginCard/LoginCard";
+// import Logincard from "../../Logincard";
 import useRegister from "../../hooks/use-register";
 import useLogin from "../../hooks/use-login";
 
@@ -15,7 +16,6 @@ function LoginPage() {
 
   useEffect(() => {
     if (emailToRegister === null || passwordToRegister === null) return;
-    console.log("in use efect");
     isNewUser ? register() : login();
   }, [emailToRegister, passwordToRegister, register, login, isNewUser]);
 

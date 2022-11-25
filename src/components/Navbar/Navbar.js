@@ -48,6 +48,7 @@ function Navbar() {
             <img
               className="small-profile-pic"
               src={process.env.PUBLIC_URL + "/profile-pic.png"}
+              alt=""
             />
           </NavLink>
         )}

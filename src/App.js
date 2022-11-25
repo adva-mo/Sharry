@@ -8,7 +8,6 @@ import RecipeProfile from "./pages/recipeProfilePage/RecipeProfile";
 import { recipesReducers } from "./reducers/recipesReducers.js";
 import { useReducer } from "react";
 import { usersReducers } from "./reducers/usersReducers";
-import Logout from "./hooks/Logout";
 import "./App.css";
 import "./utils/utils.css";
 import UserProfilePage from "./pages/UserProfilePage";
