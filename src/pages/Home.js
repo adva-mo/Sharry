@@ -3,12 +3,16 @@ import useGet from "../hooks/use-get";
 
 function Home({ recipes, dispatchRecipes, dispatchUsers, users }) {
   const {
-    isLoading,
-    error,
+    isLoading: isRecipesLoading,
+    error: isRecipesError,
     getFromCollection: getRecipes,
   } = useGet("recipes", dispatchRecipes);
 
-  const { getFromCollection: getUsers } = useGet("users", dispatchUsers);
+  const {
+    isLoading: isUsersLoading,
+    error: isUsersError,
+    getFromCollection: getUsers,
+  } = useGet("users", dispatchUsers);
 
   useEffect(() => {
     getRecipes();

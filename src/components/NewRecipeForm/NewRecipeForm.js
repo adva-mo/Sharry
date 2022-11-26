@@ -10,19 +10,17 @@ function NewRecipeForm({ setNewRecipe }) {
   const dishTypes = useRef();
   const currentUserId = auth.currentUser?.uid || null;
 
-  const saveHandler = () => {
-    // console.log(recipeForm);
+  const saveHandler = (e) => {
+    e.preventDefault();
     const data = new FormData(recipeForm.current);
     const newRecipe = Object.fromEntries(data);
-    // console.log(newRecipe);
-    // console.log(dishTypes.current);
     recipeForm.current.reset();
     console.log(newRecipe);
     setNewRecipe((prev) => ({ ...newRecipe, owner: currentUserId }));
   };
   return (
     <form
-      onSubmit={(e) => e.preventDefault()}
+      onSubmit={saveHandler}
       className="new-recipe-form flex-column"
       ref={recipeForm}
     >
@@ -32,7 +30,7 @@ function NewRecipeForm({ setNewRecipe }) {
       </div>
       <div>
         <label htmlFor="share">share your recipe?</label>
-        <input type="radio" name="share" value="true" />
+        <input type="radio" name="share" value="true" required />
         yes
         <input type="radio" name="share" value="false" />
         no
@@ -86,7 +84,8 @@ function NewRecipeForm({ setNewRecipe }) {
         <label htmlFor="img">image link </label>
         <input type="text" name="img" />
       </div>
-      <button onClick={saveHandler}>save</button>
+      <input type="submit" value="save" />
+      {/* <input type="submit" onClick={saveHandler} value="save" /> */}
     </form>
   );
 }

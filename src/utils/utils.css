@@ -7,7 +7,7 @@
   --red: rgba(218, 80, 75, 1);
   --black: rgba(33, 36, 39, 1);
   --light-blue: rgba(230, 247, 251, 1);
-  --pink: rgba(255, 124, 140, 1);
+  --pink: rgba(255, 124, 139, 0.769);
   --light-gray: rgba(241, 241, 241, 1);
 }
 body {

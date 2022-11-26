@@ -6,7 +6,7 @@ function RecipePreview({ color, name, type, img, id }) {
   return (
     <div
       className="recipe-preview"
-      style={color && { backgroundColor: "rgba(255, 124, 140, 1)" }}
+      style={color && { backgroundColor: "rgba(255, 124, 140, 0.4)" }}
     >
       <Link to={`/recipe/${id}`}>
         <img
@@ -16,7 +16,7 @@ function RecipePreview({ color, name, type, img, id }) {
         />
         <div>
           <h3>{name}</h3>
-          <p>{type && type}</p>
+          <p>{type || "Amazing taste"}</p>
           <h4>READ MORE</h4>
         </div>
       </Link>
