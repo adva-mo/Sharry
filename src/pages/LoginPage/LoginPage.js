@@ -7,6 +7,7 @@ import useLogin from "../../hooks/use-login";
 
 function LoginPage() {
   const [isNewUser, setIsNewUser] = useState(true);
+  // const []
 
   const [emailToRegister, setEmailToRegister] = useState(null);
   const [passwordToRegister, setPasswordToRegister] = useState(null);
@@ -26,14 +27,15 @@ function LoginPage() {
         src={process.env.PUBLIC_URL + "/assets/login-hero.png"}
         alt=""
       />
+      {user && <p>user</p>}
+      {loggedUser && <button>loggedUser</button>}
+      {/* {loggedUser === null && ( */}
       <LoginCard
         setEmailToRegister={setEmailToRegister}
         setPasswordToRegister={setPasswordToRegister}
         isNewUser={isNewUser}
         setIsNewUser={setIsNewUser}
       />
-      {user && console.log(user)}
-      {loggedUser && console.log(loggedUser)}
     </div>
   );
 }

@@ -60,6 +60,10 @@ function App() {
               path="/new-recipe"
               element={<NewRecipePage dispatchRecipes={dispatchRecipes} />}
             />
+            {/* <Route
+              path="/new-user"
+              element={<NewUserPage dispatchRecipes={dispatchRecipes} />}
+            /> */}
           </Routes>
         </>
       </currentLoggedUser.Provider>

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import "./UserInfo.css";
 
 function UserInfo({ currentUser: user }) {
+  // console.log(user);
   const { name, lastName, country, city, email } = user;
   return (
     <>

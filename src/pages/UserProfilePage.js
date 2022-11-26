@@ -6,6 +6,7 @@ import UserRecipes from "../components/UserRecipes/UserRecipes";
 
 function UserProfilePage({ users, recipes }) {
   const params = useParams();
+  // console.log(params.id);
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
