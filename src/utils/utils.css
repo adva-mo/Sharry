@@ -79,15 +79,15 @@ input {
   color: var(--pink);
   font-size: small;
 }
-.error-input {
+.error-class {
   border-color: var(--pink);
 }
-.logout-btn {
+.blue-btn {
   background-color: var(--light-blue);
   border-radius: 20px;
   border: none;
   padding: 0.5rem;
 }
-.logout-btn:hover {
+.blue-btn:hover {
   background-color: rgb(156, 215, 249);
 }

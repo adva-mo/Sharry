@@ -46,7 +46,6 @@ function RecipeProfile({ recipes }) {
           </div>
         </div>
         <h2 className="sub-title">MORE DISHES</h2>
-        {/* {todo: function that returns 6 recipes randomlly} */}
         <div className="recipes-container flex">
           <RecipePreview />
           <RecipePreview />

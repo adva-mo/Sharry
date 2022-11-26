@@ -1,13 +1,9 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { auth } from "../../utils/database-config";
-// import currentLoggedUser from "../components/context/loggedUserContext";
 
 function Logout() {
-  // const loggedUserctx = useContext(currentLoggedUser);
-
   const logout = async () => {
-    // console.log(loggedUserctx);
     console.log("logging out");
     try {
       await signOut(auth);

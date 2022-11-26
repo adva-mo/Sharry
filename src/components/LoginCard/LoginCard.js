@@ -70,7 +70,10 @@ function Logincard({
           onBlur={emailBlurHndler}
         />
         {emailHasError && (
-          <p>please enter a valid email, for example: example@example.com</p>
+          <>
+            <p className="error-text">please enter a valid email</p>
+            <p className="error-text">for example: example@example.com</p>
+          </>
         )}
         <label htmlFor="password">password</label>
         <input
@@ -83,9 +86,7 @@ function Logincard({
           onBlur={passwordBlurHandler}
         />
         {passwordHasError && (
-          <p>
-            please enter a valid password, must contain at least 6 characters
-          </p>
+          <p className="error-text">password must contain at least 6 digits</p>
         )}
 
         <button disabled={!isFormValid} className="red-round-btn">
@@ -93,14 +94,14 @@ function Logincard({
         </button>
         <button
           type="button"
-          className="red-round-btn"
+          className="blue-btn"
           onClick={() => {
             setIsNewUser((prev) => !prev);
             setPasswordToRegister(null);
             setEmailToRegister(null);
           }}
         >
-          {isNewUser ? "already have an account" : "new account"}
+          {isNewUser ? "I already have an account" : "new account"}
         </button>
       </form>
     </>
