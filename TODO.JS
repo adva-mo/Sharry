@@ -7,9 +7,8 @@
 //! logic
 //  cokking time help function
 //  function that returns 6 recipes randomlly
-//  display recipe info on profil page
+//  display recipe info on recipe profile page
 //  hide api keys
-//  redirect user after signin / loggign out
 //  add dinamic response to the main pages based on user is logged/not
 //  error & loading components
 //  search dish feature
@@ -17,12 +16,13 @@
 //! extra
 //  save other user recipes
 //  add like to recipes
+//  upload photo
 
 //! desgin:
-// underlne navbar links
+//  underlne navbar links
 //  buttons didabled classes
 //  home page
-// spinner of food
+//  spinner of food
 
 //! data straucture:
 const recipe = {

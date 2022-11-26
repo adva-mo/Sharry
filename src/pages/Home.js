@@ -17,7 +17,7 @@ function Home({ recipes, dispatchRecipes, dispatchUsers, users }) {
   useEffect(() => {
     getRecipes();
     getUsers();
-  }, []);
+  }, [getUsers, getRecipes]);
 
   return (
     <div>

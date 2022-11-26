@@ -14,6 +14,7 @@ import "./utils/utils.css";
 import UserProfilePage from "./pages/UserProfilePage";
 import { onAuthStateChanged } from "firebase/auth";
 import currentLoggedUser from "./context/loggedUserContext";
+import NewUserPage from "./pages/newUserPage/NewUserPage";
 
 function App() {
   const [recipes, dispatchRecipes] = useReducer(recipesReducers, null);
@@ -60,10 +61,10 @@ function App() {
               path="/new-recipe"
               element={<NewRecipePage dispatchRecipes={dispatchRecipes} />}
             />
-            {/* <Route
+            <Route
               path="/new-user"
-              element={<NewUserPage dispatchRecipes={dispatchRecipes} />}
-            /> */}
+              element={<NewUserPage dispatchRecipes={dispatchUsers} />}
+            />
           </Routes>
         </>
       </currentLoggedUser.Provider>

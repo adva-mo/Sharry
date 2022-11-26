@@ -14,7 +14,7 @@ function NewRecipePage({ dispatchRecipes }) {
   useEffect(() => {
     if (!newRecipe) return;
     addRecipe();
-  }, [newRecipe]);
+  }, [newRecipe, addRecipe]);
 
   return (
     <div>
