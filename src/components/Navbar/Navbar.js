@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { auth } from "../../utils/database-config";
-import Logout from "../../hooks/Logout";
+import Logout from "../Logout/Logout";
 import "./Navbar.css";
 
 function Navbar() {

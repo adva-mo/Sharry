@@ -10,7 +10,6 @@ function Logout() {
     // console.log(loggedUserctx);
     console.log("logging out");
     try {
-      ç;
       await signOut(auth);
     } catch (error) {
       console.log(error);
