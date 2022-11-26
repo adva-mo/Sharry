@@ -18,6 +18,7 @@ function App() {
 
   return (
     <>
+      {users && console.log(users)}
       <Navbar />
       <>
         <Routes>
@@ -39,8 +40,14 @@ function App() {
             element={<Explore recipes={recipes} users={users} />}
           />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/users/:id" element={<UserProfilePage />} />
-          <Route path="/recipe/:id" element={<RecipeProfile />} />
+          <Route
+            path="/users/:id"
+            element={<UserProfilePage users={users} recipes={recipes} />}
+          />
+          <Route
+            path="/recipe/:id"
+            element={<RecipeProfile recipes={recipes} />}
+          />
           <Route
             path="/new-recipe"
             element={<NewRecipePage dispatchRecipes={dispatchRecipes} />}

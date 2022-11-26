@@ -88,3 +88,6 @@ input {
   border: none;
   padding: 0.5rem;
 }
+.logout-btn:hover {
+  background-color: rgb(156, 215, 249);
+}

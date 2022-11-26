@@ -4,12 +4,18 @@ import { auth } from "../utils/database-config";
 
 function Logout() {
   const logout = async () => {
-    await signOut(auth);
+    console.log("logging out");
+    try {
+    } catch (error) {
+      await signOut(auth);
+    }
   };
   return (
-    <button className="logout-btn" onClick={logout}>
-      LogOut
-    </button>
+    <>
+      <button className="logout-btn" onClick={() => logout}>
+        LogOut
+      </button>
+    </>
   );
 }
 

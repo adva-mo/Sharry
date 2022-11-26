@@ -1,17 +1,24 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getUserById } from "../utils/utils";
 import UserInfo from "../components/UserInfo/UserInfo";
 import UserRecipes from "../components/UserRecipes/UserRecipes";
-//todo: use params to capture user id and get hes object from state
-function UserProfilePage() {
+
+function UserProfilePage({ users, recipes }) {
+  const params = useParams();
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    setCurrentUser(getUserById(users, params.id));
+  }, [users, params.id]);
+
   return (
     <>
       <div className="flex-column main-content bottom-border">
-        <UserInfo />
+        {currentUser && <UserInfo currentUser={currentUser} />}
       </div>
       <div className="flex-column main-content bottom-border">
-        {/* <UserInfo /> */}
-        <UserRecipes />
+        {currentUser && <UserRecipes userId={params.id} recipes={recipes} />}
       </div>
     </>
   );
