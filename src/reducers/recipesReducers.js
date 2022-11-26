@@ -17,4 +17,4 @@ export const deleteRecipe = (id, state) => {};
 
 export const addRecipe = (obj, state) => [...state, obj];
 
-export const editRecipe = ({ recipeObj, id }, state) => {};
+export const editRecipe = (recipeObj, id, state) => {};

@@ -10,7 +10,20 @@ const recipe = {
   id: "some-id",
   owner: "userid",
   isShared: false,
-  level: 3, // out of 5 probably
+  level: 3, // out of 3 probably
   type: "italian",
   ingrediants: ["pasta", "tomato", "olive"],
+  dishImg: "",
+  recipeImg: "",
+  time: 0,
+  name: "",
+};
+const user = {
+  name: "",
+  lastName: "",
+  level: " begginer / su-chef / chef ",
+  email: "",
+  img: "profile-pic",
+  city: "",
+  country: "",
 };
