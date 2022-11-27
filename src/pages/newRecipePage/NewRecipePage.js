@@ -19,7 +19,7 @@ function NewRecipePage({ dispatchRecipes }) {
 
   useEffect(() => {
     if (newRecipe === null) return;
-    addRecipe();
+    addRecipe(); // eslint-disable-next-line
   }, [newRecipe]);
 
   return (

@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import useAdd from "../../hooks/use-add";
 
@@ -7,11 +7,7 @@ function NewUserCard({ userUid, userEmail, dispatchUsers }) {
   const navigate = useNavigate();
   let newUser;
 
-  const { addToCollection, isLoading, error } = useAdd(
-    "users",
-    dispatchUsers,
-    userUid
-  );
+  const { addToCollection } = useAdd("users", dispatchUsers, userUid);
 
   const submitHandler = async (e) => {
     try {

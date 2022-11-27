@@ -1,6 +1,6 @@
 import { signOut } from "firebase/auth";
 import React from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../../utils/database-config";
 
 function Logout() {

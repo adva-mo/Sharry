@@ -11,7 +11,7 @@ function UserProfilePage({ users, recipes }) {
 
   useEffect(() => {
     if (users) setCurrentUser(getUserById(users, params.id));
-    else navigate("/home");
+    else navigate("/home"); // eslint-disable-next-line
   }, [users, params.id]);
 
   return (

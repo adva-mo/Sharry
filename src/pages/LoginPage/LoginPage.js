@@ -27,7 +27,7 @@ function LoginPage() {
   useEffect(() => {
     if (emailToRegister === null || passwordToRegister === null) return;
     if (isNewUser) registerAndRedirect();
-    else loginAndRedirect();
+    else loginAndRedirect(); // eslint-disable-next-line
   }, [emailToRegister, passwordToRegister, isNewUser]);
 
   const loginAndRedirect = async () => {
