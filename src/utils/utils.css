@@ -18,7 +18,8 @@ a {
   color: var(--black);
   text-decoration: none;
 }
-input {
+input,
+textarea {
   outline: none;
 }
 .flex {
@@ -53,7 +54,7 @@ input {
 }
 .hero-img {
   width: 100vw;
-  height: 30rem;
+  /* height: 30rem; */
 }
 .red-round-btn {
   background-color: var(--red);

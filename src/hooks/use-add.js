@@ -2,12 +2,12 @@ import { useState } from "react";
 import { setDoc, doc } from "firebase/firestore";
 import { db } from "../utils/database-config";
 
-function useAdd(collectionName, dispatch, newObj, id) {
+function useAdd(collectionName, dispatch, id) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  console.log(newObj);
+  // console.log(newObj); //todo check the changes of the hook with the server
 
-  const addToCollection = async () => {
+  const addToCollection = async (newObj) => {
     let userDoc;
     setIsLoading(true);
     setError(null);
@@ -19,6 +19,7 @@ function useAdd(collectionName, dispatch, newObj, id) {
     }
 
     try {
+      console.log(newObj);
       await setDoc(userDoc, newObj);
       console.log(`doc added to ${collectionName} DB`);
       dispatch({ type: "ADD", playload: newObj });

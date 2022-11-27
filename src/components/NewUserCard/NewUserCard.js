@@ -10,17 +10,16 @@ function NewUserCard({ userUid, userEmail, dispatchUsers }) {
   const { addToCollection, isLoading, error } = useAdd(
     "users",
     dispatchUsers,
-    { ...newUser, email: userEmail },
     userUid
   );
 
   const submitHandler = async (e) => {
     try {
       e.preventDefault();
-      const data = new FormData(myForm.current);
-      newUser = Object.fromEntries(data);
+      // const data = new FormData(myForm.current);
+      newUser = Object.fromEntries(new FormData(myForm.current));
       console.log("saving new user data");
-      await addToCollection();
+      await addToCollection({ ...newUser, email: userEmail });
       navigate("/explore"); //todo: navigate to user profile page
     } catch (e) {
       console.log(e);

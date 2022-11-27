@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getUserById } from "../utils/utils";
 import UserInfo from "../components/UserInfo/UserInfo";
 import UserRecipes from "../components/UserRecipes/UserRecipes";
 
 function UserProfilePage({ users, recipes }) {
   const params = useParams();
-  // console.log(params.id);
+  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    setCurrentUser(getUserById(users, params.id));
+    if (users) setCurrentUser(getUserById(users, params.id));
+    else navigate("/home");
   }, [users, params.id]);
 
   return (

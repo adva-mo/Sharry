@@ -1,6 +1,5 @@
 .new-recipe-form {
-  gap: 1rem;
-  /* width: 50%; */
+  gap: 2rem;
   padding: 1rem;
 }
 
@@ -9,20 +8,12 @@
 }
 .new-recipe-form input,
 .new-recipe-form textarea {
-  /* background-color: var(--gray); */
   border: 1px solid var(--gray);
   padding: 0.5rem;
-  /* width: 100%; */
 }
 
-.new-recipe-form input[type="radio"] {
-  /* opacity: 0;
-  position: fixed;
-  width: 0; */
-}
 .radio-box {
   align-self: start !important;
-  /* justify-content: baseline; */
   gap: 2rem;
 }
 #cooking-time-radio {
@@ -31,12 +22,9 @@
 .new-recipe-img {
   width: 20rem;
   position: fixed;
-  /* top: 0; */
   border-radius: 60%;
   transform: translateX(-100%);
   margin: 3rem;
-  /* padding: 2rem; */
-  /* flex-grow: 1; */
   z-index: -1;
 }
 .new-recipe-img-container::after {
@@ -51,14 +39,27 @@
 }
 .new-recipe-img-container {
   align-self: flex-start;
-  /* position: relative; */
-  /* position: fixed; */
-  /* flex-grow/: 1; */
 }
 .new-recipe-container {
   justify-content: space-around !important;
 }
 .text-box {
-  width: 100% !important;
   border-radius: 10px;
+  padding: 1em;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.4;
+  transition: all 0.2s;
+}
+.text-box:hover {
+  cursor: pointer;
+}
+.text-box:focus {
+  cursor: text;
+}
+.instructions-text-area {
+  width: 25rem;
+  height: 10rem;
+}
+.ingrediants-text-area {
+  height: 10rem;
 }
