@@ -5,6 +5,7 @@ import useAuth from "../../hooks/use-auth";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import Spinner from "../../components/Spinner/Spinner";
 
 function LoginPage() {
   const [isNewUser, setIsNewUser] = useState(true);
@@ -49,6 +50,7 @@ function LoginPage() {
     }
   };
   return (
+    // <Spinner />
     <div className="login-page">
       <img
         className="login-hero-img"
