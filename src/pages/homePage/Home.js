@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Snapshot from "../../components/Snapshot.js/Snapshot";
-import useGet from "../homePage/Home";
+// import useGet from "../homePage/Home";
 import "./home.css";
 
 function Home({ recipes, dispatchRecipes, dispatchUsers, users }) {
@@ -31,6 +31,7 @@ function Home({ recipes, dispatchRecipes, dispatchUsers, users }) {
         <img
           id="veggies-img"
           src={process.env.PUBLIC_URL + "/assets/homePage/sliced-veg.png"}
+          alt="hero-img"
         />
       </div>
       {/* <img
