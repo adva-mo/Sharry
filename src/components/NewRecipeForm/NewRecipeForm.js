@@ -26,8 +26,13 @@ function NewRecipeForm({ setNewRecipe }) {
         ref={recipeForm}
       >
         <label htmlFor="name">
-          <h4>name</h4>
-          <input type="text" name="name" />
+          {/* <h4>name</h4> */}
+          <input
+            className="text-box"
+            type="text"
+            name="name"
+            placeholder="Enter dish name..."
+          />
         </label>
 
         <label htmlFor="share">
@@ -74,19 +79,19 @@ function NewRecipeForm({ setNewRecipe }) {
         </div>
         <label>
           <h4>ingrediants</h4>
-          <textarea type="text" name="ingrediants" />
+          <textarea className="text-box" type="text" name="ingrediants" />
         </label>
         <label>
           <h4>instructions</h4>
-          <textarea type="text" name="instructions" />
+          <textarea className="text-box" type="text" name="instructions" />
         </label>
         <label htmlFor="img">
           <h4>In a RUSH?!</h4>
           <p>save the link to the recipe and edit it later!</p>
           link: &nbsp;
-          <input type="text" name="img" />
+          <input type="text" name="img" className="text-box" />
         </label>
-        <input className="red-round-btn" type="submit" value="save" />
+        <input className="red-round-btn " type="submit" value="save" />
       </form>
       <div className="new-recipe-img-container">
         <img
