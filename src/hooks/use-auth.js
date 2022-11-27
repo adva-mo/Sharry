@@ -1,10 +1,9 @@
 // import { useState } from "react";
-// import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/database-config";
 
 const useAuth = (email, password, action) => {
   const authentication = async () => {
-    console.log("register func");
+    console.log("in use-auth");
     try {
       await action(auth, email, password);
     } catch (e) {

@@ -1,0 +1,13 @@
+.snapshot-explore,
+.snapshot-login {
+  width: 100%;
+  height: fit-content;
+  padding: 2rem;
+  text-align: center;
+}
+.snapshot-explore {
+  background-color: var(--light-blue);
+}
+.snapshot-login {
+  background-color: var(--pink);
+}

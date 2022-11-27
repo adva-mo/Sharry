@@ -1,5 +1,5 @@
 //! crud:
-//  1. add new user (after register) //*check new user form data
+//  1. add new user (after register)
 //  2. edit user (from profile)
 //  3. delete user (from profile) ->delete account
 //  4. delete + edit recipe (from recipeprofile)
@@ -8,7 +8,6 @@
 //* check why renders twice
 //  display recipe info on recipe profile page
 //  hide api keys
-//  add dinamic response to the main pages based on user is logged/not
 //  error & loading components
 //  search dish feature
 //  convert async help functions to utils
