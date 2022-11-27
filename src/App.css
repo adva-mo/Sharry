@@ -1,5 +1,6 @@
-/* * {
-  padding: 0;
-  box-sizing: border-box;
-  --gary: rgba(217, 217, 217, 1);
-} */
+@font-face {
+  font-family: "poetsenone";
+  src: local("poetsenone"),
+    url("./fonts/PoetsenOne-Regular.ttf") format("truetype");
+  font-weight: bold;
+}

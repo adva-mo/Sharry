@@ -16,8 +16,10 @@
 .navbar-ul a {
   color: var(--black);
   text-decoration: none;
-  border: 2px solid var(--gary);
-  border-width: 0 0 2px 0;
+}
+.navbar-ul li {
+  border: 2px solid var(--gary) !important;
+  border-width: 0 0 2px 0 !important;
 }
 .small-profile-pic {
   width: 1.7rem;

@@ -4,8 +4,11 @@
 .home-page h1 {
   color: var(--red);
   font-size: 5rem;
+  font-family: "poetsenone";
+  /* font-style: italic; */
 }
 .home-page h3 {
+  font-family: "poetsenone";
   color: var(--black);
   font-size: 2rem;
 }
