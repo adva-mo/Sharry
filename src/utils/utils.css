@@ -55,6 +55,7 @@ textarea {
 .hero-img {
   width: 100vw;
   /* height: 30rem; */
+  max-height: 30rem;
 }
 .red-round-btn {
   background-color: var(--red);

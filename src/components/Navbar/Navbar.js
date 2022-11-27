@@ -7,6 +7,11 @@ import "./Navbar.css";
 function Navbar() {
   return (
     <ul className="navbar-ul">
+      <img
+        className="logo-img"
+        src={process.env.PUBLIC_URL + "/assets/logo.png"}
+        alt=""
+      />
       <li>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "")}
@@ -39,8 +44,8 @@ function Navbar() {
           {auth.currentUser ? "Profile" : "Login"}
         </NavLink>
       </li>
-      <li>
-        {auth.currentUser && (
+      {auth.currentUser && (
+        <li>
           <NavLink
             className={(navData) => (navData.isActive ? "active" : "")}
             to={`/users/${auth.currentUser?.uid}`}
@@ -51,8 +56,8 @@ function Navbar() {
               alt=""
             />
           </NavLink>
-        )}
-      </li>
+        </li>
+      )}
       {auth.currentUser && <Logout />}
       <li>
         <NavLink

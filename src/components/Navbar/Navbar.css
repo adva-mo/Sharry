@@ -24,3 +24,7 @@
   height: 2rem;
   border-radius: 90%;
 }
+.logo-img {
+  width: 5rem;
+  transform: translateY(-0.4rem);
+}
