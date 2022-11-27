@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-      <currentLoggedUser.Provider value={(loggedUser, setLoggedUser)}>
+      <currentLoggedUser.Provider value={{ ...loggedUser }}>
         <Navbar />
         <>
           <Routes>
@@ -63,7 +63,7 @@ function App() {
             />
             <Route
               path="/new-user"
-              element={<NewUserPage dispatchRecipes={dispatchUsers} />}
+              element={<NewUserPage dispatchUsers={dispatchUsers} />}
             />
           </Routes>
         </>

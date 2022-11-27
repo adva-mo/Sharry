@@ -87,7 +87,11 @@ input {
   border-radius: 20px;
   border: none;
   padding: 0.5rem;
+  /* background-color: transparent; */
 }
 .blue-btn:hover {
   background-color: rgb(156, 215, 249);
+}
+.cap {
+  text-transform: capitalize;
 }

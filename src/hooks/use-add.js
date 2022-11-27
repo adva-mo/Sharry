@@ -5,6 +5,7 @@ import { db } from "../utils/database-config";
 function useAdd(collectionName, dispatch, newObj, id) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  console.log(newObj);
 
   const addToCollection = async () => {
     let userDoc;

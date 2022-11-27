@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import "./UserInfo.css";
 
 function UserInfo({ currentUser: user }) {
-  // console.log(user);
-  const { name, lastName, country, city, email } = user;
+  console.log(user);
+  const { name, lastName, country, city, email, level, recipes } = user;
   return (
     <>
       <div className="profile-main-box main-content flex">
@@ -28,10 +28,15 @@ function UserInfo({ currentUser: user }) {
             </div>
             <div>
               <p>
-                FROM: {city},{country}
+                FROM: {city},{" " + country}
               </p>
               EMAIL: {email || "not-available"}
-              <p>SAVED</p>
+              <p>
+                {level + " "}
+                <i className="fa-solid fa-fire-flame-curved"></i>
+                <p>Number of recipes: {recipes.length}</p>
+                <p>SAVED</p>
+              </p>
               <p>SHARED</p>
             </div>
           </div>

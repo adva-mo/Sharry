@@ -1,8 +1,5 @@
 // import { useState } from "react";
-import {
-  createUserWithEmailAndPassword,
-  // onAuthStateChanged,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/database-config";
 
 const useRegister = (email, password) => {

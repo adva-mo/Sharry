@@ -6,9 +6,7 @@ import { useParams } from "react-router-dom";
 
 function RecipeProfile({ recipes }) {
   const [currentRecipe, setCurrentRecipe] = useState(null);
-  console.log(recipes);
   const params = useParams();
-  console.log(params.id);
 
   useEffect(() => {
     setCurrentRecipe(getRecipeById(recipes, params.id));
@@ -20,8 +18,8 @@ function RecipeProfile({ recipes }) {
         {console.log(currentRecipe)}
         <div className="main-content bottom-border gap">
           <div className="flex-column gap">
-            <h1>{currentRecipe.name}</h1>
-            <h2>delicious {currentRecipe.type} dish!</h2>
+            <h1 className="cap">{currentRecipe.name}</h1>
+            <h2>Delicious {currentRecipe.type} dish!</h2>
           </div>
           <div className="flex recipe-settings">
             <div>

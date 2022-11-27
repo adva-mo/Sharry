@@ -17,7 +17,7 @@ function RecipePreview({ color, name, type, img, id }) {
         <div>
           <h3>{name}</h3>
           <p>{type || "Amazing taste"}</p>
-          <h4>READ MORE</h4>
+          <h4 style={{ fontStyle: "italic" }}>READ MORE</h4>
         </div>
       </Link>
     </div>
