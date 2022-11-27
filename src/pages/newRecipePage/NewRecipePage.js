@@ -4,10 +4,12 @@ import currentLoggedUser from "../../context/loggedUserContext";
 import useAdd from "../../hooks/use-add";
 // import LoginCard from "../../components/LoginCard/LoginCard";
 import LoginPage from "../LoginPage/LoginPage";
+import "./newRecipePage.css";
+
 function NewRecipePage({ dispatchRecipes }) {
   const [newRecipe, setNewRecipe] = useState(null);
   const loggedUserCtx = useContext(currentLoggedUser);
-  console.log(loggedUserCtx);
+  // console.log(loggedUserCtx);
 
   const {
     // isLoading,
@@ -21,7 +23,7 @@ function NewRecipePage({ dispatchRecipes }) {
   }, [newRecipe]);
 
   return (
-    <div>
+    <div className="new-recipe-page">
       {loggedUserCtx?.uid ? (
         <NewRecipeForm setNewRecipe={setNewRecipe} />
       ) : (
