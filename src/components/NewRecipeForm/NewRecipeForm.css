@@ -1,3 +1,53 @@
 .new-recipe-form {
   gap: 1rem;
+  /* width: 50%; */
+  padding: 1rem;
+}
+
+.checkbox-container {
+  text-align: left;
+}
+.new-recipe-form input[type="radio"] {
+  /* opacity: 0;
+  position: fixed;
+  width: 0; */
+  color: black;
+}
+.radio-box {
+  align-self: start !important;
+  /* justify-content: baseline; */
+  gap: 2rem;
+}
+#cooking-time-radio {
+  align-self: flex-start;
+}
+.new-recipe-img {
+  width: 20rem;
+  position: fixed;
+  /* top: 0; */
+  border-radius: 60%;
+  transform: translateX(-100%);
+  margin: 3rem;
+  /* padding: 2rem; */
+  /* flex-grow: 1; */
+  z-index: -1;
+}
+.new-recipe-img-container::after {
+  content: "";
+  background-color: rgba(255, 255, 255, 0.4);
+  top: 0;
+  left: 40%;
+  position: absolute;
+  width: 100%;
+  height: 200%;
+  z-index: -1;
+}
+.new-recipe-img-container {
+  align-self: flex-start;
+  /* position: relative; */
+  /* position: fixed; */
+  /* flex-grow/: 1; */
+}
+.new-recipe-container {
+  justify-content: space-around !important;
 }

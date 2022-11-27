@@ -21,7 +21,7 @@ function NewUserCard({ userUid, userEmail, dispatchUsers }) {
       newUser = Object.fromEntries(data);
       console.log("saving new user data");
       await addToCollection();
-      navigate("/explore"); //todo: change to user profile pagr
+      navigate("/explore"); //todo: navigate to user profile page
     } catch (e) {
       console.log(e);
     }

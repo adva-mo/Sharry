@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
 import Explore from "./pages/ExplorePage/ExplorePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import NewRecipePage from "./pages/NewRecipePage";
+import NewRecipePage from "./pages/newRecipePage/NewRecipePage";
 import RecipeProfile from "./pages/recipeProfilePage/RecipeProfile";
 import { recipesReducers } from "./reducers/recipesReducers.js";
 import { useReducer, useState } from "react";

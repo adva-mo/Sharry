@@ -3,10 +3,8 @@ import NewUserCard from "../../components/NewUserCard/NewUserCard";
 import currentLoggedUser from "../../context/loggedUserContext";
 
 function NewUserPage({ dispatchUsers }) {
-  // const [userData, setUserData] = useState(null);
   const currentUserCtx = useContext(currentLoggedUser);
-  // console.log(currentUserCtx.email);
-  // console.log(currentUserCtx.uid);
+
   return (
     <div className="login-page">
       <img

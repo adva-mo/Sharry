@@ -1,27 +1,25 @@
 import { useState } from "react";
-import { setDoc, doc } from "firebase/firestore";
+import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../utils/database-config";
 
 function useAdd(collectionName, dispatch, newObj, id) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  console.log(newObj);
+  let userDoc;
+
+  if (collectionName === "users") {
+    userDoc = doc(db, "users", id);
+  } else if (collectionName === "recipes") {
+    userDoc = doc(db, "recipes", Math.random() + "");
+  }
 
   const addToCollection = async () => {
-    let userDoc;
     setIsLoading(true);
     setError(null);
-
-    if (collectionName === "users") {
-      userDoc = doc(db, "users", id);
-    } else if (collectionName === "recipes") {
-      userDoc = doc(db, "recipes", Math.random() + "");
-    }
-
     try {
-      await setDoc(userDoc, newObj);
-      console.log(`doc added to ${collectionName} DB`);
-      dispatch({ type: "ADD", playload: newObj });
+      await updateDoc(userDoc, newObj);
+      console.log(`doc updated to ${collectionName} DB`);
+      // dispatch({ type: "", playload: newObj });
     } catch (e) {
       console.log(e);
     }

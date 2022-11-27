@@ -19,74 +19,83 @@ function NewRecipeForm({ setNewRecipe }) {
     setNewRecipe((prev) => ({ ...newRecipe, owner: currentUserId }));
   };
   return (
-    <form
-      onSubmit={saveHandler}
-      className="new-recipe-form flex-column"
-      ref={recipeForm}
-    >
-      <div>
-        <label htmlFor="name">name</label>
-        <input type="text" name="name" />
-      </div>
-      <div>
-        <label htmlFor="share">share your recipe?</label>
-        <input type="radio" name="share" value="true" required />
-        yes
-        <input type="radio" name="share" value="false" />
-        no
-      </div>
-      <div>
-        {/* cooking time:{1: 0-30min , 2:  0.5-1 hour, 3: 1-2 hours, 4: 2+ } */}
-        <label htmlFor="time">cooking time</label>
-        <input type="radio" name="time" value="0" />
-        0-30 minutes
-        <input type="radio" name="time" value="1" />
-        0.5-1 hour
-        <input type="radio" name="time" value="2" />
-        1-2 hours
-        <input type="radio" name="time" value="3" />
-        2+
-      </div>
-      <div>
-        <label ref={dishTypes} htmlFor="dish-type">
-          dish type
+    <div className="flex new-recipe-container">
+      <form
+        onSubmit={saveHandler}
+        className="new-recipe-form flex-column"
+        ref={recipeForm}
+      >
+        <label htmlFor="name">
+          <h4>name</h4>
+          <input type="text" name="name" />
         </label>
-        <input type="checkbox" name="dish-type" value="italian" />
-        italian
-        <input type="checkbox" name="dish-type" value="fish" />
-        fish
-        <input type="checkbox" name="dish-type" value="soup" />
-        soup
-        <input type="checkbox" name="dish-type" value="meat" />
-        meat
-        <input type="checkbox" name="dish-type" value="desert" />
-        desert
-        <input type="checkbox" name="dish-type" value="rice" />
-        rice
-        <input type="checkbox" name="dish-type" value="salad" />
-        salad
-        <input type="checkbox" name="dish-type" value="vegeterian" />
-        vegeterian
-        <input type="checkbox" name="dish-type" value="bread" />
-        bread
-        <input type="checkbox" name="dish-type" value="asian" />
-        asian
+
+        <label htmlFor="share">
+          <h4>share your recipe?</h4>
+          <input type="radio" name="share" value="true" required /> yes&nbsp;
+          <input type="radio" name="share" value="false" /> no
+        </label>
+
+        {/* cooking time:{1: 0-30min , 2:  0.5-1 hour, 3: 1-2 hours, 4: 2+ } */}
+        <div className="flex radio-box">
+          <label htmlFor="time">
+            <h4 id="cooking-time-radio">cooking time</h4>
+            <div className="checkbox-container">
+              <input type="radio" name="time" value="0" /> &nbsp; 0-30 minutes{" "}
+              <br />
+              <input type="radio" name="time" value="1" /> &nbsp; 0.5-1 hour{" "}
+              <br />
+              <input type="radio" name="time" value="2" /> &nbsp; 1-2 hours{" "}
+              <br />
+              <input type="radio" name="time" value="3" />
+              &nbsp; 2+ <br />
+            </div>
+          </label>
+
+          <label ref={dishTypes} htmlFor="dish-type">
+            <h4>dish type</h4>
+            <div className="checkbox-container">
+              <input type="radio" name="dish-type" value="italian" /> &nbsp;
+              italian <br />
+              <input type="radio" name="dish-type" value="fish" />
+              &nbsp; fish <br />
+              <input type="radio" name="dish-type" value="meat" />
+              &nbsp; meat <br />
+              <input type="radio" name="dish-type" value="desert" />
+              &nbsp; desert <br />
+              <input type="radio" name="dish-type" value="salad" />
+              &nbsp; salad <br />
+              <input type="radio" name="dish-type" value="vegeterian" />
+              &nbsp; vegeterian <br />
+              <input type="radio" name="dish-type" value="asian" />
+              &nbsp; asian <br />
+            </div>
+          </label>
+        </div>
+        <label>
+          <h4>ingrediants</h4>
+          <textarea type="text" name="ingrediants" />
+        </label>
+        <label>
+          <h4>instructions</h4>
+          <textarea type="text" name="instructions" />
+        </label>
+        <label htmlFor="img">
+          <h4>In a RUSH?!</h4>
+          <p>save the link to the recipe and edit it later!</p>
+          link: &nbsp;
+          <input type="text" name="img" />
+        </label>
+        <input className="red-round-btn" type="submit" value="save" />
+      </form>
+      <div className="new-recipe-img-container">
+        <img
+          className="new-recipe-img"
+          src={process.env.PUBLIC_URL + "/assets/new-recipe.png"}
+          alt=""
+        ></img>
       </div>
-      <div>
-        <label>ingrediants </label>
-        <input type="text" name="ingrediants" />
-      </div>
-      <div>
-        <label>instructions </label>
-        <textarea type="text" name="instructions" />
-      </div>
-      <div>
-        <label htmlFor="img">image link </label>
-        <input type="text" name="img" />
-      </div>
-      <input type="submit" value="save" />
-      {/* <input type="submit" onClick={saveHandler} value="save" /> */}
-    </form>
+    </div>
   );
 }
 

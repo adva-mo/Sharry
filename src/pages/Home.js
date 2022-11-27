@@ -14,10 +14,10 @@ function Home({ recipes, dispatchRecipes, dispatchUsers, users }) {
     getFromCollection: getUsers,
   } = useGet("users", dispatchUsers);
 
-  useEffect(() => {
-    getRecipes();
-    getUsers();
-  }, [getUsers, getRecipes]);
+  // useEffect(() => {
+  //   getRecipes();
+  //   getUsers();
+  // }, [getUsers, getRecipes]);
 
   return (
     <div>

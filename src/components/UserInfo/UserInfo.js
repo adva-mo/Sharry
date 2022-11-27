@@ -1,10 +1,16 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./UserInfo.css";
 
 function UserInfo({ currentUser: user }) {
-  console.log(user);
+  const navigate = useNavigate();
   const { name, lastName, country, city, email, level, recipes } = user;
+
+  const editProfileHandler = (e) => {
+    console.log(e);
+    navigate("/new-user");
+  };
+
   return (
     <>
       <div className="profile-main-box main-content flex">
@@ -14,7 +20,7 @@ function UserInfo({ currentUser: user }) {
               <h4>
                 PERSONAL INFO
                 <span>
-                  <h6>EDIT PROFILE</h6>
+                  <h6 onClick={(e) => editProfileHandler(e)}>EDIT PROFILE</h6>
                 </span>
               </h4>
               <h4 className="red-round-bg">
@@ -29,25 +35,31 @@ function UserInfo({ currentUser: user }) {
             <div>
               <p>
                 FROM: {city},{" " + country}
-              </p>
-              EMAIL: {email || "not-available"}
-              <p>
+                <br />
+                EMAIL: {email || "not-available"}
+                <br />
                 {level + " "}
                 <i className="fa-solid fa-fire-flame-curved"></i>
-                <p>Number of recipes: {recipes.length}</p>
-                <p>SAVED</p>
+                <br />
+                Number of recipes: {recipes.length}
+                <br />
+                SAVED
+                <br />
+                SHARED
               </p>
-              <p>SHARED</p>
             </div>
           </div>
         </div>
         <div className="flex-column">
-          <img
-            className="btn-pic"
-            src={process.env.PUBLIC_URL + "/btn.png"}
-            alt="mypic"
-          />
-          <NavLink to={"/new-recipe"}>add new recipe!</NavLink>
+          <NavLink to={"/new-recipe"}>
+            <img
+              className="btn-pic"
+              src={process.env.PUBLIC_URL + "/btn.png"}
+              alt="mypic"
+            />
+            <br />
+            add new recipe!
+          </NavLink>
         </div>
       </div>
     </>
