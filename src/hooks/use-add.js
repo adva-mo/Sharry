@@ -5,20 +5,14 @@ import { db } from "../utils/database-config";
 function useAdd(collectionName, dispatch, id, action) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  let recipeId;
 
   const addToCollection = async (newObj) => {
     let userDoc;
     setIsLoading((prev) => true);
     setError(null);
 
-    if (collectionName === "users") {
-      userDoc = doc(db, "users", id);
-      newObj = { ...newObj, id: id };
-    } else if (collectionName === "recipes") {
-      const recipeId = Math.random() + "";
-      newObj = { ...newObj, id: recipeId };
-      userDoc = doc(db, "recipes", Math.random() + "");
-    }
+    userDoc = doc(db, collectionName, id);
 
     try {
       console.log(newObj);

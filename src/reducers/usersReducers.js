@@ -30,8 +30,8 @@ export const editUser = ({ recipeObj }, state) => {};
 export const addRecipeToUser = (config, state) => {
   let newRecipesArray = [];
   let updatedUser;
-  console.log(config);
-  console.log(state);
+  // console.log(config);
+  // console.log(state);
   return state.map((user, i) => {
     if (user.id === config.userId) {
       newRecipesArray = [...user.recipes, config.recipeId];

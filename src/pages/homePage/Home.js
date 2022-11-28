@@ -24,8 +24,6 @@ function Home({ recipes, dispatchRecipes, dispatchUsers, users, loggedUser }) {
   }, []);
 
   if (isRecipesLoading || isUsersLoading) return <Spinner />;
-  if (users) console.log(users);
-  if (recipes) console.log(recipes);
   return (
     <div className="home-page">
       <div className="flex" style={{ padding: "2rem" }}>

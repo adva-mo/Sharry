@@ -13,12 +13,13 @@ function NewRecipePage({ dispatchRecipes, dispatchUsers, users }) {
   const [newRecipe, setNewRecipe] = useState(null);
   const loggedUserCtx = useContext(currentLoggedUser);
   // console.log(loggedUserCtx);
+  const newRecipeId = Math.random() + "";
 
   const {
     isLoading,
     // error,
     addToCollection: addRecipe,
-  } = useAdd("recipes", dispatchRecipes, dispatchRecipes, setDoc);
+  } = useAdd("recipes", dispatchRecipes, newRecipeId, setDoc);
 
   const {
     addToCollection: addRecipeToUser,
@@ -40,18 +41,18 @@ function NewRecipePage({ dispatchRecipes, dispatchUsers, users }) {
       });
       await dispatchUsers({
         type: "ADD-RECIPE-TO-USER",
-        playload: { userId: loggedUserCtx.uid, recipeId: "999999999" },
+        playload: { userId: loggedUserCtx.uid, recipeId: newRecipeId },
       });
-      console.log(getUserById(users, loggedUserCtx.uid));
+      console.log(getUserById(users, loggedUserCtx.uid)); //todo: fix the new obj of the user to update
       await addRecipeToUser(getUserById(users, loggedUserCtx.uid));
     } catch (e) {
       console.log(e);
     }
   };
-
+  console.log(users);
+  if (isLoading || isloadingUser) return <Spinner />;
   return (
     <div className="new-recipe-page">
-      {isLoading && <Spinner />}
       {loggedUserCtx?.uid ? (
         <NewRecipeForm setNewRecipe={setNewRecipe} />
       ) : (
