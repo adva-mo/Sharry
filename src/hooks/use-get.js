@@ -14,7 +14,9 @@ function useGet(collectionName, dispatch) {
       const response = await getDocs(requiredCollection);
       const data = response.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
       dispatch({ type: "GET", playload: [...data] });
+      setIsLoading(false);
     } catch (e) {
+      setIsLoading(false);
       console.log(e);
     }
   };

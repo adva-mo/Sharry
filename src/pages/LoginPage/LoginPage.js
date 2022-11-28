@@ -14,14 +14,16 @@ function LoginPage() {
   const [emailToRegister, setEmailToRegister] = useState(null);
   const [passwordToRegister, setPasswordToRegister] = useState(null);
 
-  const { authentication: registerUser } = useAuth(
+  const { authentication: registerUser, isLoading: isResigtering } = useAuth(
     emailToRegister,
     passwordToRegister,
+
     createUserWithEmailAndPassword
   );
-  const { authentication: loginUser } = useAuth(
+  const { authentication: loginUser, isLoading: isLogin } = useAuth(
     emailToRegister,
     passwordToRegister,
+
     signInWithEmailAndPassword
   );
 
@@ -34,7 +36,7 @@ function LoginPage() {
   const loginAndRedirect = async () => {
     try {
       await loginUser();
-      navigate("/home");
+      navigate("/home"); //todo: navigate to user profile
     } catch (e) {
       navigate("/login");
       console.log(e);
@@ -49,6 +51,7 @@ function LoginPage() {
       console.log(e);
     }
   };
+  if (isLogin || isResigtering) return <Spinner />;
   return (
     // <Spinner />
     <div className="login-page">

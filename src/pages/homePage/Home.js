@@ -1,25 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Snapshot from "../../components/Snapshot/Snapshot";
-// import useGet from "../homePage/Home";
+import Spinner from "../../components/Spinner/Spinner";
+import useGet from "../../hooks/use-get";
 import "./home.css";
 
 function Home({ recipes, dispatchRecipes, dispatchUsers, users, loggedUser }) {
-  // const {
-  //   isLoading: isRecipesLoading,
-  //   error: isRecipesError,
-  //   getFromCollection: getRecipes,
-  // } = useGet("recipes", dispatchRecipes);
+  const {
+    isLoading: isRecipesLoading,
+    error: isRecipesError,
+    getFromCollection: getRecipes,
+  } = useGet("recipes", dispatchRecipes);
 
-  // const {
-  //   isLoading: isUsersLoading,
-  //   error: isUsersError,
-  //   getFromCollection: getUsers,
-  // } = useGet("users", dispatchUsers);
+  const {
+    isLoading: isUsersLoading,
+    error: isUsersError,
+    getFromCollection: getUsers,
+  } = useGet("users", dispatchUsers);
 
-  // useEffect(() => {
-  //   getRecipes();
-  //   getUsers();
-  // }, []);
+  useEffect(() => {
+    getRecipes();
+    getUsers();
+  }, []);
+
+  if (isRecipesLoading || isUsersLoading) return <Spinner />;
 
   return (
     <div className="home-page">

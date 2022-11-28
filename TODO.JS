@@ -44,4 +44,5 @@ const user = {
   img: "profile-pic",
   city: "",
   country: "",
+  reciepes: ["id", "id"],
 };

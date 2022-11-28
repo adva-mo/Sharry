@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./UserInfo.css";
+import { auth } from "../../utils/database-config";
+import LoginPage from "../../pages/LoginPage/LoginPage";
 
 function UserInfo({ currentUser: user }) {
   const navigate = useNavigate();
+  console.log(auth?.currentUser);
   const { name, lastName, country, city, email, level, recipes } = user;
 
   const editProfileHandler = (e) => {
     console.log(e);
     navigate("/new-user");
   };
+
+  useEffect(() => {
+    if (!user) return <LoginPage />;
+  }, []);
 
   return (
     <>
@@ -41,7 +48,7 @@ function UserInfo({ currentUser: user }) {
                 {level + " "}
                 <i className="fa-solid fa-fire-flame-curved"></i>
                 <br />
-                Number of recipes: {recipes.length}
+                Number of recipes: {recipes?.length || "no recipes yet"}
                 <br />
                 SAVED
                 <br />
