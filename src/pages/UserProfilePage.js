@@ -17,10 +17,10 @@ function UserProfilePage({ users, recipes }) {
   return (
     <>
       <div className="flex-column main-content bottom-border">
-        {currentUser && <UserInfo currentUser={currentUser} />}
+        <UserInfo currentUser={currentUser} />
       </div>
       <div className="flex-column main-content bottom-border">
-        {currentUser && <UserRecipes userId={params.id} recipes={recipes} />}
+        <UserRecipes userId={params.id} recipes={recipes} />
       </div>
     </>
   );

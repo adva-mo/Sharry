@@ -41,6 +41,7 @@ function App() {
                   dispatchRecipes={dispatchRecipes}
                   users={users}
                   dispatchUsers={dispatchUsers}
+                  loggedUser={loggedUser}
                 />
               }
             />

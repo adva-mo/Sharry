@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import NewRecipeForm from "../../components/NewRecipeForm/NewRecipeForm";
+import Spinner from "../../components/Spinner/Spinner";
 import currentLoggedUser from "../../context/loggedUserContext";
 import useAdd from "../../hooks/use-add";
 // import LoginCard from "../../components/LoginCard/LoginCard";
@@ -12,22 +13,26 @@ function NewRecipePage({ dispatchRecipes }) {
   // console.log(loggedUserCtx);
 
   const {
-    // isLoading,
+    isLoading,
     // error,
     addToCollection: addRecipe,
-  } = useAdd("recipes", dispatchRecipes, newRecipe);
+  } = useAdd("recipes", dispatchRecipes);
 
   useEffect(() => {
     if (newRecipe === null) return;
-    addRecipe(); // eslint-disable-next-line
+    try {
+      addRecipe(newRecipe); // eslint-disable-next-line
+    } catch (e) {
+      console.log(e);
+    }
   }, [newRecipe]);
 
   return (
     <div className="new-recipe-page">
+      {isLoading && <Spinner />}
       {loggedUserCtx?.uid ? (
         <NewRecipeForm setNewRecipe={setNewRecipe} />
       ) : (
-        // <LoginCard />
         <LoginPage />
       )}
     </div>

@@ -1,9 +1,9 @@
 import React from "react";
-import Snapshot from "../../components/Snapshot.js/Snapshot";
+import Snapshot from "../../components/Snapshot/Snapshot";
 // import useGet from "../homePage/Home";
 import "./home.css";
 
-function Home({ recipes, dispatchRecipes, dispatchUsers, users }) {
+function Home({ recipes, dispatchRecipes, dispatchUsers, users, loggedUser }) {
   // const {
   //   isLoading: isRecipesLoading,
   //   error: isRecipesError,
@@ -42,10 +42,17 @@ function Home({ recipes, dispatchRecipes, dispatchUsers, users }) {
         description="discover a whole world of amazing recipes!"
         navigateTo={"explore"}
       />
-      <Snapshot
-        description="sign in and start saving your favourites recipes!"
-        navigateTo={"login"}
-      />
+      {loggedUser ? (
+        <Snapshot
+          description="add new recipe to your collection!"
+          navigateTo={"new-recipe"}
+        />
+      ) : (
+        <Snapshot
+          description="sign in and start saving your favourites recipes!"
+          navigateTo={"login"}
+        />
+      )}
     </div>
   );
 }

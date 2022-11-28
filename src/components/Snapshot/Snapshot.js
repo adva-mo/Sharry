@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import currentLoggedUser from "../../context/loggedUserContext";
 import "./snapshot.css";
 
 function Snapshot({ description, navigateTo }) {
   const navigate = useNavigate();
+  const loggedUserCtx = useContext(currentLoggedUser);
+  console.log(loggedUserCtx?.uid);
   return (
     <div
       className={
@@ -17,7 +20,11 @@ function Snapshot({ description, navigateTo }) {
           navigate(`/${navigateTo}`);
         }}
       >
-        {navigateTo === "explore" ? "EXPLORE" : "LOGIN"}
+        {navigateTo === "explore"
+          ? "EXPLORE"
+          : loggedUserCtx?.uid
+          ? "Add a new recipe"
+          : "LOGIN"}
       </button>
     </div>
   );

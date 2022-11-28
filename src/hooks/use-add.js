@@ -5,11 +5,10 @@ import { db } from "../utils/database-config";
 function useAdd(collectionName, dispatch, id) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  // console.log(newObj); //todo check the changes of the hook with the server
 
   const addToCollection = async (newObj) => {
     let userDoc;
-    setIsLoading(true);
+    setIsLoading((prev) => true);
     setError(null);
 
     if (collectionName === "users") {
@@ -20,9 +19,13 @@ function useAdd(collectionName, dispatch, id) {
 
     try {
       console.log(newObj);
-      await setDoc(userDoc, newObj);
-      console.log(`doc added to ${collectionName} DB`);
-      dispatch({ type: "ADD", playload: newObj });
+      // await setDoc(userDoc, newObj); //todo: add recipe id to reducer
+      console.log(`doc added to ${collectionName} collection`);
+      // dispatch({ type: "ADD", playload: newObj });
+      setTimeout(() => {
+        console.log("time");
+        setIsLoading((prev) => false);
+      }, 2000);
     } catch (e) {
       console.log(e);
     }
@@ -38,9 +41,3 @@ function useAdd(collectionName, dispatch, id) {
 export default useAdd;
 
 // doc.data() function from the firestore library which returns object containing the user info without the id
-
-//* the usage of use-add - setting a new doc with a provided id
-// const { addToCollection } = useAdd("recipes", dispatchRecipes, {
-//   newObj,
-//   id,
-// });

@@ -7,13 +7,12 @@ import "./NewRecipeForm.css";
 
 function NewRecipeForm({ setNewRecipe }) {
   const recipeForm = useRef();
-  const dishTypes = useRef();
   const currentUserId = auth.currentUser?.uid || null;
 
   const saveHandler = (e) => {
     e.preventDefault();
-    const data = new FormData(recipeForm.current);
-    const newRecipe = Object.fromEntries(data);
+    // const data = new FormData(recipeForm.current);
+    const newRecipe = Object.fromEntries(new FormData(recipeForm.current));
     recipeForm.current.reset();
     console.log(newRecipe);
     setNewRecipe((prev) => ({ ...newRecipe, owner: currentUserId }));
@@ -54,7 +53,7 @@ function NewRecipeForm({ setNewRecipe }) {
               </div>
             </label>
 
-            <label ref={dishTypes} htmlFor="dish-type">
+            <label htmlFor="dish-type">
               <h4>dish type</h4>
               <div className="checkbox-container">
                 <input type="radio" name="dish-type" value="italian" /> &nbsp;

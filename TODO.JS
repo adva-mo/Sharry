@@ -8,9 +8,8 @@
 //* check why renders twice
 //  display recipe info on recipe profile page
 //  hide api keys
-//  error & loading components
+//  error component
 //  search dish feature
-//  convert async help functions to utils
 
 //! extra
 //  function that returns 6 recipes randomlly
@@ -23,7 +22,6 @@
 //  underlne navbar links
 //  buttons didabled classes
 //  home page
-//  spinner of food
 
 //! data straucture:
 const recipe = {
