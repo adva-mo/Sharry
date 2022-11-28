@@ -19,7 +19,7 @@ function NewUserCard({ userUid, userEmail, dispatchUsers }) {
       // const data = new FormData(myForm.current);
       newUser = Object.fromEntries(new FormData(myForm.current));
       console.log("saving new user data");
-      await addToCollection({ ...newUser, email: userEmail });
+      await addToCollection({ ...newUser, email: userEmail, recipes: [] });
       // navigate("/explore"); //todo: navigate to user profile page
     } catch (e) {
       console.log(e);

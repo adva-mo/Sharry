@@ -60,7 +60,12 @@ function App() {
             />
             <Route
               path="/new-recipe"
-              element={<NewRecipePage dispatchRecipes={dispatchRecipes} />}
+              element={
+                <NewRecipePage
+                  dispatchRecipes={dispatchRecipes}
+                  dispatchUsers={dispatchUsers}
+                />
+              }
             />
             <Route
               path="/new-user"

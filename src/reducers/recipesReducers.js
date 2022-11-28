@@ -8,6 +8,7 @@ export const recipesReducers = (state, action) => {
       return addRecipe(action.playload, state);
     case "EDIT":
       return editRecipe(action.playload, state);
+
     default:
       return state;
   }

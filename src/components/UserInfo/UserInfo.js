@@ -31,7 +31,7 @@ function UserInfo({ currentUser: user }) {
                 </span>
               </h4>
               <h4 className="red-round-bg">
-                {name} {lastName}
+                {name || "NAME"} {lastName}
               </h4>
               <img
                 className="big-profile-pic"
@@ -41,18 +41,22 @@ function UserInfo({ currentUser: user }) {
             </div>
             <div>
               <p>
-                FROM: {city},{" " + country}
+                {city && country ? (
+                  <span>
+                    FROM: {city},{" " + country}
+                  </span>
+                ) : (
+                  <span>Where are you from?</span>
+                )}
                 <br />
                 EMAIL: {email || "not-available"}
                 <br />
                 {level + " "}
                 <i className="fa-solid fa-fire-flame-curved"></i>
                 <br />
-                Number of recipes: {recipes?.length || "no recipes yet"}
+                Recipes: {recipes?.length || "no recipes yet"}
                 <br />
-                SAVED
-                <br />
-                SHARED
+                SHARED: {recipes?.length || "no SHARED recipes yet"}
               </p>
             </div>
           </div>
