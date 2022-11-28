@@ -2,7 +2,7 @@ import { useState } from "react";
 import { setDoc, doc } from "firebase/firestore";
 import { db } from "../utils/database-config";
 
-function useAdd(collectionName, dispatch, id) {
+function useAdd(collectionName, dispatch, id, action) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -22,10 +22,8 @@ function useAdd(collectionName, dispatch, id) {
 
     try {
       console.log(newObj);
-      await setDoc(userDoc, newObj); //todo: add recipe id to reducer
+      await action(userDoc, newObj);
       console.log(`doc added to ${collectionName} collection`);
-      dispatch({ type: "ADD", playload: newObj });
-
       setIsLoading((prev) => false);
     } catch (e) {
       setIsLoading((prev) => false);

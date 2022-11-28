@@ -64,6 +64,7 @@ function App() {
                 <NewRecipePage
                   dispatchRecipes={dispatchRecipes}
                   dispatchUsers={dispatchUsers}
+                  users={users}
                 />
               }
             />

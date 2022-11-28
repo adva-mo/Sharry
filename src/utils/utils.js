@@ -1,5 +1,6 @@
 export const getUserById = (users, id) => {
   return users.find((user) => {
+    console.log(user);
     return user.id === id;
   });
 };

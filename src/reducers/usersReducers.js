@@ -34,7 +34,6 @@ export const addRecipeToUser = (config, state) => {
   console.log(state);
   return state.map((user, i) => {
     if (user.id === config.userId) {
-      console.log("ok");
       newRecipesArray = [...user.recipes, config.recipeId];
       return { ...user, recipes: [...newRecipesArray] };
     } else return user;
