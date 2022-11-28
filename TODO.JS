@@ -1,5 +1,4 @@
 //! crud:
-//  1. add new user (after register)
 //  2. edit user (from profile)
 //  3. delete user (from profile) ->delete account
 //  4. delete + edit recipe (from recipeprofile)

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Spinner from "../../components/Spinner/Spinner";
+import { auth } from "../../utils/database-config";
 
 function LoginPage() {
   const [isNewUser, setIsNewUser] = useState(true);
@@ -14,18 +15,20 @@ function LoginPage() {
   const [emailToRegister, setEmailToRegister] = useState(null);
   const [passwordToRegister, setPasswordToRegister] = useState(null);
 
-  const { authentication: registerUser, isLoading: isResigtering } = useAuth(
+  const {
+    authentication: registerUser,
+    isLoading: isResigtering,
+    error: registerError,
+  } = useAuth(
     emailToRegister,
     passwordToRegister,
-
     createUserWithEmailAndPassword
   );
-  const { authentication: loginUser, isLoading: isLogin } = useAuth(
-    emailToRegister,
-    passwordToRegister,
-
-    signInWithEmailAndPassword
-  );
+  const {
+    authentication: loginUser,
+    isLoading: isLogin,
+    error: LoginError,
+  } = useAuth(emailToRegister, passwordToRegister, signInWithEmailAndPassword);
 
   useEffect(() => {
     if (emailToRegister === null || passwordToRegister === null) return;
@@ -35,10 +38,8 @@ function LoginPage() {
 
   const loginAndRedirect = async () => {
     try {
-      await loginUser();
-      navigate("/home"); //todo: navigate to user profile
+      const user = await loginUser();
     } catch (e) {
-      navigate("/login");
       console.log(e);
     }
   };
@@ -47,19 +48,19 @@ function LoginPage() {
       await registerUser();
       navigate("/new-user");
     } catch (e) {
-      navigate("/login");
       console.log(e);
     }
   };
   if (isLogin || isResigtering) return <Spinner />;
   return (
-    // <Spinner />
     <div className="login-page">
       <img
         className="login-hero-img"
         src={process.env.PUBLIC_URL + "/assets/login-hero.png"}
         alt=""
       />
+      {registerError && <p>{"email is already in use"}</p>}
+      {LoginError && <p>{"incorrect password"}</p>}
       <LoginCard
         setEmailToRegister={setEmailToRegister}
         setPasswordToRegister={setPasswordToRegister}

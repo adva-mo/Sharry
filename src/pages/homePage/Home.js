@@ -18,6 +18,7 @@ function Home({ recipes, dispatchRecipes, dispatchUsers, users, loggedUser }) {
   } = useGet("users", dispatchUsers);
 
   useEffect(() => {
+    if (users || recipes) return;
     getRecipes();
     getUsers();
   }, []);

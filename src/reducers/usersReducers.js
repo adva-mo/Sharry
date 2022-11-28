@@ -5,6 +5,7 @@ export const usersReducers = (state, action) => {
     case "DELETE":
       return deleteUser(action.playload, state);
     case "ADD":
+      console.log(action);
       return addUser(action.playload, state);
     case "EDIT":
       return editUser(action.playload, state);

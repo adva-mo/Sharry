@@ -7,7 +7,11 @@ function NewUserCard({ userUid, userEmail, dispatchUsers }) {
   const navigate = useNavigate();
   let newUser;
 
-  const { addToCollection } = useAdd("users", dispatchUsers, userUid);
+  const { addToCollection, isLoading, error } = useAdd(
+    "users",
+    dispatchUsers,
+    userUid
+  );
 
   const submitHandler = async (e) => {
     try {
@@ -16,7 +20,7 @@ function NewUserCard({ userUid, userEmail, dispatchUsers }) {
       newUser = Object.fromEntries(new FormData(myForm.current));
       console.log("saving new user data");
       await addToCollection({ ...newUser, email: userEmail });
-      navigate("/explore"); //todo: navigate to user profile page
+      // navigate("/explore"); //todo: navigate to user profile page
     } catch (e) {
       console.log(e);
     }
@@ -54,7 +58,6 @@ function NewUserCard({ userUid, userEmail, dispatchUsers }) {
         <input type="text" name="city" />
       </div>
       <input type="submit" className="blue-btn" value="save" />
-      save
     </form>
   );
 }

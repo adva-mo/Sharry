@@ -13,20 +13,22 @@ function useAdd(collectionName, dispatch, id) {
 
     if (collectionName === "users") {
       userDoc = doc(db, "users", id);
+      newObj = { ...newObj, id: id };
     } else if (collectionName === "recipes") {
+      const recipeId = Math.random() + "";
+      newObj = { ...newObj, id: recipeId };
       userDoc = doc(db, "recipes", Math.random() + "");
     }
 
     try {
       console.log(newObj);
-      // await setDoc(userDoc, newObj); //todo: add recipe id to reducer
+      await setDoc(userDoc, newObj); //todo: add recipe id to reducer
       console.log(`doc added to ${collectionName} collection`);
-      // dispatch({ type: "ADD", playload: newObj });
-      setTimeout(() => {
-        console.log("time");
-        setIsLoading((prev) => false);
-      }, 2000);
+      dispatch({ type: "ADD", playload: newObj });
+
+      setIsLoading((prev) => false);
     } catch (e) {
+      setIsLoading((prev) => false);
       console.log(e);
     }
   };

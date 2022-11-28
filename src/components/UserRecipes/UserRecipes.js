@@ -13,7 +13,7 @@ function UserRecipes({ userId, recipes }) {
   return (
     <>
       <h3>
-        UserRecipes <span style={{ fontSize: "small" }}>add new recipe</span>{" "}
+        <span style={{ fontSize: "small" }}>add new recipe</span>{" "}
       </h3>
       <div className="recipes-container flex">
         {userRecipes &&
