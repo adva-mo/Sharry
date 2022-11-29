@@ -6,8 +6,9 @@ export const getUserById = (users, id) => {
 };
 
 export const getUserRecipes = (recipes, userId) => {
+  const userID = userId + "";
   return recipes.filter((recipe) => {
-    return recipe.owner === userId;
+    return recipe.owner === userID;
   });
 };
 

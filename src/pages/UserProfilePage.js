@@ -14,6 +14,7 @@ function UserProfilePage({ users, recipes, dispatchUsers }) {
   console.log(users);
 
   useEffect(() => {
+    if (!params.id) navigate("/home");
     console.log("in use effect");
     if (currentUserProfile) setCurrentUser(currentUserProfile);
     // setCurrentUser(getUserById(users, params.id));
@@ -32,7 +33,11 @@ function UserProfilePage({ users, recipes, dispatchUsers }) {
         <div>
           <>
             <div className="flex-column main-content bottom-border">
-              <UserInfo currentUser={currentUser} users={users} />
+              <UserInfo
+                currentUser={currentUser}
+                users={users}
+                dispatchUsers={dispatchUsers}
+              />
             </div>
             <div className="flex-column main-content bottom-border">
               <UserRecipes userId={params.id} recipes={recipes} />

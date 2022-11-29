@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 import { db } from "../../utils/database-config";
 import Spinner from "../Spinner/Spinner";
 
-function UpdateUser({ userUid, setEditMood }) {
+function UpdateUser({ userUid, setEditMood, dispatchUsers }) {
   const [isLoading, setIsLoading] = useState(false);
   console.log(userUid);
   const myForm = useRef();
@@ -17,7 +17,10 @@ function UpdateUser({ userUid, setEditMood }) {
       const updateInfo = Object.fromEntries(new FormData(myForm.current));
       console.log("saving new user data");
       await updateDoc(doc(db, "users", userUid), { ...updateInfo });
-
+      await dispatchUsers({
+        type: "EDIT",
+        playload: { id: userUid, data: updateInfo },
+      });
       //?add here dispaych functions
       // navigate("/explore"); //todo: navigate to user profile page
       setIsLoading((prev) => false);

@@ -5,29 +5,43 @@ import { auth } from "../../utils/database-config";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import Logincard from "../LoginCard/LoginCard";
 import UpdateUser from "../UpdateUser/UpdateUser";
+import useDelete from "../../hooks/use-delete";
+import { signOut } from "firebase/auth";
 
-function UserInfo({ currentUser: user }) {
+function UserInfo({ currentUser: user, dispatchUsers }) {
   const navigate = useNavigate();
-  // console.log(auth?.currentUser);
-  const { name, lastName, country, city, email, level, recipes } = user;
+  const { name, lastName, country, city, email, level, recipes, id } = user;
   const [editMood, setEditMood] = useState(false);
+  const [isLogged, setisLogged] = useState(true);
 
+  const { isLoading, error, deleteFromCollection } = useDelete(
+    "users",
+    dispatchUsers,
+    id
+  );
   const editProfileHandler = (e) => {
     console.log(e);
     setEditMood((prev) => true);
-    // return <UpdateUser userId={auth.currentUser.uid} />;
-    // navigate("/new-user");
+  };
+
+  const deleteProfileHandler = async () => {
+    console.log("delete function");
+    await deleteFromCollection();
+    await signOut(auth);
+    navigate("/home");
   };
 
   useEffect(() => {
     if (!user) return <LoginPage />;
-    // if (editMood) navigate("/new-user");
   }, []);
-  // if (editMood) return <UpdateUser />;
   return (
     <>
       {editMood && (
-        <UpdateUser userUid={auth.currentUser.uid} setEditMood={setEditMood} />
+        <UpdateUser
+          userUid={auth.currentUser.uid}
+          setEditMood={setEditMood}
+          dispatchUsers={dispatchUsers}
+        />
       )}
       <div className="profile-main-box main-content flex">
         <div>
@@ -37,6 +51,11 @@ function UserInfo({ currentUser: user }) {
                 PERSONAL INFO
                 <span>
                   <h6 onClick={(e) => editProfileHandler(e)}>EDIT PROFILE</h6>
+                </span>
+                <span>
+                  <h6 onClick={(e) => deleteProfileHandler(e)}>
+                    DELETE PROFILE
+                  </h6>
                 </span>
               </h4>
               <h4 className="red-round-bg">
