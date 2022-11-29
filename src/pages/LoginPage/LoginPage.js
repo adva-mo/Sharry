@@ -38,7 +38,8 @@ function LoginPage() {
 
   const loginAndRedirect = async () => {
     try {
-      const user = await loginUser();
+      await loginUser();
+      // navigate()
     } catch (e) {
       console.log(e);
     }
@@ -46,7 +47,7 @@ function LoginPage() {
   const registerAndRedirect = async () => {
     try {
       await registerUser();
-      navigate("/new-user");
+      // navigate("/new-user");
     } catch (e) {
       console.log(e);
     }

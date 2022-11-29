@@ -1,6 +1,7 @@
 import React from "react";
 import "./LoginCard.css";
 import useInput from "../../hooks/use-input";
+import { useNavigate } from "react-router-dom";
 //todo: user feedbacks
 
 const isEmailInputValid = (value) => value.trim() !== "" && value.includes("@");
@@ -13,6 +14,8 @@ function Logincard({
   isNewUser,
   setIsNewUser,
 }) {
+  const navigate = useNavigate();
+
   const {
     value: emailValue,
     isValid: isEmailValid,
@@ -53,6 +56,7 @@ function Logincard({
     resetPassword();
     setPasswordToRegister(passwordValue);
     setEmailToRegister(emailValue);
+    // if (!isNewUser) navigate("/explore");
   };
 
   return (

@@ -14,12 +14,11 @@ const useAuth = (email, password, action) => {
       await action(auth, email, password);
       const userId = auth.currentUser.uid;
       setIsLoading((prev) => false);
-      navigate(`/users/${userId}`); //todo: navigate to user profile
-
-      return userId;
+      if (userId) navigate(`/users/${userId}`);
+      else throw new Error("");
     } catch (e) {
       setIsLoading((prev) => false);
-      console.log(e.message);
+      // console.log(e.message);
       setError(e.message);
       // console.log(e);
     }

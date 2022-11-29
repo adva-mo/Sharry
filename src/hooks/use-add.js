@@ -5,7 +5,7 @@ import { db } from "../utils/database-config";
 function useAdd(collectionName, dispatch, id, action) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  let recipeId;
+  // let recipeId;
 
   const addToCollection = async (newObj) => {
     let userDoc;

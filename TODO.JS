@@ -1,10 +1,11 @@
 //! crud:
-//  2. edit user (from profile)
+//  2. edit user (from profile),ok-> save edit user in dispatch
 //  3. delete user (from profile) ->delete account
 //  4. delete + edit recipe (from recipeprofile)
 
 //! logic
 //* check why renders twice
+//* if user dodnt fill up hes info, offer hem to do so and show his recipes
 //  display recipe info on recipe profile page
 //  hide api keys
 //  error component

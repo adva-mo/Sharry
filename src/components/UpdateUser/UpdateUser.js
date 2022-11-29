@@ -1,38 +1,31 @@
-import { setDoc, updateDoc } from "firebase/firestore";
-import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import useAdd from "../../hooks/use-add";
+import { doc, updateDoc } from "firebase/firestore";
+import React, { useRef, useState } from "react";
+// import { useNavigate } from "react-router-dom";
+import { db } from "../../utils/database-config";
+import Spinner from "../Spinner/Spinner";
 
-function NewUserCard({ userUid, userEmail, dispatchUsers }) {
+function UpdateUser({ userUid, setEditMood }) {
+  const [isLoading, setIsLoading] = useState(false);
   console.log(userUid);
   const myForm = useRef();
-  const navigate = useNavigate();
-  let newUser;
-
-  const { addToCollection, isLoading, error } = useAdd(
-    "users",
-    dispatchUsers,
-    userUid,
-    setDoc
-  );
+  //   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
+    setIsLoading((prev) => true);
     try {
       e.preventDefault();
-      // const data = new FormData(myForm.current);
-      newUser = Object.fromEntries(new FormData(myForm.current));
+      const updateInfo = Object.fromEntries(new FormData(myForm.current));
       console.log("saving new user data");
-      await addToCollection({ ...newUser, email: userEmail, recipes: [] });
-      dispatchUsers({
-        type: "ADD",
-        playload: { ...newUser, email: userEmail, recipes: [] },
-      });
-      // navigate(`/users/${userUid}`); //todo: navigate to user profile page
+      await updateDoc(doc(db, "users", userUid), { ...updateInfo });
+      // navigate("/explore"); //todo: navigate to user profile page
+      setIsLoading((prev) => false);
+      setEditMood((prev) => false);
     } catch (e) {
+      setIsLoading((prev) => false);
       console.log(e);
     }
   };
-
+  if (isLoading) return <Spinner />;
   return (
     <form
       ref={myForm}
@@ -69,4 +62,4 @@ function NewUserCard({ userUid, userEmail, dispatchUsers }) {
   );
 }
 
-export default NewUserCard;
+export default UpdateUser;

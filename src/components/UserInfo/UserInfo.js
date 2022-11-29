@@ -1,25 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./UserInfo.css";
 import { auth } from "../../utils/database-config";
 import LoginPage from "../../pages/LoginPage/LoginPage";
+import Logincard from "../LoginCard/LoginCard";
+import UpdateUser from "../UpdateUser/UpdateUser";
 
 function UserInfo({ currentUser: user }) {
   const navigate = useNavigate();
-  console.log(auth?.currentUser);
+  // console.log(auth?.currentUser);
   const { name, lastName, country, city, email, level, recipes } = user;
+  const [editMood, setEditMood] = useState(false);
 
   const editProfileHandler = (e) => {
     console.log(e);
-    navigate("/new-user");
+    setEditMood((prev) => true);
+    // return <UpdateUser userId={auth.currentUser.uid} />;
+    // navigate("/new-user");
   };
 
   useEffect(() => {
     if (!user) return <LoginPage />;
+    // if (editMood) navigate("/new-user");
   }, []);
-
+  // if (editMood) return <UpdateUser />;
   return (
     <>
+      {editMood && (
+        <UpdateUser userUid={auth.currentUser.uid} setEditMood={setEditMood} />
+      )}
       <div className="profile-main-box main-content flex">
         <div>
           <div className="flex">
