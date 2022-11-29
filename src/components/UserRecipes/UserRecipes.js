@@ -4,11 +4,12 @@ import { getUserRecipes } from "../../utils/utils";
 
 function UserRecipes({ userId, recipes }) {
   const [userRecipes, setUserRecipes] = useState(null);
-  console.log(userId);
-  console.log(recipes);
+  // console.log(userId);
+  // console.log(recipes);
 
   useEffect(() => {
     if (!userId || !recipes) return;
+    console.log(getUserRecipes(recipes, userId)); // change the function
     setUserRecipes(getUserRecipes(recipes, userId)); // change the function
   }, [recipes, userId]);
 

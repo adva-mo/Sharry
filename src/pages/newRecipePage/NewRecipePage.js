@@ -37,7 +37,7 @@ function NewRecipePage({ dispatchRecipes, dispatchUsers, users }) {
       await addRecipe(newRecipe);
       await dispatchRecipes({
         type: "ADD",
-        playload: newRecipe,
+        playload: { ...newRecipe, id: newRecipeId },
       });
       await dispatchUsers({
         type: "ADD-RECIPE-TO-USER",

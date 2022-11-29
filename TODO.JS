@@ -1,14 +1,15 @@
 //! crud:
-//  4. delete + edit recipe (from recipeprofile)
+// delete recipe from user recipes (db and state)
+// check if db is updated when user adding new recipe (recipes array)
+// edit recipe (from recipeprofile)
 
 //! logic
 
-//* function that gets all user recipes from recipes!
-//  display recipe info on recipe profile page
 //  hide api keys
 //  error component
 //  function to retrieve all user recipes from recipes state and implement in user profile page
 //  search dish feature
+//  funcion that returns 6 random recipes
 
 //! extra
 //  cooking time help function
@@ -18,6 +19,7 @@
 
 //! design:
 //  underlne navbar links
+// soon sections
 
 //! data straucture:
 const recipe = {

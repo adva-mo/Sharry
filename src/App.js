@@ -62,7 +62,13 @@ function App() {
             />
             <Route
               path="/recipe/:id"
-              element={<RecipeProfile recipes={recipes} />}
+              element={
+                <RecipeProfile
+                  recipes={recipes}
+                  dispatchRecipes={dispatchRecipes}
+                  dispatchUsers={dispatchUsers}
+                />
+              }
             />
             <Route
               path="/new-recipe"

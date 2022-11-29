@@ -18,3 +18,8 @@
   background-color: var(--light-gray);
   z-index: -1;
 }
+.ingrediants-container {
+  position: absolute;
+  top: 25%;
+  left: 60%;
+}

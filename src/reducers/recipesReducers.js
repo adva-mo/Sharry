@@ -14,7 +14,12 @@ export const recipesReducers = (state, action) => {
   }
 };
 
-export const deleteRecipe = (id, state) => {};
+export const deleteRecipe = (id, state) => {
+  console.log("in delete");
+  return state.filter((member) => {
+    return id !== member.id;
+  });
+};
 
 export const addRecipe = (obj, state) => [...state, obj];
 

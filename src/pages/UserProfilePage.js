@@ -11,16 +11,16 @@ function UserProfilePage({ users, recipes, dispatchUsers }) {
   const [currentUser, setCurrentUser] = useState(null);
   const currentUserProfile = getUserById(users, params.id);
 
-  console.log(users);
+  // console.log(users);
 
   useEffect(() => {
     if (!params.id) navigate("/home");
-    console.log("in use effect");
+    // console.log("in use effect");
     if (currentUserProfile) setCurrentUser(currentUserProfile);
     // setCurrentUser(getUserById(users, params.id));
     if (currentUser) console.log("ok");
   }, []);
-  console.log(currentUser);
+  // console.log(currentUser);
   return (
     <>
       {!currentUser ? (
