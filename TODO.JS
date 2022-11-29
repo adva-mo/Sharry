@@ -1,18 +1,16 @@
 //! crud:
-//  2. edit user (from profile),ok-> save edit user in dispatch
-//  3. delete user (from profile) ->delete account
 //  4. delete + edit recipe (from recipeprofile)
 
 //! logic
-//* check why renders twice
-//* if user dodnt fill up hes info, offer hem to do so and show his recipes
+
+//* function that gets all user recipes from recipes!
 //  display recipe info on recipe profile page
 //  hide api keys
 //  error component
+//  function to retrieve all user recipes from recipes state and implement in user profile page
 //  search dish feature
 
 //! extra
-//  function that returns 6 recipes randomlly
 //  cooking time help function
 //  save other user recipes
 //  add like to recipes
@@ -20,8 +18,6 @@
 
 //! design:
 //  underlne navbar links
-//  buttons didabled classes
-//  home page
 
 //! data straucture:
 const recipe = {

@@ -1,4 +1,4 @@
-import { getUserById } from "../utils/utils";
+import { getUserById, getUserRecipes } from "../utils/utils";
 
 export const usersReducers = (state, action) => {
   switch (action.type) {
@@ -36,17 +36,21 @@ export const addUser = (obj, state) => {
     console.log("user alreday exist, filteres users:");
     console.log(filtered);
   }
-
   return [state];
 };
 
-export const editUser = ({ recipeObj }, state) => {};
+export const editUser = (config, state) => {
+  const recipes = getUserRecipes(state, config.id);
+  const filtered = state.filter((user) => {
+    return user.id !== config.id;
+  });
+  const merged = { ...config.data, id: config.id, recipes: [...recipes] };
+  console.log(merged);
+  return [...filtered, merged];
+};
 
 export const addRecipeToUser = (config, state) => {
   let newRecipesArray = [];
-  let updatedUser;
-  // console.log(config);
-  // console.log(state);
   return state.map((user, i) => {
     if (user.id === config.userId) {
       newRecipesArray = [...user.recipes, config.recipeId];
