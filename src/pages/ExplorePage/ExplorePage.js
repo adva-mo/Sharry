@@ -3,6 +3,7 @@ import SearchDish from "../../components/SearchDish/SearchDish";
 import RecipePreview from "../../components/RecipePreview/RecipePreview";
 import "./ExplrePage.css";
 import { auth } from "../../utils/database-config";
+import { filteredRecipes } from "../../utils/utils";
 
 function ExplorePage({ recipes, users }) {
   const [searchInput, setSearchInput] = useState("");
@@ -11,7 +12,7 @@ function ExplorePage({ recipes, users }) {
   // const recipesToDisplay = searchInput === "" ? recipes : "";
   useEffect(() => {
     if (searchInput === "") setrecipesToDisplay(recipes);
-    else setrecipesToDisplay(["", ""]); //function that returns filtered recipes
+    else setrecipesToDisplay(filteredRecipes(recipes, searchInput)); //function that returns filtered recipes
   }, [searchInput]);
 
   return (

@@ -8,22 +8,6 @@ function SearchDish({
   setrecipesToDisplay,
   searchInput,
 }) {
-  // const [searchInput, setSearchInput] = useState("");
-  // const loggedUser = auth?.currentUser.uid;
-  console.log(setSearchInput);
-
-  // useEffect(() => {
-  //   const debounce = setTimeout(() => {
-  //     setrecipesToDisplay(recipes);
-  //     //! add function that filters dishes from recipes
-  //   }, 2000);
-  //   return () => {
-  //     clearTimeout(debounce);
-  //   };
-  // }, [searchInput]);
-
-  // const recipes = searchInput !== "" ? "" : "";
-
   return (
     <div className="search-box main-content flex">
       <i className="fa-solid fa-magnifying-glass"></i>

@@ -15,3 +15,15 @@ export const getRecipeById = (recipes, id) => {
     return recipe.id === id;
   });
 };
+
+export const filteredRecipes = (recipes, searchValue) => {
+  console.log(recipes);
+  const filtered = recipes.filter((recipe) => {
+    if (
+      recipe.share === ("true" || true) &&
+      recipe.name.toLowerCase().includes(searchValue)
+    )
+      return recipe;
+  });
+  return filtered;
+};

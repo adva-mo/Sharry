@@ -4,7 +4,6 @@
 // edit recipe (from recipeprofile)
 
 //! logic
-
 //  hide api keys
 //  error component
 //  function to retrieve all user recipes from recipes state and implement in user profile page
@@ -12,6 +11,7 @@
 //  funcion that returns 6 random recipes
 
 //! extra
+// search dishes by terms
 //  cooking time help function
 //  save other user recipes
 //  add like to recipes
