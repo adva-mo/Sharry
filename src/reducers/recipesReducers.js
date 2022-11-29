@@ -1,3 +1,4 @@
+import { getRecipeById } from "../utils/utils";
 export const recipesReducers = (state, action) => {
   switch (action.type) {
     case "GET":
@@ -23,4 +24,11 @@ export const deleteRecipe = (id, state) => {
 
 export const addRecipe = (obj, state) => [...state, obj];
 
-export const editRecipe = (recipeObj, id, state) => {};
+export const editRecipe = ({ id, data }, state) => {
+  const recipe = getRecipeById(state, id);
+  const newRecipe = { ...recipe, ...data };
+  const filtered = state.filter((recipe) => {
+    return recipe.id !== id;
+  });
+  return [...filtered, newRecipe];
+};

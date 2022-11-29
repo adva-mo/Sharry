@@ -17,11 +17,10 @@ export const getRecipeById = (recipes, id) => {
 };
 
 export const filteredRecipes = (recipes, searchValue) => {
-  console.log(recipes);
   const filtered = recipes.filter((recipe) => {
     if (
       recipe.share === ("true" || true) &&
-      recipe.name.toLowerCase().includes(searchValue)
+      recipe.name.toLowerCase().includes(searchValue.toLowerCase())
     )
       return recipe;
   });

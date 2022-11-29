@@ -1,25 +1,25 @@
 import { useState } from "react";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../utils/database-config";
-
-function useAdd(collectionName, dispatch, newObj, id) {
+//?this hook apply only on updating recipe, adding it to db, adding it to state and updating user recipes in state
+function useUpdate(collectionName, dispatch, id) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   let userDoc;
 
   if (collectionName === "users") {
-    userDoc = doc(db, "users", id);
+    let userDoc = doc(db, "users", id);
   } else if (collectionName === "recipes") {
-    userDoc = doc(db, "recipes", Math.random() + "");
+    userDoc = doc(db, "recipes", id + "");
   }
-
-  const addToCollection = async () => {
+  const addToCollection = async (newObj) => {
+    console.log(newObj);
     setIsLoading(true);
     setError(null);
     try {
       await updateDoc(userDoc, newObj);
       console.log(`doc updated to ${collectionName} DB`);
-      // dispatch({ type: "", playload: newObj });
+      dispatch({ type: "EDIT", playload: { id: id, data: newObj } });
     } catch (e) {
       console.log(e);
     }
@@ -32,7 +32,7 @@ function useAdd(collectionName, dispatch, newObj, id) {
   };
 }
 
-export default useAdd;
+export default useUpdate;
 
 // doc.data() function from the firestore library which returns object containing the user info without the id
 

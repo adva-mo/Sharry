@@ -3,10 +3,10 @@ import React, { useEffect } from "react";
 import "./SearchDish.css";
 
 function SearchDish({
-  recipes,
+  // recipes,
   setSearchInput,
-  setrecipesToDisplay,
-  searchInput,
+  // setrecipesToDisplay,
+  // searchInput,
 }) {
   return (
     <div className="search-box main-content flex">

@@ -1,22 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./RecipeProfile.css";
 import RecipePreview from "../../components/RecipePreview/RecipePreview";
 import { getRecipeById } from "../../utils/utils";
 import { useNavigate, useParams } from "react-router-dom";
 import useDelete from "../../hooks/use-delete";
 import { auth } from "../../utils/database-config";
+import useUpdate from "../../hooks/use-update";
 
 function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
   const [currentRecipe, setCurrentRecipe] = useState(null);
   const [editMood, setEditMood] = useState(false);
   const params = useParams();
   const navigate = useNavigate();
+  const instructionsRef = useRef();
+  const ingrediantsRef = useRef();
 
   const { deleteFromCollection, isLoading, error } = useDelete(
     "recipes",
     dispatchRecipes,
     params.id
   );
+
+  const { addToCollection } = useUpdate("recipes", dispatchRecipes, params.id);
 
   useEffect(() => {
     setCurrentRecipe(getRecipeById(recipes, params.id));
@@ -28,7 +33,16 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
     console.log("sucess");
     navigate(`/users/${auth.currentUser.uid}`);
   };
-  const editHandler = () => {};
+  const editHandler = async () => {
+    // setEditMood((prev) => !prev);
+    if (editMood === true) {
+      await addToCollection({
+        instructions: instructionsRef.current?.value,
+        ingrediants: ingrediantsRef.current?.value,
+      });
+      setEditMood((prev) => !prev);
+    } else setEditMood((prev) => !prev);
+  };
 
   if (currentRecipe)
     return (
@@ -60,7 +74,7 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
                 editHandler();
               }}
             >
-              edit
+              {editMood ? "CONFIRM" : "EDIT"}
             </button>
             <button
               onClick={() => {
@@ -80,6 +94,7 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
               <div className="ingrediants-container">
                 ingrediants:
                 <input
+                  ref={ingrediantsRef}
                   type="text"
                   defaultValue={currentRecipe.ingrediants}
                   readOnly={!editMood}
@@ -90,6 +105,7 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
           <div>
             <h3>INSTRUCTIONS:</h3>
             <input
+              ref={instructionsRef}
               type="text"
               defaultValue={currentRecipe.instructions}
               readOnly={!editMood}
