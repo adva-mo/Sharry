@@ -17,6 +17,8 @@ function UpdateUser({ userUid, setEditMood }) {
       const updateInfo = Object.fromEntries(new FormData(myForm.current));
       console.log("saving new user data");
       await updateDoc(doc(db, "users", userUid), { ...updateInfo });
+
+      //?add here dispaych functions
       // navigate("/explore"); //todo: navigate to user profile page
       setIsLoading((prev) => false);
       setEditMood((prev) => false);

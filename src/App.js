@@ -52,7 +52,13 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route
               path="/users/:id"
-              element={<UserProfilePage users={users} recipes={recipes} />}
+              element={
+                <UserProfilePage
+                  users={users}
+                  recipes={recipes}
+                  dispatchUsers={dispatchUsers}
+                />
+              }
             />
             <Route
               path="/recipe/:id"

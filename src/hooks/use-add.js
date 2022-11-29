@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { setDoc, doc } from "firebase/firestore";
+import { doc } from "firebase/firestore";
 import { db } from "../utils/database-config";
 
 function useAdd(collectionName, dispatch, id, action) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  // let recipeId;
 
   const addToCollection = async (newObj) => {
     let userDoc;
@@ -13,7 +12,7 @@ function useAdd(collectionName, dispatch, id, action) {
     setError(null);
 
     userDoc = doc(db, collectionName, id);
-
+    console.log(id);
     try {
       console.log(newObj);
       await action(userDoc, newObj);
@@ -21,6 +20,7 @@ function useAdd(collectionName, dispatch, id, action) {
       setIsLoading((prev) => false);
     } catch (e) {
       setIsLoading((prev) => false);
+      console.log("error");
       console.log(e);
     }
   };

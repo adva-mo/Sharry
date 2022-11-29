@@ -48,21 +48,19 @@ function Logincard({
 
   const formSubmissionHandler = (e) => {
     e.preventDefault();
-
     if (!isFormValid) return;
-    console.log("submitted");
-    console.log(emailValue, passwordValue);
+    // console.log("submitted");
+    // console.log(emailValue, passwordValue);
     resetEmail();
     resetPassword();
     setPasswordToRegister(passwordValue);
     setEmailToRegister(emailValue);
-    // if (!isNewUser) navigate("/explore");
   };
 
   return (
     <>
       <form onSubmit={formSubmissionHandler} className="flex-column login-card">
-        <h3>{isNewUser ? "Sign in" : "Login"} and start Sharrying!</h3>
+        <h3>{isNewUser ? "Sign up" : "Sign in"} and start Sharrying!</h3>
         <label htmlFor="email">email</label>
         <input
           className={emailClasses}

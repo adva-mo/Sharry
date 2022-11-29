@@ -1,3 +1,5 @@
+import { getUserById } from "../utils/utils";
+
 export const usersReducers = (state, action) => {
   switch (action.type) {
     case "GET":
@@ -23,7 +25,20 @@ export const deleteUser = (id, state) => {
   });
 };
 
-export const addUser = (obj, state) => [...state, obj];
+export const addUser = (obj, state) => {
+  const userExist = getUserById(state, obj.id);
+  if (!userExist) {
+    return [...state, obj];
+  } else {
+    const filtered = state.filter((user) => {
+      return user.id !== obj.id;
+    });
+    console.log("user alreday exist, filteres users:");
+    console.log(filtered);
+  }
+
+  return [state];
+};
 
 export const editUser = ({ recipeObj }, state) => {};
 

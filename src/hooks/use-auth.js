@@ -18,9 +18,8 @@ const useAuth = (email, password, action) => {
       else throw new Error("");
     } catch (e) {
       setIsLoading((prev) => false);
-      // console.log(e.message);
       setError(e.message);
-      // console.log(e);
+      console.log(e.message);
     }
   };
 
