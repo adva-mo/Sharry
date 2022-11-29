@@ -8,7 +8,7 @@ function useUpdate(collectionName, dispatch, id) {
   let userDoc;
 
   if (collectionName === "users") {
-    let userDoc = doc(db, "users", id);
+    userDoc = doc(db, "users", id);
   } else if (collectionName === "recipes") {
     userDoc = doc(db, "recipes", id + "");
   }

@@ -1,3 +1,7 @@
+.recipe-page textarea {
+  border: none;
+  background-color: transparent;
+}
 .recipe-settings {
   margin: 1rem;
   margin-bottom: 3rem;
@@ -22,4 +26,15 @@
   position: absolute;
   top: 25%;
   left: 60%;
+}
+.instructions-container h3 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.edit {
+  text-decoration: underline;
+}
+/* #instructions-edit{} */
+.ing-title {
+  margin-bottom: 1rem;
 }

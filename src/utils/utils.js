@@ -5,6 +5,7 @@ export const getUserById = (users, id) => {
 };
 
 export const getUserRecipes = (recipes, userId) => {
+  console.log("get user recipes");
   return recipes.filter((recipe) => {
     return recipe.owner === userId;
   });

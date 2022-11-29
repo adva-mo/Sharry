@@ -48,7 +48,7 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
     return (
       <>
         {console.log(currentRecipe)}
-        <div className="main-content bottom-border gap">
+        <div className="main-content bottom-border gap recipe-page">
           <div className="flex-column gap">
             <h1 className="cap">{currentRecipe.name || "DISH NAME"}</h1>
             <h2>Delicious {currentRecipe.type} dish!</h2>
@@ -70,6 +70,7 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
           </div>
           <div className="flex recipe-settings">
             <button
+              className="red-round-btn"
               onClick={() => {
                 editHandler();
               }}
@@ -77,6 +78,7 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
               {editMood ? "CONFIRM" : "EDIT"}
             </button>
             <button
+              className="red-round-btn"
               onClick={() => {
                 deleteHandler();
               }}
@@ -91,20 +93,25 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
                 src={process.env.PUBLIC_URL + "/assets/recipe-main-pic.png"}
                 alt=""
               />
-              <div className="ingrediants-container">
-                ingrediants:
-                <input
+              <div className="ingrediants-container ">
+                <span className={editMood ? "ing-title" : "ing-title"}>
+                  ingrediants: <br />
+                </span>
+                <textarea
                   ref={ingrediantsRef}
                   type="text"
                   defaultValue={currentRecipe.ingrediants}
                   readOnly={!editMood}
+                  className={editMood ? "edit" : ""}
                 />
               </div>
             </div>
           </div>
-          <div>
+          <div className="main-content instructions-container">
             <h3>INSTRUCTIONS:</h3>
-            <input
+            <textarea
+              // className="main-content"
+              className={editMood ? "main-content edit" : "main-content"}
               ref={instructionsRef}
               type="text"
               defaultValue={currentRecipe.instructions}

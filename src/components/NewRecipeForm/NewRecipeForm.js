@@ -42,13 +42,13 @@ function NewRecipeForm({ setNewRecipe }) {
             <label htmlFor="time">
               <h4 id="cooking-time-radio">cooking time</h4>
               <div className="checkbox-container">
-                <input type="radio" name="time" value="0" /> &nbsp; 0-30 minutes{" "}
-                <br />
-                <input type="radio" name="time" value="1" /> &nbsp; 0.5-1 hour{" "}
-                <br />
-                <input type="radio" name="time" value="2" /> &nbsp; 1-2 hours{" "}
-                <br />
-                <input type="radio" name="time" value="3" />
+                <input type="radio" name="time" value="0-30 MIN" /> &nbsp; 0-30
+                minutes <br />
+                <input type="radio" name="time" value="0.5-1 hour" /> &nbsp;
+                0.5-1 hour <br />
+                <input type="radio" name="time" value="1-2 hours" /> &nbsp; 1-2
+                hours <br />
+                <input type="radio" name="time" value="2+ hours" />
                 &nbsp; 2+ <br />
               </div>
             </label>

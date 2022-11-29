@@ -1,17 +1,15 @@
 //! crud:
 // delete recipe from user recipes (db and state)
-// check if db is updated when user adding new recipe (recipes array)
-// edit recipe (from recipeprofile)
+// add recipe to user recipes (on db)
 
 //! logic
 //  hide api keys
 //  error component
 //  function to retrieve all user recipes from recipes state and implement in user profile page
-//  search dish feature
-//  funcion that returns 6 random recipes
 
 //! extra
 // search dishes by terms
+//  funcion that returns 6 random recipes
 //  cooking time help function
 //  save other user recipes
 //  add like to recipes
