@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../utils/database-config";
-//?this hook apply only on updating recipe, adding it to db, adding it to state and updating user recipes in state
+
 function useUpdate(collectionName, dispatch, id) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -19,7 +19,9 @@ function useUpdate(collectionName, dispatch, id) {
     try {
       await updateDoc(userDoc, newObj);
       console.log(`doc updated to ${collectionName} DB`);
+      // collectionNa/me === "recipes"
       dispatch({ type: "EDIT", playload: { id: id, data: newObj } });
+      // : dispatch({ type: "EDIT-USER-ARRAY", playload: { id: userId , recipeId} });
     } catch (e) {
       console.log(e);
     }

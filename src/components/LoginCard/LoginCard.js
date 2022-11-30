@@ -2,7 +2,7 @@ import React from "react";
 import "./LoginCard.css";
 import useInput from "../../hooks/use-input";
 import { useNavigate } from "react-router-dom";
-//todo: user feedbacks
+//todo: display errors
 
 const isEmailInputValid = (value) => value.trim() !== "" && value.includes("@");
 const isPasswordInputValid = (value) =>

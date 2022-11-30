@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./UserInfo.css";
 import { auth } from "../../utils/database-config";
@@ -7,21 +7,35 @@ import Logincard from "../LoginCard/LoginCard";
 import UpdateUser from "../UpdateUser/UpdateUser";
 import useDelete from "../../hooks/use-delete";
 import { signOut } from "firebase/auth";
+import { getUserRecipes } from "../../utils/utils";
+import useUpdate from "../../hooks/use-update";
+import Spinner from "../Spinner/Spinner";
 
 function UserInfo({ currentUser: user, dispatchUsers }) {
   const navigate = useNavigate();
-  const { name, lastName, country, city, email, level, recipes, id } = user;
+  const { name, email, id } = user;
   const [editMood, setEditMood] = useState(false);
-  const [isLogged, setisLogged] = useState(true);
+  const nameRef = useRef();
+  // const [isLogged, setisLogged] = useState(true);
 
   const { isLoading, error, deleteFromCollection } = useDelete(
     "users",
     dispatchUsers,
     id
   );
+
+  const { isLoading: isUpdatingUser, addToCollection } = useUpdate(
+    "users",
+    dispatchUsers,
+    id
+  );
+
   const editProfileHandler = (e) => {
-    console.log(e);
-    setEditMood((prev) => true);
+    if (editMood) {
+      addToCollection({ name: nameRef.current.value, email: email });
+      setEditMood((prev) => !prev);
+      // console.log(nameRef.current.value);
+    } else setEditMood((prev) => !prev);
   };
 
   const deleteProfileHandler = async () => {
@@ -34,15 +48,18 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
   useEffect(() => {
     if (!user) return <LoginPage />;
   }, []);
+
+  if (isLoading || isUpdatingUser) return <Spinner />;
+
   return (
     <>
-      {editMood && (
+      {/* {editMood && (
         <UpdateUser
           userUid={auth.currentUser.uid}
           setEditMood={setEditMood}
           dispatchUsers={dispatchUsers}
         />
-      )}
+      )} */}
       <div className="profile-main-box main-content flex">
         <div>
           <div className="flex">
@@ -58,9 +75,13 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
                   </h6>
                 </span>
               </h4>
-              <h4 className="red-round-bg">
-                {name || "NAME"} {lastName}
-              </h4>
+              <input
+                className="red-round-bg name-input"
+                defaultValue={name}
+                // value={name}
+                readOnly={!editMood}
+                ref={nameRef}
+              />
               <img
                 className="big-profile-pic"
                 src={process.env.PUBLIC_URL + "/profile-pic.png"}
@@ -69,22 +90,18 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
             </div>
             <div>
               <p>
-                {city && country ? (
-                  <span>
-                    FROM: {city},{" " + country}
-                  </span>
-                ) : (
-                  <span>Where are you from?</span>
-                )}
                 <br />
                 EMAIL: {email || "not-available"}
                 <br />
-                {level + " "}
+                {/* {level + " "} */}
                 <i className="fa-solid fa-fire-flame-curved"></i>
-                <br />
-                Recipes: {recipes?.length || "no recipes yet"}
-                <br />
-                SHARED: {recipes?.length || "no SHARED recipes yet"}
+                {/* <br />
+                Recipes:{" "}
+                {getUserRecipes(recipes, auth.currentUser.uid).length > 0
+                  ? getUserRecipes(recipes, auth.currentUser.uid).length
+                  : "no recipes yet"}
+                <br /> */}
+                {/* SHARED: {recipes?.length || "no SHARED recipes yet"} */}
               </p>
             </div>
           </div>

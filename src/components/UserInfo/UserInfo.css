@@ -6,3 +6,10 @@
 .profile-main-box {
   justify-content: space-between !important;
 }
+.name-input {
+  border: none;
+  text-align: center;
+  padding: 0.3rem 0;
+  margin: 1rem 0;
+  color: black;
+}

@@ -22,7 +22,11 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
   );
 
   const { addToCollection } = useUpdate("recipes", dispatchRecipes, params.id);
-
+  const { addToCollection: updateUserRecipes } = useUpdate(
+    "users",
+    dispatchUsers,
+    auth.currentUser.uid
+  );
   useEffect(() => {
     setCurrentRecipe(getRecipeById(recipes, params.id));
   }, [recipes, params.id]);
@@ -30,6 +34,7 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
   const deleteHandler = async () => {
     console.log("delete recipe");
     await deleteFromCollection();
+    await updateUserRecipes();
     console.log("sucess");
     navigate(`/users/${auth.currentUser.uid}`);
   };

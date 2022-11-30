@@ -14,6 +14,7 @@ function useDelete(collectionName, dispatch, id) {
       await deleteDoc(userDoc);
       console.log("deleted from DB");
       dispatch({ type: "DELETE", playload: id });
+      // if (collectionName==="recipes"){}
     } catch (e) {
       console.log(e);
     }
