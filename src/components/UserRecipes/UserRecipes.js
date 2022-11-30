@@ -4,8 +4,6 @@ import { getUserRecipes } from "../../utils/utils";
 
 function UserRecipes({ userId, recipes }) {
   const [userRecipes, setUserRecipes] = useState(null);
-  // console.log(userId);
-  // console.log(recipes);
 
   useEffect(() => {
     if (!userId || !recipes) return;

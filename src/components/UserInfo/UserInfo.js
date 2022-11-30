@@ -16,7 +16,6 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
   const { name, email, id } = user;
   const [editMood, setEditMood] = useState(false);
   const nameRef = useRef();
-  // const [isLogged, setisLogged] = useState(true);
 
   const { isLoading, error, deleteFromCollection } = useDelete(
     "users",
@@ -34,7 +33,6 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
     if (editMood) {
       addToCollection({ name: nameRef.current.value, email: email });
       setEditMood((prev) => !prev);
-      // console.log(nameRef.current.value);
     } else setEditMood((prev) => !prev);
   };
 
@@ -51,16 +49,8 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
 
   return (
     <>
-      {/* {editMood && (
-        <UpdateUser
-        userUid={auth.currentUser.uid}
-        setEditMood={setEditMood}
-        dispatchUsers={dispatchUsers}
-        />
-      )} */}
       {isLoading && <Spinner />}
       {isUpdatingUser && <Spinner />}
-      {/* if (isLoading || isUpdatingUser) return <Spinner />; */}
       <div className="profile-main-box main-content flex">
         <div>
           <div className="flex">
@@ -79,7 +69,6 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
               <input
                 className="red-round-bg name-input"
                 defaultValue={name}
-                // value={name}
                 readOnly={!editMood}
                 ref={nameRef}
               />
@@ -94,15 +83,7 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
                 <br />
                 EMAIL: {email || "not-available"}
                 <br />
-                {/* {level + " "} */}
                 <i className="fa-solid fa-fire-flame-curved"></i>
-                {/* <br />
-                Recipes:{" "}
-                {getUserRecipes(recipes, auth.currentUser.uid).length > 0
-                  ? getUserRecipes(recipes, auth.currentUser.uid).length
-                  : "no recipes yet"}
-                <br /> */}
-                {/* SHARED: {recipes?.length || "no SHARED recipes yet"} */}
               </p>
             </div>
           </div>

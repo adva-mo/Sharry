@@ -17,6 +17,7 @@ function useDelete(collectionName, dispatch, id) {
     } catch (e) {
       setIsLoading((prev) => false);
       console.log(e);
+      setError(e.message);
     }
   };
   return { isLoading, error, deleteFromCollection };

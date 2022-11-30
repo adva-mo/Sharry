@@ -13,7 +13,6 @@ function useUpdate(collectionName, dispatch, id) {
     userDoc = doc(db, "recipes", id + "");
   }
   const addToCollection = async (newObj) => {
-    // console.log(newObj);
     setIsLoading(true);
     setError(null);
     try {
@@ -35,11 +34,3 @@ function useUpdate(collectionName, dispatch, id) {
 }
 
 export default useUpdate;
-
-// doc.data() function from the firestore library which returns object containing the user info without the id
-
-//* the usage of use-add - setting a new doc with a provided id
-// const { addToCollection } = useAdd("recipes", dispatchRecipes, {
-//   newObj,
-//   id,
-// });

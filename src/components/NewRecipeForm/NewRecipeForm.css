@@ -2,23 +2,54 @@
   gap: 2rem;
   padding: 1rem;
 }
-
-.checkbox-container {
-  text-align: left;
+.new-recipe-main-box {
+  gap: 1rem;
+}
+.recipe-settings-box {
+  /* background-color: ; */
+  background: url("../../../public/assets/new-recipe.png") center center/cover;
+  position: relative;
+  border-radius: 10px;
+  padding: 1rem;
+}
+.recipe-settings-box::after {
+  content: "";
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.7);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.recipe-settings-box * {
+  z-index: 2;
+}
+.dish-name-input {
+  width: 70vw;
+  height: 3rem;
+  font-size: larger;
+  border: 2px solid var(--black) !important;
+  border-radius: 30px !important;
+  padding: 1rem !important;
 }
 .new-recipe-form input,
 .new-recipe-form textarea {
   border: 1px solid var(--gray);
   padding: 0.5rem;
 }
-
-.radio-box {
-  align-self: start !important;
-  gap: 2rem;
-}
-#cooking-time-radio {
+.radio-input-box {
   align-self: flex-start;
+  margin-top: 0.2rem;
 }
+.dish-type-lable {
+  margin-top: 2.5rem !important;
+  display: flex;
+  flex-direction: column;
+}
+.checkbox-container {
+  text-align: left;
+}
+
 .new-recipe-img {
   width: 20rem;
   position: fixed;
@@ -41,7 +72,7 @@
   align-self: flex-start;
 }
 .new-recipe-container {
-  justify-content: space-around !important;
+  justify-content: center;
 }
 .text-box {
   border-radius: 10px;
