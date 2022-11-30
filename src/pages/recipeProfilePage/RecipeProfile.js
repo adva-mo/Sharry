@@ -70,27 +70,6 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
             </div>
           </div>
 
-          {currentRecipe.owner === auth.currentUser.uid && (
-            <div className="flex ">
-              <button
-                className="red-round-btn "
-                onClick={() => {
-                  editHandler();
-                }}
-              >
-                {editMood ? "CONFIRM" : "EDIT"}
-              </button>
-              <button
-                className="red-round-btn"
-                onClick={() => {
-                  deleteHandler();
-                }}
-              >
-                delete
-              </button>
-            </div>
-          )}
-
           <div className="recipe-full-profile">
             <div className="big-recipe-img-container">
               <img
@@ -112,6 +91,26 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
               </div>
             </div>
           </div>
+          {currentRecipe.owner === auth.currentUser.uid && (
+            <div className="flex gap top-gap">
+              <button
+                className="blue-btn "
+                onClick={() => {
+                  editHandler();
+                }}
+              >
+                {editMood ? "CONFIRM" : "EDIT"}
+              </button>
+              <button
+                className="blue-btn"
+                onClick={() => {
+                  deleteHandler();
+                }}
+              >
+                DELETE
+              </button>
+            </div>
+          )}
           <div className="main-content instructions-container">
             <h3>INSTRUCTIONS:</h3>
             <textarea
@@ -126,11 +125,9 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
         </div>
         <h2 className="sub-title">MORE DISHES</h2>
         <div className="recipes-container flex">
-          <RecipePreview />
-          {/* todo: funcion that returns 6 random recipes */}
-          <RecipePreview />
-          <RecipePreview />
-          <RecipePreview />
+          {recipes?.map((recipe) => {
+            return <RecipePreview key={recipe.id} {...recipe} id={recipe.id} />;
+          })}
         </div>
       </>
     );

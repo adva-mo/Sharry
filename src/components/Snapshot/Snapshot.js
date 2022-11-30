@@ -6,7 +6,6 @@ import "./snapshot.css";
 function Snapshot({ description, navigateTo }) {
   const navigate = useNavigate();
   const loggedUserCtx = useContext(currentLoggedUser);
-  console.log(loggedUserCtx?.uid);
   return (
     <div
       className={

@@ -1,19 +1,18 @@
 //! logic
 //  hide api keys
-//  error component
+// how to skip the top of the page
 
 //! extra
-// search dishes by terms
+//  search dishes by terms
 //  save other user recipes
 //  add like to recipes
 //  upload photo
 
 //! design:
-//  buttons in profile page
-//  underlne navbar links
-//  recipe preview
-//  when editing, sign the user
-//  responsive
+//  fix sample pictures all over the app
+//  when editing, make it clear to the user recipe profile
+//  responsive !
+//  in recipe profile- make pic smaller and move button to the right
 
 //! data straucture:
 const recipe = {

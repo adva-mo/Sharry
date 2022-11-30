@@ -72,7 +72,15 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
             />
             {/* <span> */}
             <h6 onClick={(e) => editProfileHandler(e)}>
-              EDIT PROFILE{"  "} <i className="fa-regular fa-pen-to-square"></i>
+              {editMood ? (
+                <>
+                  CONFIRM <i className="fa-solid fa-check"></i>
+                </>
+              ) : (
+                <>
+                  EDIT PROFILE <i className="fa-regular fa-pen-to-square"></i>
+                </>
+              )}{" "}
             </h6>
             {/* </span> */}
             <br />

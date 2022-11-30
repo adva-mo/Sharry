@@ -30,6 +30,9 @@
   width: 7rem;
   transform: translateY(-0.7rem);
 }
+.logout-btn {
+  transform: translateY(-0.5rem);
+}
 @media (max-width: 450px) {
   .media-450 {
     display: none;

@@ -38,10 +38,10 @@ function NewRecipePage({ dispatchRecipes }) {
       console.log(e);
     }
   };
-
+  if (isLoading) return <Spinner />;
   return (
     <div className="new-recipe-page">
-      {isLoading && <Spinner />}
+      {/* {isLoading && <Spinner />} */}
       {!isLoading && loggedUserCtx?.uid ? (
         <NewRecipeForm setNewRecipe={setNewRecipe} />
       ) : (
