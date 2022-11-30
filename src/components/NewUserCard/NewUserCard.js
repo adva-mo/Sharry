@@ -1,22 +1,15 @@
-import { setDoc, updateDoc } from "firebase/firestore";
-import React, { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { setDoc } from "firebase/firestore";
+import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import useAdd from "../../hooks/use-add";
 import { auth } from "../../utils/database-config";
 import { getUserById } from "../../utils/utils";
 import Spinner from "../Spinner/Spinner";
 
-function NewUserCard({
-  // userUid,
-  // userEmail,
-  dispatchUsers,
-  setCurrentUser,
-  users,
-}) {
+function NewUserCard({ dispatchUsers, setCurrentUser, users }) {
   const myForm = useRef();
   const navigate = useNavigate();
   let newUser;
-  console.log(users);
 
   const { addToCollection, isLoading, error } = useAdd(
     "users",
@@ -48,7 +41,6 @@ function NewUserCard({
         navigate(`/new-recipe`); //todo: navigate to user profile page
       }, 0);
       setCurrentUser((prev) => getUserById(users, auth.currentUser.id));
-      // setisProfileReady((prev) => true);
     } catch (e) {
       console.log(e);
     }
@@ -65,27 +57,7 @@ function NewUserCard({
         <label htmlFor="name">enter your name</label>
         <input type="text" name="name" />
       </div>
-      <div>
-        <label htmlFor="lastName">enter your last name</label>
-        <input type="text" name="lastName" />
-      </div>
-      {/* <div>
-        <label htmlFor="level">rate your cooking skills</label>
-        <input type="range" name="level" />
-      </div>
-      <div>
-        <label htmlFor="img">enter link for your profile picture</label>
-        <input type="text" name="img" />
-      </div>
-      <span>where are you from?</span>
-      <div>
-        <label htmlFor="country">country</label>
-        <input type="text" name="country" />
-      </div>
-      <div>
-        <label htmlFor="city">city</label>
-        <input type="text" name="city" />
-      </div>*/}
+
       <input type="submit" className="blue-btn" value="save" />
     </form>
   );
