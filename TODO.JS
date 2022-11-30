@@ -1,23 +1,20 @@
-//! crud:
-// delete recipe from user recipes (db and state)
-// add recipe to user recipes (on db)
-
 //! logic
 //  hide api keys
 //  error component
-//  function to retrieve all user recipes from recipes state and implement in user profile page
+// add use affect to get recipes if not logged
 
 //! extra
 // search dishes by terms
-//  funcion that returns 6 random recipes
-//  cooking time help function
 //  save other user recipes
 //  add like to recipes
 //  upload photo
 
 //! design:
+//  buttons in profile page
 //  underlne navbar links
-// soon sections
+// recipe preview
+//  when editing, sign the user
+//  responsive
 
 //! data straucture:
 const recipe = {

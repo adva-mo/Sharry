@@ -23,11 +23,11 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
   );
 
   const { addToCollection } = useUpdate("recipes", dispatchRecipes, params.id);
-  const { addToCollection: updateUserRecipes } = useUpdate(
-    "users",
-    dispatchUsers,
-    auth.currentUser.uid
-  );
+  // const { addToCollection: updateUserRecipes } = useUpdate(
+  //   "users",
+  //   dispatchUsers,
+  //   auth.currentUser.uid
+  // );
   useEffect(() => {
     setCurrentRecipe(getRecipeById(recipes, params.id));
   }, [recipes, params.id]);
@@ -35,12 +35,11 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
   const deleteHandler = async () => {
     console.log("delete recipe");
     await deleteFromCollection();
-    await updateUserRecipes();
+    // await updateUserRecipes();
     console.log("sucess");
     navigate(`/users/${auth.currentUser.uid}`);
   };
   const editHandler = async () => {
-    // setEditMood((prev) => !prev);
     if (editMood === true) {
       await addToCollection({
         instructions: instructionsRef.current?.value,
@@ -67,17 +66,18 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
             </div>
             <div>
               <i className="fa-regular fa-star red"></i>&nbsp;LIKES &nbsp;
-              <span>soon...</span>
+              <span className="soon">soon...</span>
             </div>
             <div>
               <i className="fa-regular fa-pen-to-square red"></i>&nbsp; REVIEWS
               &nbsp;
-              <span>soon...</span>
+              <span className="soon">soon...</span>
             </div>
           </div>
-          <div className="flex recipe-settings">
+
+          <div className="flex ">
             <button
-              className="red-round-btn"
+              className="red-round-btn "
               onClick={() => {
                 editHandler();
               }}
@@ -93,6 +93,7 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
               delete
             </button>
           </div>
+
           <div className="recipe-full-profile">
             <div className="big-recipe-img-container">
               <img

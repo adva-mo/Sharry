@@ -26,19 +26,19 @@ function NewUserCard({ dispatchUsers, setCurrentUser, users }) {
       await addToCollection({
         ...newUser,
         email: auth.currentUser.email,
-        recipes: [],
+        // recipes: [],
       });
       await dispatchUsers({
         type: "ADD",
         playload: {
           ...newUser,
           email: auth.currentUser.email,
-          recipes: [],
+          // recipes: [],
           id: auth.currentUser.uid,
         },
       });
       setTimeout(() => {
-        navigate(`/new-recipe`); //todo: navigate to user profile page
+        navigate(`/home`);
       }, 0);
       setCurrentUser((prev) => getUserById(users, auth.currentUser.id));
     } catch (e) {

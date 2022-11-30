@@ -3,8 +3,9 @@
   background-color: transparent;
 }
 .recipe-settings {
-  margin: 1rem;
+  margin: 2.3rem;
   margin-bottom: 3rem;
+  justify-content: space-around !important;
 }
 .big-recipe-img {
   width: 50%;
@@ -34,7 +35,9 @@
 .edit {
   text-decoration: underline;
 }
-/* #instructions-edit{} */
 .ing-title {
   margin-bottom: 1rem;
+}
+.recipe-full-profile {
+  margin-top: 2rem;
 }

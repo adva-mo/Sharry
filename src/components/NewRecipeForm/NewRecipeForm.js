@@ -11,7 +11,6 @@ function NewRecipeForm({ setNewRecipe }) {
 
   const saveHandler = (e) => {
     e.preventDefault();
-    // const data = new FormData(recipeForm.current);
     const newRecipe = Object.fromEntries(new FormData(recipeForm.current));
     recipeForm.current.reset();
     console.log(newRecipe);
@@ -24,7 +23,6 @@ function NewRecipeForm({ setNewRecipe }) {
         className="new-recipe-form flex-column"
         ref={recipeForm}
       >
-        {/* <div className="flex-column"> */}
         <label htmlFor="name">
           <input
             className="text-box dish-name-input"
@@ -59,19 +57,19 @@ function NewRecipeForm({ setNewRecipe }) {
             <label className="dish-type-lable" htmlFor="dish-type">
               <h4>dish type</h4>
               <div className="checkbox-container">
-                <input type="radio" name="dish-type" value="italian" /> &nbsp;
+                <input type="radio" name="type" value="italian" /> &nbsp;
                 italian <br />
-                <input type="radio" name="dish-type" value="fish" />
+                <input type="radio" name="type" value="fish" />
                 &nbsp; fish <br />
-                <input type="radio" name="dish-type" value="meat" />
+                <input type="radio" name="type" value="meat" />
                 &nbsp; meat <br />
-                <input type="radio" name="dish-type" value="desert" />
+                <input type="radio" name="type" value="desert" />
                 &nbsp; desert <br />
-                <input type="radio" name="dish-type" value="salad" />
+                <input type="radio" name="type" value="salad" />
                 &nbsp; salad <br />
-                <input type="radio" name="dish-type" value="vegeterian" />
+                <input type="radio" name="type" value="vegeterian" />
                 &nbsp; vegeterian <br />
-                <input type="radio" name="dish-type" value="asian" />
+                <input type="radio" name="type" value="asian" />
                 &nbsp; asian <br />
               </div>
             </label>

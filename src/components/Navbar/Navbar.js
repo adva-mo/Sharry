@@ -20,15 +20,15 @@ function Navbar() {
           Home
         </NavLink>
       </li>
-      <li>
+      <li className="media-450">
         <NavLink
-          className={(navData) => (navData.isActive ? "active" : "")}
+          className={(navData) => (navData.is ? "active" : "")}
           to={"/explore"}
         >
           Explore
         </NavLink>
       </li>
-      <li>
+      <li className="media-450">
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "")}
           to={"/new-recipe"}
@@ -45,7 +45,7 @@ function Navbar() {
         </NavLink>
       </li>
       {auth.currentUser && (
-        <li>
+        <li className="media-450">
           <NavLink
             className={(navData) => (navData.isActive ? "active" : "")}
             to={`/users/${auth.currentUser?.uid}`}
