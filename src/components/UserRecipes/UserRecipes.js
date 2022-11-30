@@ -16,7 +16,7 @@ function UserRecipes({ userId, recipes }) {
   return (
     <>
       <h3>
-        <span style={{ fontSize: "small" }}>add new recipe</span>{" "}
+        <span style={{ fontSize: "small" }}>YOUR RECIPES COLLECTION</span>{" "}
       </h3>
       <div className="recipes-container flex">
         {userRecipes &&

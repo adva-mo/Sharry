@@ -49,17 +49,18 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
     if (!user) return <LoginPage />;
   }, []);
 
-  if (isLoading || isUpdatingUser) return <Spinner />;
-
   return (
     <>
       {/* {editMood && (
         <UpdateUser
-          userUid={auth.currentUser.uid}
-          setEditMood={setEditMood}
-          dispatchUsers={dispatchUsers}
+        userUid={auth.currentUser.uid}
+        setEditMood={setEditMood}
+        dispatchUsers={dispatchUsers}
         />
       )} */}
+      {isLoading && <Spinner />}
+      {isUpdatingUser && <Spinner />}
+      {/* if (isLoading || isUpdatingUser) return <Spinner />; */}
       <div className="profile-main-box main-content flex">
         <div>
           <div className="flex">

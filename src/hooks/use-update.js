@@ -13,16 +13,16 @@ function useUpdate(collectionName, dispatch, id) {
     userDoc = doc(db, "recipes", id + "");
   }
   const addToCollection = async (newObj) => {
-    console.log(newObj);
+    // console.log(newObj);
     setIsLoading(true);
     setError(null);
     try {
       await updateDoc(userDoc, newObj);
       console.log(`doc updated to ${collectionName} DB`);
-      // collectionNa/me === "recipes"
       dispatch({ type: "EDIT", playload: { id: id, data: newObj } });
-      // : dispatch({ type: "EDIT-USER-ARRAY", playload: { id: userId , recipeId} });
+      setIsLoading(false);
     } catch (e) {
+      setIsLoading(false);
       console.log(e);
     }
   };
