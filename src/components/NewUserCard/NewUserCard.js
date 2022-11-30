@@ -11,7 +11,7 @@ function NewUserCard({ dispatchUsers, setCurrentUser, users }) {
   const navigate = useNavigate();
   let newUser;
 
-  const { addToCollection, isLoading, error } = useAdd(
+  const { addToCollection, isLoading } = useAdd(
     "users",
     dispatchUsers,
     auth.currentUser.uid,

@@ -1,13 +1,7 @@
-import React, { useEffect } from "react";
-// import { auth } from "../../utils/database-config";
+import React from "react";
 import "./SearchDish.css";
 
-function SearchDish({
-  // recipes,
-  setSearchInput,
-  // setrecipesToDisplay,
-  // searchInput,
-}) {
+function SearchDish({ setSearchInput }) {
   return (
     <div className="search-box main-content flex">
       <i className="fa-solid fa-magnifying-glass"></i>

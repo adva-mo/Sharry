@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import SearchDish from "../../components/SearchDish/SearchDish";
 import RecipePreview from "../../components/RecipePreview/RecipePreview";
 import "./ExplrePage.css";
-import { auth } from "../../utils/database-config";
+// import { auth } from "../../utils/database-config";
 import { filteredRecipes } from "../../utils/utils";
 
 function ExplorePage({ recipes, users }) {
   const [searchInput, setSearchInput] = useState("");
   const [recipesToDisplay, setrecipesToDisplay] = useState(recipes);
-  const loggedUser = auth.currentUser?.uid;
+  // const loggedUser = auth.currentUser?.uid;
   // const recipesToDisplay = searchInput === "" ? recipes : "";
   useEffect(() => {
     if (searchInput === "") setrecipesToDisplay(recipes);
-    else setrecipesToDisplay(filteredRecipes(recipes, searchInput)); //function that returns filtered recipes
+    else setrecipesToDisplay(filteredRecipes(recipes, searchInput)); // eslint-disable-next-line
   }, [searchInput]);
 
   return (

@@ -7,20 +7,20 @@ import "./home.css";
 function Home({ recipes, dispatchRecipes, dispatchUsers, users, loggedUser }) {
   const {
     isLoading: isRecipesLoading,
-    error: isRecipesError,
+    // error: isRecipesError,
     getFromCollection: getRecipes,
   } = useGet("recipes", dispatchRecipes);
 
   const {
     isLoading: isUsersLoading,
-    error: isUsersError,
+    // error: isUsersError,
     getFromCollection: getUsers,
   } = useGet("users", dispatchUsers);
 
   useEffect(() => {
     if (users || recipes) return;
     getRecipes();
-    getUsers();
+    getUsers(); // eslint-disable-next-line
   }, []);
 
   if (isRecipesLoading || isUsersLoading) return <Spinner />;

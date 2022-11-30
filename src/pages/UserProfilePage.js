@@ -18,7 +18,7 @@ function UserProfilePage({ users, recipes, dispatchUsers }) {
     // console.log("in use effect");
     if (currentUserProfile) setCurrentUser(currentUserProfile);
     // setCurrentUser(getUserById(users, params.id));
-    if (currentUser) console.log("ok");
+    if (currentUser) console.log("ok"); // eslint-disable-next-line
   }, []);
   // console.log(currentUser);
   return (

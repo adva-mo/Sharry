@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { db, auth } from "../utils/database-config.js";
-import { deleteDoc, collection, doc } from "firebase/firestore";
+import { useState } from "react";
+import { db } from "../utils/database-config.js";
+import { deleteDoc, doc } from "firebase/firestore";
 
 function useDelete(collectionName, dispatch, id) {
   const [isLoading, setIsLoading] = useState(false);

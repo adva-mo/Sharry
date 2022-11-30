@@ -15,7 +15,7 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
   const instructionsRef = useRef();
   const ingrediantsRef = useRef();
 
-  const { deleteFromCollection, isLoading, error } = useDelete(
+  const { deleteFromCollection } = useDelete(
     "recipes",
     dispatchRecipes,
     params.id

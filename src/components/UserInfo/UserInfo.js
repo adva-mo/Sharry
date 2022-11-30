@@ -3,11 +3,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "./UserInfo.css";
 import { auth } from "../../utils/database-config";
 import LoginPage from "../../pages/LoginPage/LoginPage";
-import Logincard from "../LoginCard/LoginCard";
-import UpdateUser from "../UpdateUser/UpdateUser";
+// import Logincard from "../LoginCard/LoginCard";
+// import UpdateUser from "../UpdateUser/UpdateUser";
 import useDelete from "../../hooks/use-delete";
 import { signOut } from "firebase/auth";
-import { getUserRecipes } from "../../utils/utils";
+// import { getUserRecipes } from "../../utils/utils";
 import useUpdate from "../../hooks/use-update";
 import Spinner from "../Spinner/Spinner";
 
@@ -17,7 +17,7 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
   const [editMood, setEditMood] = useState(false);
   const nameRef = useRef();
 
-  const { isLoading, error, deleteFromCollection } = useDelete(
+  const { isLoading, deleteFromCollection } = useDelete(
     "users",
     dispatchUsers,
     id
@@ -45,7 +45,7 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
 
   useEffect(() => {
     if (!user) return <LoginPage />;
-  }, []);
+  }, [user]);
 
   return (
     <>
@@ -53,41 +53,54 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
       {isUpdatingUser && <Spinner />}
       <div className="profile-main-box main-content flex">
         <div>
-          <div className="flex">
-            <div>
-              <h4>
-                PERSONAL INFO
-                <span>
-                  <h6 onClick={(e) => editProfileHandler(e)}>EDIT PROFILE</h6>
-                </span>
-                <span>
-                  <h6 onClick={(e) => deleteProfileHandler(e)}>
-                    DELETE PROFILE
-                  </h6>
-                </span>
-              </h4>
-              <input
-                className="red-round-bg name-input"
-                defaultValue={name}
-                readOnly={!editMood}
-                ref={nameRef}
-              />
-              <img
-                className="big-profile-pic"
-                src={process.env.PUBLIC_URL + "/profile-pic.png"}
-                alt=""
-              />
-            </div>
-            <div>
-              <p>
-                <br />
-                EMAIL: {email || "not-available"}
-                <br />
-                <i className="fa-solid fa-fire-flame-curved"></i>
-              </p>
-            </div>
-          </div>
+          {/* <h4>
+            PERSONAL INFO
+            <span>
+              <h6 onClick={(e) => editProfileHandler(e)}>EDIT PROFILE</h6>
+            </span>
+            <span>
+              <h6 onClick={(e) => deleteProfileHandler(e)}>DELETE PROFILE</h6>
+            </span>
+          </h4>
+          <input
+            className="red-round-bg name-input"
+            defaultValue={name}
+            readOnly={!editMood}
+            ref={nameRef}
+          /> */}
+          <br />
+          <img
+            className="big-profile-pic"
+            src={process.env.PUBLIC_URL + "/assets/user-avatar.png"}
+            alt=""
+          />
         </div>
+
+        <div className="flex-row">
+          <h4>PERSONAL INFO</h4>
+          <div className="name-input-container">
+            <input
+              className="red-round-bg name-input"
+              defaultValue={name}
+              readOnly={!editMood}
+              ref={nameRef}
+            />
+            <span>
+              <i
+                onClick={(e) => editProfileHandler(e)}
+                className="fa-regular fa-pen-to-square"
+              ></i>
+            </span>
+          </div>
+          <br />
+          EMAIL: {email || "not-available"}
+          <br />
+          <i className="fa-solid fa-fire-flame-curved"></i>
+          <span>
+            <h6 onClick={(e) => deleteProfileHandler(e)}>DELETE PROFILE</h6>
+          </span>
+        </div>
+
         <div className="flex-column">
           <NavLink to={"/new-recipe"}>
             <img

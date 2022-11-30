@@ -18,12 +18,13 @@ export const getRecipeById = (recipes, id) => {
 };
 
 export const filteredRecipes = (recipes, searchValue) => {
-  const filtered = recipes.filter((recipe) => {
+  // eslint-disable-next-line
+  return recipes.filter((recipe) => {
     if (
       recipe.share === ("true" || true) &&
       recipe.name.toLowerCase().includes(searchValue.toLowerCase())
     )
       return recipe;
   });
-  return filtered;
+  // return filtered;
 };
