@@ -49,63 +49,54 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
 
   return (
     <>
-      {isLoading && <Spinner />}
-      {isUpdatingUser && <Spinner />}
       <div className="profile-main-box main-content flex">
+        {/* <div> */}
+        {/* <div className="flex"> */}
         <div>
-          {/* <h4>
-            PERSONAL INFO
-            <span>
-              <h6 onClick={(e) => editProfileHandler(e)}>EDIT PROFILE</h6>
-            </span>
-            <span>
-              <h6 onClick={(e) => deleteProfileHandler(e)}>DELETE PROFILE</h6>
-            </span>
-          </h4>
-          <input
-            className="red-round-bg name-input"
-            defaultValue={name}
-            readOnly={!editMood}
-            ref={nameRef}
-          /> */}
-          <br />
           <img
-            className="big-profile-pic"
-            src={process.env.PUBLIC_URL + "/assets/user-avatar.png"}
+            className="btn-pic"
+            src={process.env.PUBLIC_URL + "/assets/user-avatar-new.png"}
             alt=""
           />
         </div>
 
-        <div className="flex-row">
-          <h4>PERSONAL INFO</h4>
-          <div className="name-input-container">
+        <div>
+          <p>
             <input
-              className="red-round-bg name-input"
+              className="red-round-bg name-input cap"
               defaultValue={name}
+              // value={name}
               readOnly={!editMood}
               ref={nameRef}
             />
             <span>
-              <i
-                onClick={(e) => editProfileHandler(e)}
-                className="fa-regular fa-pen-to-square"
-              ></i>
+              <h6 onClick={(e) => editProfileHandler(e)}>
+                EDIT PROFILE{"  "} <i class="fa-regular fa-pen-to-square"></i>
+              </h6>
             </span>
-          </div>
-          <br />
-          EMAIL: {email || "not-available"}
-          <br />
-          <i className="fa-solid fa-fire-flame-curved"></i>
-          <span>
-            <h6 onClick={(e) => deleteProfileHandler(e)}>DELETE PROFILE</h6>
-          </span>
+            <br />
+            EMAIL: {email || "not-available"}
+            <br />
+            {/* {level + " "} */}
+            <i className="fa-solid fa-fire-flame-curved"></i>
+            {/* <br />
+            Recipes:{" "}
+            {getUserRecipes(recipes, auth.currentUser.uid).length > 0
+              ? getUserRecipes(recipes, auth.currentUser.uid).length
+              : "no recipes yet"}
+            <br /> */}
+            {/* SHARED: {recipes?.length || "no SHARED recipes yet"} */}
+            <span>
+              <h6 onClick={(e) => deleteProfileHandler(e)}>DELETE PROFILE</h6>
+            </span>
+          </p>
         </div>
 
-        <div className="flex-column">
+        <div className="flex-column add-new-recipe-plus">
           <NavLink to={"/new-recipe"}>
             <img
               className="btn-pic"
-              src={process.env.PUBLIC_URL + "/btn.png"}
+              src={process.env.PUBLIC_URL + "/assets/spices-btn.png"}
               alt="mypic"
             />
             <br />

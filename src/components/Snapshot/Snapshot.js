@@ -13,7 +13,7 @@ function Snapshot({ description, navigateTo }) {
         navigateTo === "explore" ? "snapshot-explore" : "snapshot-login"
       }
     >
-      <p>{description}</p>
+      <p style={{ marginBottom: "3rem" }}>{description}</p>
       <button
         className="red-round-btn"
         onClick={() => {

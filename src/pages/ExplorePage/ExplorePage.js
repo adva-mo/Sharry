@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import SearchDish from "../../components/SearchDish/SearchDish";
 import RecipePreview from "../../components/RecipePreview/RecipePreview";
 import "./ExplrePage.css";
-// import { auth } from "../../utils/database-config";
 import { filteredRecipes } from "../../utils/utils";
+import { useNavigate } from "react-router-dom";
 
 function ExplorePage({ recipes, users }) {
   const [searchInput, setSearchInput] = useState("");
   const [recipesToDisplay, setrecipesToDisplay] = useState(recipes);
-  // const loggedUser = auth.currentUser?.uid;
-  // const recipesToDisplay = searchInput === "" ? recipes : "";
+  const navigate = useNavigate();
+
   useEffect(() => {
+    if (!recipes) navigate("/home");
     if (searchInput === "") setrecipesToDisplay(recipes);
     else setrecipesToDisplay(filteredRecipes(recipes, searchInput)); // eslint-disable-next-line
   }, [searchInput]);

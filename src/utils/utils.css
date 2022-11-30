@@ -9,6 +9,7 @@
   --light-blue: rgba(230, 247, 251, 1);
   --pink: rgba(255, 124, 139, 0.769);
   --light-gray: rgba(241, 241, 241, 1);
+  --box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 body {
   font-family: "Poppins", sans-serif;
@@ -92,7 +93,7 @@ textarea {
   border-radius: 20px;
   border: none;
   padding: 0.5rem;
-  /* background-color: transparent; */
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 .blue-btn:hover {
   background-color: rgb(156, 215, 249);
@@ -100,7 +101,7 @@ textarea {
 .cap {
   text-transform: capitalize;
 }
-.shadow {
+/* .shadow {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 2px rgba(0, 0, 0, 0.15),
     0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.15);
-}
+} */

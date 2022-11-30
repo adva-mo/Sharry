@@ -9,27 +9,28 @@ function UserProfilePage({ users, recipes, dispatchUsers }) {
   const params = useParams();
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
-  const currentUserProfile = getUserById(users, params.id);
+  let currentUserProfile;
+  if (users) currentUserProfile = getUserById(users, params.id);
 
   // console.log(users);
 
   useEffect(() => {
-    if (!params.id) navigate("/home");
+    if (!users || !params.id) navigate("/home");
     // console.log("in use effect");
     if (currentUserProfile) setCurrentUser(currentUserProfile);
-    // setCurrentUser(getUserById(users, params.id));
-    if (currentUser) console.log("ok"); // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
   // console.log(currentUser);
   return (
     <>
-      {!currentUser ? (
+      {!currentUser && users && (
         <NewUserCard
           dispatchUsers={dispatchUsers}
           setCurrentUser={setCurrentUser}
           users={users}
         />
-      ) : (
+      )}
+      {currentUser && (
         <div>
           <>
             <div className="flex-column main-content bottom-border">
@@ -40,7 +41,7 @@ function UserProfilePage({ users, recipes, dispatchUsers }) {
               />
             </div>
             <div className="flex-column main-content bottom-border">
-              <UserRecipes userId={params.id} recipes={recipes} />
+              <UserRecipes userId={params?.id} recipes={recipes} />
             </div>
           </>
         </div>

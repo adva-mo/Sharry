@@ -52,7 +52,7 @@ function Navbar() {
           >
             <img
               className="small-profile-pic"
-              src={process.env.PUBLIC_URL + "/profile-pic.png"}
+              src={process.env.PUBLIC_URL + "/assets/user-avatar-new.png"}
               alt=""
             />
           </NavLink>

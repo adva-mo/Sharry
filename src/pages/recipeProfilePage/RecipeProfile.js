@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useDelete from "../../hooks/use-delete";
 import { auth } from "../../utils/database-config";
 import useUpdate from "../../hooks/use-update";
+import Spinner from "../../components/Spinner/Spinner";
 
 function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
   const [currentRecipe, setCurrentRecipe] = useState(null);
@@ -15,7 +16,7 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
   const instructionsRef = useRef();
   const ingrediantsRef = useRef();
 
-  const { deleteFromCollection } = useDelete(
+  const { deleteFromCollection, isLoading } = useDelete(
     "recipes",
     dispatchRecipes,
     params.id
@@ -53,6 +54,7 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
     return (
       <>
         {console.log(currentRecipe)}
+        {isLoading && <Spinner />}
         <div className="main-content bottom-border gap recipe-page">
           <div className="flex-column gap">
             <h1 className="cap">{currentRecipe.name || "DISH NAME"}</h1>
