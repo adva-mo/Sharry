@@ -5,13 +5,14 @@ import useAdd from "../../hooks/use-add";
 import { auth } from "../../utils/database-config";
 import { getUserById } from "../../utils/utils";
 import Spinner from "../Spinner/Spinner";
+import Error from "../error/Error";
 
 function NewUserCard({ dispatchUsers, setCurrentUser, users }) {
   const myForm = useRef();
   const navigate = useNavigate();
   let newUser;
 
-  const { addToCollection, isLoading } = useAdd(
+  const { addToCollection, isLoading, error } = useAdd(
     "users",
     dispatchUsers,
     auth.currentUser.uid,
@@ -46,6 +47,8 @@ function NewUserCard({ dispatchUsers, setCurrentUser, users }) {
     }
   };
   if (isLoading) return <Spinner />;
+  if (error) return <Error msg={error} />;
+
   return (
     <form
       ref={myForm}

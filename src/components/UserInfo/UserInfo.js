@@ -10,6 +10,7 @@ import { signOut } from "firebase/auth";
 // import { getUserRecipes } from "../../utils/utils";
 import useUpdate from "../../hooks/use-update";
 import Spinner from "../Spinner/Spinner";
+// import Spinner from "../Spinner/Spinner";
 
 function UserInfo({ currentUser: user, dispatchUsers }) {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
   useEffect(() => {
     if (!user) return <LoginPage />;
   }, [user]);
-
+  if (isLoading || isUpdatingUser) return <Spinner />;
   return (
     <>
       <div className="profile-main-box main-content flex">
@@ -69,11 +70,11 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
               readOnly={!editMood}
               ref={nameRef}
             />
-            <span>
-              <h6 onClick={(e) => editProfileHandler(e)}>
-                EDIT PROFILE{"  "} <i class="fa-regular fa-pen-to-square"></i>
-              </h6>
-            </span>
+            {/* <span> */}
+            <h6 onClick={(e) => editProfileHandler(e)}>
+              EDIT PROFILE{"  "} <i className="fa-regular fa-pen-to-square"></i>
+            </h6>
+            {/* </span> */}
             <br />
             EMAIL: {email || "not-available"}
             <br />
@@ -86,9 +87,9 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
               : "no recipes yet"}
             <br /> */}
             {/* SHARED: {recipes?.length || "no SHARED recipes yet"} */}
-            <span>
-              <h6 onClick={(e) => deleteProfileHandler(e)}>DELETE PROFILE</h6>
-            </span>
+            {/* <span> */}
+            <h6 onClick={(e) => deleteProfileHandler(e)}>DELETE PROFILE</h6>
+            {/* </span> */}
           </p>
         </div>
 

@@ -107,3 +107,19 @@ textarea {
   transform: rotate(40deg);
   font-size: small;
 }
+.error-modal {
+  position: fixed;
+  top: 3rem;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 30;
+  width: 100vw;
+  height: 95vh;
+}
+.error-modal p {
+  background-color: white;
+  color: var(--red);
+  padding: 3rem;
+  border-radius: 10px;
+  border: var(--red) 2px solid;
+}

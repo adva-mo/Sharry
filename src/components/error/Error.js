@@ -1,8 +1,8 @@
 import React from "react";
 import "./error.css";
 
-function Error() {
-  return <div>Error</div>;
+function Error({ msg }) {
+  return <div className="error-modal">{msg}</div>;
 }
 
 export default Error;

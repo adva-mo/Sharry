@@ -10,6 +10,7 @@ function ExplorePage({ recipes, users }) {
   const [recipesToDisplay, setrecipesToDisplay] = useState(recipes);
   const navigate = useNavigate();
 
+  // const {}=useGet("recipes")
   useEffect(() => {
     if (!recipes) navigate("/home");
     if (searchInput === "") setrecipesToDisplay(recipes);

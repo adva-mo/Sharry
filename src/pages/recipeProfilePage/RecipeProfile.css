@@ -41,3 +41,16 @@
 .recipe-full-profile {
   margin-top: 2rem;
 }
+@media (max-width: 450px) {
+  .recipe-page {
+    width: 100vw;
+  }
+  .recipe-settings {
+    /* width: 100vw; */
+    padding: 0;
+    margin: 1rem 0;
+  }
+  .main-content {
+    margin: 0;
+  }
+}

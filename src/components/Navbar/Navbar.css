@@ -27,8 +27,8 @@
   border-radius: 90%;
 }
 .logo-img {
-  width: 5rem;
-  transform: translateY(-0.4rem);
+  width: 7rem;
+  transform: translateY(-0.7rem);
 }
 @media (max-width: 450px) {
   .media-450 {

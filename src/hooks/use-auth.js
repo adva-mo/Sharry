@@ -15,11 +15,12 @@ const useAuth = (email, password, action) => {
       const userId = auth.currentUser.uid;
       setIsLoading((prev) => false);
       if (userId) navigate(`/users/${userId}`);
-      else throw new Error("");
+      // else throw new Error("");
     } catch (e) {
       setIsLoading((prev) => false);
       setError(e.message);
       console.log(e.message);
+      // return <div className="error-modal">{e.message}</div>;
     }
   };
 
@@ -27,6 +28,7 @@ const useAuth = (email, password, action) => {
     authentication,
     isLoading,
     error,
+    setError,
   };
 };
 export default useAuth;

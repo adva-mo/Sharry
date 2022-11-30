@@ -1,7 +1,6 @@
 import React from "react";
 import "./LoginCard.css";
 import useInput from "../../hooks/use-input";
-// import { useNavigate } from "react-router-dom";
 //todo: display errors
 
 const isEmailInputValid = (value) => value.trim() !== "" && value.includes("@");
@@ -14,8 +13,6 @@ function Logincard({
   isNewUser,
   setIsNewUser,
 }) {
-  // const navigate = useNavigate();
-
   const {
     value: emailValue,
     isValid: isEmailValid,
@@ -73,6 +70,7 @@ function Logincard({
         />
         {emailHasError && (
           <>
+            {/* <Error /> */}
             <p className="error-text">please enter a valid email</p>
             <p className="error-text">for example: example@example.com</p>
           </>

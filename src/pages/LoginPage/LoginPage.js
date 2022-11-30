@@ -5,7 +5,7 @@ import useAuth from "../../hooks/use-auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Spinner from "../../components/Spinner/Spinner";
-
+// import Error from "../../components/error/Error";
 function LoginPage() {
   const [isNewUser, setIsNewUser] = useState(true);
 
@@ -16,6 +16,7 @@ function LoginPage() {
     authentication: registerUser,
     isLoading: isResigtering,
     error: registerError,
+    setError: setRegisterError,
   } = useAuth(
     emailToRegister,
     passwordToRegister,
@@ -25,6 +26,7 @@ function LoginPage() {
     authentication: loginUser,
     isLoading: isLogin,
     error: LoginError,
+    setError: setLoginError,
   } = useAuth(emailToRegister, passwordToRegister, signInWithEmailAndPassword);
 
   useEffect(() => {
@@ -47,7 +49,16 @@ function LoginPage() {
       console.log(e);
     }
   };
+
+  const handleErrors = (type) => {
+    if (type === "login") setLoginError(null);
+    else if (type === "register") setRegisterError(null);
+    setEmailToRegister(null);
+    setPasswordToRegister(null);
+  };
+
   if (isLogin || isResigtering) return <Spinner />;
+
   return (
     <div className="login-page">
       <img
@@ -55,8 +66,26 @@ function LoginPage() {
         src={process.env.PUBLIC_URL + "/assets/login-hero.png"}
         alt=""
       />
-      {registerError && <p>{"email is already in use"}</p>}
-      {LoginError && <p>{"incorrect password"}</p>}
+      {registerError && (
+        <div
+          onClick={() => {
+            handleErrors("register");
+          }}
+          className="error-modal flex-column"
+        >
+          <p>{"email is already in use"}</p>
+        </div>
+      )}
+      {LoginError && (
+        <div
+          onClick={() => {
+            handleErrors("login");
+          }}
+          className="error-modal flex-column"
+        >
+          <p>{"incorrect password"}</p>
+        </div>
+      )}
       <LoginCard
         setEmailToRegister={setEmailToRegister}
         setPasswordToRegister={setPasswordToRegister}

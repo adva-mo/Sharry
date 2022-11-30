@@ -15,7 +15,7 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
   const navigate = useNavigate();
   const instructionsRef = useRef();
   const ingrediantsRef = useRef();
-
+  // console.log(currentRecipe.owner);
   const { deleteFromCollection, isLoading } = useDelete(
     "recipes",
     dispatchRecipes,
@@ -23,11 +23,7 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
   );
 
   const { addToCollection } = useUpdate("recipes", dispatchRecipes, params.id);
-  // const { addToCollection: updateUserRecipes } = useUpdate(
-  //   "users",
-  //   dispatchUsers,
-  //   auth.currentUser.uid
-  // );
+
   useEffect(() => {
     setCurrentRecipe(getRecipeById(recipes, params.id));
   }, [recipes, params.id]);
@@ -35,7 +31,6 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
   const deleteHandler = async () => {
     console.log("delete recipe");
     await deleteFromCollection();
-    // await updateUserRecipes();
     console.log("sucess");
     navigate(`/users/${auth.currentUser.uid}`);
   };
@@ -52,7 +47,7 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
   if (currentRecipe)
     return (
       <>
-        {console.log(currentRecipe)}
+        {/* {console.log(currentRecipe)} */}
         {isLoading && <Spinner />}
         <div className="main-content bottom-border gap recipe-page">
           <div className="flex-column gap">
@@ -75,24 +70,26 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
             </div>
           </div>
 
-          <div className="flex ">
-            <button
-              className="red-round-btn "
-              onClick={() => {
-                editHandler();
-              }}
-            >
-              {editMood ? "CONFIRM" : "EDIT"}
-            </button>
-            <button
-              className="red-round-btn"
-              onClick={() => {
-                deleteHandler();
-              }}
-            >
-              delete
-            </button>
-          </div>
+          {currentRecipe.owner === auth.currentUser.uid && (
+            <div className="flex ">
+              <button
+                className="red-round-btn "
+                onClick={() => {
+                  editHandler();
+                }}
+              >
+                {editMood ? "CONFIRM" : "EDIT"}
+              </button>
+              <button
+                className="red-round-btn"
+                onClick={() => {
+                  deleteHandler();
+                }}
+              >
+                delete
+              </button>
+            </div>
+          )}
 
           <div className="recipe-full-profile">
             <div className="big-recipe-img-container">

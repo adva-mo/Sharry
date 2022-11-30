@@ -1,7 +1,6 @@
 //! logic
 //  hide api keys
 //  error component
-// add use affect to get recipes if not logged
 
 //! extra
 // search dishes by terms
@@ -12,7 +11,7 @@
 //! design:
 //  buttons in profile page
 //  underlne navbar links
-// recipe preview
+//  recipe preview
 //  when editing, sign the user
 //  responsive
 
