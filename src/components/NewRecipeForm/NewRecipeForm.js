@@ -38,7 +38,7 @@ function NewRecipeForm({ setNewRecipe }) {
           <input type="radio" name="share" value="false" /> no
         </label>
         {/* </div> */}
-        <div className="flex recipe-settings-box" style={{ gap: "4rem" }}>
+        <div className="flex recipe-settings-box">
           <div className="radio-input-box">
             <label htmlFor="time">
               <h4 id="cooking-time-radio">cooking time</h4>

@@ -2,6 +2,8 @@
 //  hide api keys
 // how to skip the top of the page
 
+//!becaus of the spinner in user profile page the state is getting lost update isnt saved
+
 //! extra
 //  search dishes by terms
 //  save other user recipes

@@ -18,7 +18,7 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
   const [editMood, setEditMood] = useState(false);
   const nameRef = useRef();
 
-  const { isLoading, deleteFromCollection } = useDelete(
+  const { isLoading: isDeleting, deleteFromCollection } = useDelete(
     "users",
     dispatchUsers,
     id
@@ -30,9 +30,9 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
     id
   );
 
-  const editProfileHandler = (e) => {
+  const editProfileHandler = async (e) => {
     if (editMood) {
-      addToCollection({ name: nameRef.current.value, email: email });
+      await addToCollection({ name: nameRef.current.value, email: email });
       setEditMood((prev) => !prev);
     } else setEditMood((prev) => !prev);
   };
@@ -47,9 +47,11 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
   useEffect(() => {
     if (!user) return <LoginPage />;
   }, [user]);
-  if (isLoading || isUpdatingUser) return <Spinner />;
   return (
     <>
+      {/* if (isLoading || isUpdatingUser) return <Spinner />; */}
+      {isDeleting && <Spinner />}
+      {isUpdatingUser && <Spinner />}
       <div className="profile-main-box main-content flex">
         {/* <div> */}
         {/* <div className="flex"> */}
@@ -88,14 +90,6 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
             <br />
             {/* {level + " "} */}
             <i className="fa-solid fa-fire-flame-curved"></i>
-            {/* <br />
-            Recipes:{" "}
-            {getUserRecipes(recipes, auth.currentUser.uid).length > 0
-              ? getUserRecipes(recipes, auth.currentUser.uid).length
-              : "no recipes yet"}
-            <br /> */}
-            {/* SHARED: {recipes?.length || "no SHARED recipes yet"} */}
-            {/* <span> */}
             <h6 onClick={(e) => deleteProfileHandler(e)}>DELETE PROFILE</h6>
             {/* </span> */}
           </p>
@@ -104,7 +98,7 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
         <div className="flex-column add-new-recipe-plus">
           <NavLink to={"/new-recipe"}>
             <img
-              className="btn-pic"
+              className="btn-pic plus-btn"
               src={process.env.PUBLIC_URL + "/assets/spices-btn.png"}
               alt="mypic"
             />

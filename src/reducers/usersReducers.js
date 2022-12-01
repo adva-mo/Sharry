@@ -1,4 +1,4 @@
-import { getUserById, getUserRecipes } from "../utils/utils";
+import { getUserById } from "../utils/utils";
 
 export const usersReducers = (state, action) => {
   switch (action.type) {
@@ -40,11 +40,11 @@ export const addUser = (obj, state) => {
 };
 
 export const editUser = (config, state) => {
-  const recipes = getUserRecipes(state, config.id);
+  // const recipes = getUserRecipes(state, config.id);
   const filtered = state.filter((user) => {
     return user.id !== config.id;
   });
-  const merged = { ...config.data, id: config.id, recipes: [...recipes] };
+  const merged = { ...config.data, id: config.id };
   console.log(merged);
   return [...filtered, merged];
 };
