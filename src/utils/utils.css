@@ -22,6 +22,9 @@ a {
 button {
   font-family: "Poppins", sans-serif;
 }
+.recipes-container {
+  width: 90vw;
+}
 input,
 textarea {
   outline: none;

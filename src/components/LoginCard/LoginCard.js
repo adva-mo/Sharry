@@ -6,10 +6,12 @@ import useInput from "../../hooks/use-input";
 const isEmailInputValid = (value) => value.trim() !== "" && value.includes("@");
 const isPasswordInputValid = (value) =>
   value.trim() !== "" && value.length >= 6;
+// const isPasswordConfirmed = (password1, password2) => password1 === password2;
 
 function Logincard({
   setPasswordToRegister,
   setEmailToRegister,
+  setConfirmedPssword,
   isNewUser,
   setIsNewUser,
 }) {
@@ -31,27 +33,48 @@ function Logincard({
     reset: resetPassword,
   } = useInput(isPasswordInputValid);
 
+  const {
+    value: confirmedPasswordValue,
+    isTouched,
+    valueChangeHandler: confirmedpasswordChangeHandler,
+    inputBlurHandler: confirmedpasswordBlurHandler,
+    reset: resetConfirmedPassword,
+  } = useInput(isPasswordInputValid);
+
+  const confirmedPasswordHasError =
+    isTouched && confirmedPasswordValue !== passwordValue;
+
+  if (confirmedPasswordHasError) console.log("kkk");
   const emailClasses = emailHasError
     ? "error-class and bottom-border"
     : "bottom-border";
   const passwordClasses = passwordHasError
     ? "error-class and bottom-border"
     : "bottom-border";
+  const confirmedPasswordClasses = confirmedPasswordHasError
+    ? "error-class and bottom-border"
+    : "bottom-border";
+
   let isFormValid = false;
 
-  if (isEmailValid && isPasswordValid) {
+  if (
+    isEmailValid &&
+    isPasswordValid &&
+    !confirmedPasswordHasError
+    // confirmedPasswordValue === passwordValue
+  ) {
     isFormValid = true;
   }
 
   const formSubmissionHandler = (e) => {
     e.preventDefault();
     if (!isFormValid) return;
-    // console.log("submitted");
-    // console.log(emailValue, passwordValue);
+    setEmailToRegister(emailValue);
+    setPasswordToRegister(passwordValue);
+    setConfirmedPssword(confirmedPasswordValue);
     resetEmail();
     resetPassword();
-    setPasswordToRegister(passwordValue);
-    setEmailToRegister(emailValue);
+    resetConfirmedPassword();
   };
 
   return (
@@ -69,17 +92,17 @@ function Logincard({
           onBlur={emailBlurHndler}
         />
         {emailHasError && (
-          <>
-            {/* <Error /> */}
-            <p className="error-text">please enter a valid email</p>
-            <p className="error-text">for example: example@example.com</p>
-          </>
+          <p className="error-text">
+            please enter a valid email
+            <br />
+            for example: example@example.com
+          </p>
         )}
         <label htmlFor="password">password</label>
         <input
           className={passwordClasses}
           placeholder="enter your password"
-          type="password"
+          type="text"
           name="password"
           value={passwordValue}
           onChange={passwordChangeHandler}
@@ -87,6 +110,19 @@ function Logincard({
         />
         {passwordHasError && (
           <p className="error-text">password must contain at least 6 digits</p>
+        )}
+        <label htmlFor="confirmedPassword">password</label>
+        <input
+          className={confirmedPasswordClasses}
+          placeholder="repeat your password"
+          type="text"
+          name="confirmedPassword"
+          value={confirmedPasswordValue}
+          onChange={confirmedpasswordChangeHandler}
+          onBlur={confirmedpasswordBlurHandler}
+        />
+        {confirmedPasswordHasError && (
+          <p className="error-text">password must be the same</p>
         )}
 
         <button disabled={!isFormValid} className="red-round-btn">

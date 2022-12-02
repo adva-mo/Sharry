@@ -11,6 +11,7 @@ function LoginPage() {
 
   const [emailToRegister, setEmailToRegister] = useState(null);
   const [passwordToRegister, setPasswordToRegister] = useState(null);
+  const [confirmedPssword, setConfirmedPssword] = useState(null);
 
   const {
     authentication: registerUser,
@@ -89,6 +90,7 @@ function LoginPage() {
       <LoginCard
         setEmailToRegister={setEmailToRegister}
         setPasswordToRegister={setPasswordToRegister}
+        setConfirmedPssword={setConfirmedPssword}
         isNewUser={isNewUser}
         setIsNewUser={setIsNewUser}
       />

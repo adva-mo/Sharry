@@ -2,8 +2,6 @@
 //  hide api keys
 // how to skip the top of the page
 
-//!becaus of the spinner in user profile page the state is getting lost update isnt saved
-
 //! extra
 //  search dishes by terms
 //  save other user recipes
@@ -12,8 +10,6 @@
 
 //! design:
 //  fix sample pictures all over the app
-//  when editing, make it clear to the user recipe profile
-//  responsive !
 //  in recipe profile- make pic smaller and move button to the right
 
 //! data straucture:

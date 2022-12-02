@@ -21,7 +21,7 @@ export const filteredRecipes = (recipes, searchValue) => {
   // eslint-disable-next-line
   return recipes.filter((recipe) => {
     if (
-      recipe.share === ("true" || true) &&
+      recipe.share === "true" &&
       recipe.name.toLowerCase().includes(searchValue.toLowerCase())
     )
       return recipe;

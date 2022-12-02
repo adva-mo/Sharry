@@ -6,11 +6,19 @@ import { filteredRecipes } from "../../utils/utils";
 import { useNavigate } from "react-router-dom";
 
 function ExplorePage({ recipes, users }) {
-  const [searchInput, setSearchInput] = useState("");
-  const [recipesToDisplay, setrecipesToDisplay] = useState(recipes);
   const navigate = useNavigate();
+  const [searchInput, setSearchInput] = useState("");
+  const [recipesToDisplay, setrecipesToDisplay] = useState(null);
 
-  // const {}=useGet("recipes")
+  const filtered = recipes?.filter((recipe) => {
+    // console.log(recipe);
+    return recipe.share == "false";
+  });
+
+  useEffect(() => {
+    setrecipesToDisplay((prev) => filtered);
+  }, []);
+
   useEffect(() => {
     if (!recipes) navigate("/home");
     if (searchInput === "") setrecipesToDisplay(recipes);
