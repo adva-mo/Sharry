@@ -12,15 +12,15 @@ function useAdd(collectionName, dispatch, id, action) {
     setError(null);
 
     userDoc = doc(db, collectionName, id);
-    console.log(id);
+    // console.log(id);
     try {
       console.log(newObj);
       await action(userDoc, newObj);
-      console.log(`doc added to ${collectionName} collection`);
+      // console.log(`doc added to ${collectionName} collection`);
       setIsLoading((prev) => false);
     } catch (e) {
       setIsLoading((prev) => false);
-      console.log("error");
+      // console.log("error");
       console.log(e);
     }
   };

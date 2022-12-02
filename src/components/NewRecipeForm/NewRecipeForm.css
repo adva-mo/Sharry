@@ -7,7 +7,7 @@
 }
 .recipe-settings-box {
   /* background-color: ; */
-  background: url("../../../public/assets/new-recipe.png") center center/cover;
+  /* background: url("../../../public/assets/new-recipe.png") center center/cover; */
   position: relative;
   border-radius: 10px;
   padding: 1rem;

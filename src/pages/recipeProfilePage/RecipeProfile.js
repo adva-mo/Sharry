@@ -4,18 +4,26 @@ import RecipePreview from "../../components/RecipePreview/RecipePreview";
 import { getRecipeById } from "../../utils/utils";
 import { useNavigate, useParams } from "react-router-dom";
 import useDelete from "../../hooks/use-delete";
-import { auth } from "../../utils/database-config";
+import { auth, storage } from "../../utils/database-config";
 import useUpdate from "../../hooks/use-update";
 import Spinner from "../../components/Spinner/Spinner";
+import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
+import UseUploadImage from "../../hooks/use-uploadImage";
 
-function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
+function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
   const [currentRecipe, setCurrentRecipe] = useState(null);
   const [editMood, setEditMood] = useState(false);
+  const [imageUpload, setImageUpload] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
+
   const params = useParams();
   const navigate = useNavigate();
   const instructionsRef = useRef();
   const ingrediantsRef = useRef();
-  // console.log(currentRecipe.owner);
+
+  const imageListRef = ref(storage, `recipes-pics/${currentRecipe?.id}`);
+
   const { deleteFromCollection, isLoading } = useDelete(
     "recipes",
     dispatchRecipes,
@@ -24,9 +32,27 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
 
   const { addToCollection } = useUpdate("recipes", dispatchRecipes, params.id);
 
+  const {
+    uploadImage,
+    isLoading: isUploadingImage,
+    eror: uploadingImageError,
+  } = UseUploadImage(
+    `recipes-pics/${currentRecipe?.id}/${imageUpload?.name + v4()}`,
+    imageUpload
+  );
+
   useEffect(() => {
     setCurrentRecipe(getRecipeById(recipes, params.id));
   }, [recipes, params.id]);
+
+  useEffect(() => {
+    if (!currentRecipe) return;
+    listAll(imageListRef)
+      .then((response) => {
+        getDownloadURL(response.items[0]).then((url) => setImageUrl(url));
+      })
+      .catch((e) => console.log(e.message));
+  }, [currentRecipe]);
 
   const deleteHandler = async () => {
     console.log("delete recipe");
@@ -44,11 +70,23 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
     } else setEditMood((prev) => !prev);
   };
 
+  // const uploadImage = () => {
+  //   if (imageUpload === null) return;
+  //   const imageRef = ref(
+  //     storage,
+  //     `recipes-pics/${currentRecipe.id}/${imageUpload.name + v4()}`
+  //   );
+  //   uploadBytes(imageRef, imageUpload)
+  //     .then(() => {
+  //       alert("image uploaded!");
+  //     })
+  //     .catch((e) => console.log(e.message));
+  // };
+
   if (currentRecipe)
     return (
       <>
-        {/* {console.log(currentRecipe)} */}
-        {isLoading && <Spinner />}
+        {isLoading || (isUploadingImage && <Spinner />)}
         <div className="main-content bottom-border gap recipe-page">
           <div className="flex-column gap">
             <h1 className="cap">{currentRecipe.name || "DISH NAME"}</h1>
@@ -72,11 +110,7 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
 
           <div className="recipe-full-profile">
             <div className="big-recipe-img-container">
-              <img
-                className="big-recipe-img"
-                src={process.env.PUBLIC_URL + "/assets/recipe-main-pic.png"}
-                alt=""
-              />
+              <img className="big-recipe-img" src={imageUrl} alt="" />
               <div className="ingrediants-container ">
                 <span className={editMood ? "ing-title" : "ing-title"}>
                   ingrediants: <br />
@@ -109,6 +143,11 @@ function RecipeProfile({ recipes, ownToUser, dispatchUsers, dispatchRecipes }) {
               >
                 DELETE
               </button>
+              <button onClick={uploadImage}>upload image</button>
+              <input
+                type="file"
+                onChange={(e) => setImageUpload(e.target.files[0])}
+              />
             </div>
           )}
           <div className="main-content instructions-container">

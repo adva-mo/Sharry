@@ -23,7 +23,7 @@
   width: 50%;
   height: 50%;
   position: absolute;
-  background: url("../../../public/assets/white-plus.png") center center/cover;
+  /* background: url("../../../public/assets/white-plus.png") center center/cover; */
   top: 15%;
   left: 25%;
   z-index: 10;

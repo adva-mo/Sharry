@@ -1,6 +1,9 @@
 //! logic
 //  hide api keys
-// how to skip the top of the page
+//  how to skip the top of the page
+//  refactor add/get/delete/update hooks
+//  use context for the app reducer instead of passing throu props
+//  refactor upload image button/edit/delete to a component/hook
 
 //! extra
 //  search dishes by terms

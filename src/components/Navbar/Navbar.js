@@ -9,7 +9,7 @@ function Navbar() {
     <ul className="navbar-ul">
       <img
         className="logo-img"
-        src={process.env.PUBLIC_URL + "/assets/logo.png"}
+        src="https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/assets%2Flogo.png?alt=media&token=026310f7-4bdc-4b4b-ba0a-52f0696d5988"
         alt=""
       />
       <li>
@@ -52,7 +52,7 @@ function Navbar() {
           >
             <img
               className="small-profile-pic"
-              src={process.env.PUBLIC_URL + "/assets/user-avatar-new.png"}
+              src="https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/assets%2Fuser-avatar.png?alt=media&token=7e45390b-7805-4d0b-a31b-508583923459"
               alt=""
             />
           </NavLink>
