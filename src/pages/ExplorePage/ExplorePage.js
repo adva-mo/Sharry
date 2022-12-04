@@ -5,24 +5,18 @@ import "./ExplrePage.css";
 import { filteredRecipes } from "../../utils/utils";
 import { useNavigate } from "react-router-dom";
 
-function ExplorePage({ recipes, users }) {
+function ExplorePage({ recipes }) {
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState("");
-  const [recipesToDisplay, setrecipesToDisplay] = useState(null);
-
-  const filtered = recipes?.filter((recipe) => {
-    console.log(recipe.share);
-    return recipe.share === "true";
-  });
-  console.log(filtered);
-
-  useEffect(() => {
-    setrecipesToDisplay((prev) => filtered);
-  }, []);
+  const [recipesToDisplay, setrecipesToDisplay] = useState(
+    recipes?.filter((recipe) => {
+      return recipe.share === "true";
+    })
+  );
 
   useEffect(() => {
     if (!recipes) navigate("/home");
-    if (searchInput === "") setrecipesToDisplay(recipes);
+    if (searchInput === "") setrecipesToDisplay(recipesToDisplay);
     else setrecipesToDisplay(filteredRecipes(recipes, searchInput)); // eslint-disable-next-line
   }, [searchInput]);
 
@@ -40,7 +34,7 @@ function ExplorePage({ recipes, users }) {
       />
       <div className="recipes-container flex">
         {" "}
-        {filtered?.map((recipe) => {
+        {recipesToDisplay?.map((recipe) => {
           return <RecipePreview key={recipe.id} color={"pink"} {...recipe} />;
         })}
       </div>

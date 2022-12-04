@@ -10,7 +10,7 @@ function LoginPage() {
   const [isNewUser, setIsNewUser] = useState(true);
 
   const [emailToRegister, setEmailToRegister] = useState(null);
-  const [passwordToRegister, setPasswordToRegister] = useState(null);
+  const [passwordToRegister, setPasswordToRegister] = useState(null); // eslint-disable-next-line
   const [confirmedPssword, setConfirmedPssword] = useState(null);
 
   const {

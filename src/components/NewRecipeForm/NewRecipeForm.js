@@ -4,13 +4,14 @@ import UseUploadImage from "../../hooks/use-uploadImage";
 import { auth, storage } from "../../utils/database-config";
 import { v4 } from "uuid";
 import "./NewRecipeForm.css";
+import Spinner from "../Spinner/Spinner";
 
 function NewRecipeForm({ setNewRecipe, newRecipeId }) {
   const [imageToUpload, setImageToUpload] = useState(null);
   const recipeForm = useRef();
   const currentUserId = auth.currentUser?.uid || null;
 
-  const { isLoading, error, uploadImage } = UseUploadImage();
+  const { isLoading, uploadImage } = UseUploadImage();
 
   const saveHandler = async (e) => {
     const imageId = v4();
@@ -42,6 +43,7 @@ function NewRecipeForm({ setNewRecipe, newRecipeId }) {
 
   return (
     <div className="flex new-recipe-container">
+      {isLoading && <Spinner />}
       <form
         onSubmit={saveHandler}
         className="new-recipe-form flex-column"

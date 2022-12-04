@@ -4,25 +4,20 @@ import RecipePreview from "../../components/RecipePreview/RecipePreview";
 import { getRecipeById } from "../../utils/utils";
 import { useNavigate, useParams } from "react-router-dom";
 import useDelete from "../../hooks/use-delete";
-import { auth, storage } from "../../utils/database-config";
+import { auth } from "../../utils/database-config";
 import useUpdate from "../../hooks/use-update";
 import Spinner from "../../components/Spinner/Spinner";
-import { ref, listAll, getDownloadURL } from "firebase/storage";
-import { v4 } from "uuid";
-import UseUploadImage from "../../hooks/use-uploadImage";
+// import UseUploadImage from "../../hooks/use-uploadImage";
 
 function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
   const [currentRecipe, setCurrentRecipe] = useState(null);
   const [editMood, setEditMood] = useState(false);
-  const [imageUpload, setImageUpload] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
+  // const [imageUpload, setImageUpload] = useState(null);
 
   const params = useParams();
   const navigate = useNavigate();
   const instructionsRef = useRef();
   const ingrediantsRef = useRef();
-
-  // const imageListRef = ref(storage, `recipes-pics/${currentRecipe?.id}`);
 
   const { deleteFromCollection, isLoading } = useDelete(
     "recipes",
@@ -32,33 +27,15 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
 
   const { addToCollection } = useUpdate("recipes", dispatchRecipes, params.id);
 
-  const {
-    uploadImage,
-    isLoading: isUploadingImage,
-    eror: uploadingImageError,
-  } = UseUploadImage();
+  // const {
+  //   uploadImage,
+  //   isLoading: isUploadingImage,
+  //   // eror: uploadingImageError,
+  // } = UseUploadImage();
 
   useEffect(() => {
     setCurrentRecipe(getRecipeById(recipes, params.id));
   }, [recipes, params.id]);
-
-  useEffect(() => {
-    console.log("inuse effect");
-    if (!currentRecipe) return;
-    const imageListRef = ref(storage, `recipes-pics/${currentRecipe?.id}`);
-
-    listAll(imageListRef)
-      .then((response) => {
-        console.log(response);
-        const lastImg = response.items.pop();
-        // console.log(lastImg);
-        getDownloadURL(lastImg).then((url) => {
-          // console.log(url);
-          setImageUrl((prev) => url);
-        });
-      })
-      .catch((e) => console.log(e.message));
-  }, [currentRecipe, imageUrl]);
 
   const deleteHandler = async () => {
     await deleteFromCollection();
@@ -78,7 +55,7 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
     return (
       <>
         {isLoading && <Spinner />}
-        {isUploadingImage && <Spinner />}
+        {/* {isUploadingImage && <Spinner />} */}
         <div className="main-content bottom-border gap recipe-page">
           <div className="flex-column gap">
             <h1 className="cap">{currentRecipe.name || "DISH NAME"}</h1>
@@ -142,7 +119,7 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
               >
                 DELETE
               </button>
-              <button
+              {/* <button
                 onClick={() => {
                   if (!imageUpload) return;
                   uploadImage(
@@ -158,7 +135,7 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
               <input
                 type="file"
                 onChange={(e) => setImageUpload(e.target.files[0])}
-              />
+              /> */}
             </div>
           )}
           <div className="main-content instructions-container">
@@ -176,6 +153,7 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
         <h2 className="sub-title">MORE DISHES</h2>
         <div className="recipes-container flex">
           {recipes?.map((recipe) => {
+            //
             return <RecipePreview key={recipe.id} {...recipe} id={recipe.id} />;
           })}
         </div>
