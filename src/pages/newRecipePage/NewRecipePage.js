@@ -43,7 +43,7 @@ function NewRecipePage({ dispatchRecipes }) {
     <div className="new-recipe-page">
       {/* {isLoading && <Spinner />} */}
       {!isLoading && loggedUserCtx?.uid ? (
-        <NewRecipeForm setNewRecipe={setNewRecipe} />
+        <NewRecipeForm setNewRecipe={setNewRecipe} newRecipeId={newRecipeId} />
       ) : (
         <LoginPage />
       )}

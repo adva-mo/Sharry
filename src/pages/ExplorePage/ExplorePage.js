@@ -11,9 +11,10 @@ function ExplorePage({ recipes, users }) {
   const [recipesToDisplay, setrecipesToDisplay] = useState(null);
 
   const filtered = recipes?.filter((recipe) => {
-    // console.log(recipe);
-    return recipe.share == "false";
+    console.log(recipe.share);
+    return recipe.share === "true";
   });
+  console.log(filtered);
 
   useEffect(() => {
     setrecipesToDisplay((prev) => filtered);
@@ -29,7 +30,7 @@ function ExplorePage({ recipes, users }) {
     <div className="explore-hero flex-column">
       <img
         className="hero-img"
-        src={process.env.PUBLIC_URL + "/assets/explore-hero.png"}
+        src="https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/assets%2Fexplore-hero.png?alt=media&token=25a2d2d0-7558-4ea9-9647-1e13a156f75a"
         alt=""
       />
       <SearchDish
@@ -39,7 +40,7 @@ function ExplorePage({ recipes, users }) {
       />
       <div className="recipes-container flex">
         {" "}
-        {recipesToDisplay?.map((recipe) => {
+        {filtered?.map((recipe) => {
           return <RecipePreview key={recipe.id} color={"pink"} {...recipe} />;
         })}
       </div>

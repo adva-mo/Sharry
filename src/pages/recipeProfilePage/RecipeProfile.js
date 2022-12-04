@@ -7,7 +7,7 @@ import useDelete from "../../hooks/use-delete";
 import { auth, storage } from "../../utils/database-config";
 import useUpdate from "../../hooks/use-update";
 import Spinner from "../../components/Spinner/Spinner";
-import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+import { ref, listAll, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
 import UseUploadImage from "../../hooks/use-uploadImage";
 
@@ -22,7 +22,7 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
   const instructionsRef = useRef();
   const ingrediantsRef = useRef();
 
-  const imageListRef = ref(storage, `recipes-pics/${currentRecipe?.id}`);
+  // const imageListRef = ref(storage, `recipes-pics/${currentRecipe?.id}`);
 
   const { deleteFromCollection, isLoading } = useDelete(
     "recipes",
@@ -36,28 +36,32 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
     uploadImage,
     isLoading: isUploadingImage,
     eror: uploadingImageError,
-  } = UseUploadImage(
-    `recipes-pics/${currentRecipe?.id}/${imageUpload?.name + v4()}`,
-    imageUpload
-  );
+  } = UseUploadImage();
 
   useEffect(() => {
     setCurrentRecipe(getRecipeById(recipes, params.id));
   }, [recipes, params.id]);
 
   useEffect(() => {
+    console.log("inuse effect");
     if (!currentRecipe) return;
+    const imageListRef = ref(storage, `recipes-pics/${currentRecipe?.id}`);
+
     listAll(imageListRef)
       .then((response) => {
-        getDownloadURL(response.items[0]).then((url) => setImageUrl(url));
+        console.log(response);
+        const lastImg = response.items.pop();
+        // console.log(lastImg);
+        getDownloadURL(lastImg).then((url) => {
+          // console.log(url);
+          setImageUrl((prev) => url);
+        });
       })
       .catch((e) => console.log(e.message));
-  }, [currentRecipe]);
+  }, [currentRecipe, imageUrl]);
 
   const deleteHandler = async () => {
-    console.log("delete recipe");
     await deleteFromCollection();
-    console.log("sucess");
     navigate(`/users/${auth.currentUser.uid}`);
   };
   const editHandler = async () => {
@@ -70,23 +74,11 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
     } else setEditMood((prev) => !prev);
   };
 
-  // const uploadImage = () => {
-  //   if (imageUpload === null) return;
-  //   const imageRef = ref(
-  //     storage,
-  //     `recipes-pics/${currentRecipe.id}/${imageUpload.name + v4()}`
-  //   );
-  //   uploadBytes(imageRef, imageUpload)
-  //     .then(() => {
-  //       alert("image uploaded!");
-  //     })
-  //     .catch((e) => console.log(e.message));
-  // };
-
   if (currentRecipe)
     return (
       <>
-        {isLoading || (isUploadingImage && <Spinner />)}
+        {isLoading && <Spinner />}
+        {isUploadingImage && <Spinner />}
         <div className="main-content bottom-border gap recipe-page">
           <div className="flex-column gap">
             <h1 className="cap">{currentRecipe.name || "DISH NAME"}</h1>
@@ -110,7 +102,14 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
 
           <div className="recipe-full-profile">
             <div className="big-recipe-img-container">
-              <img className="big-recipe-img" src={imageUrl} alt="" />
+              <img
+                className="big-recipe-img"
+                src={
+                  currentRecipe.img ||
+                  "https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/assets%2Fdishes%2Ffood.jpg?alt=media&token=5281595d-d7ec-4332-86f3-17ddf95a4a89"
+                }
+                alt=""
+              />
               <div className="ingrediants-container ">
                 <span className={editMood ? "ing-title" : "ing-title"}>
                   ingrediants: <br />
@@ -143,7 +142,19 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
               >
                 DELETE
               </button>
-              <button onClick={uploadImage}>upload image</button>
+              <button
+                onClick={() => {
+                  if (!imageUpload) return;
+                  uploadImage(
+                    imageUpload,
+                    `recipes-pics/${currentRecipe?.id}/${
+                      imageUpload?.name + v4()
+                    }`
+                  );
+                }}
+              >
+                upload image
+              </button>
               <input
                 type="file"
                 onChange={(e) => setImageUpload(e.target.files[0])}

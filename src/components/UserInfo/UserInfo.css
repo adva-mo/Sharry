@@ -23,7 +23,8 @@
   width: 50%;
   height: 50%;
   position: absolute;
-  /* background: url("../../../public/assets/white-plus.png") center center/cover; */
+  background: url("https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/assets%2Fwhite-plus.png?alt=media&token=87d9dca0-a62e-4aa1-b469-1a6719c504b2")
+    center center/cover;
   top: 15%;
   left: 25%;
   z-index: 10;

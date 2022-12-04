@@ -1,16 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import "./UserInfo.css";
 import { auth } from "../../utils/database-config";
-import LoginPage from "../../pages/LoginPage/LoginPage";
-// import Logincard from "../LoginCard/LoginCard";
-// import UpdateUser from "../UpdateUser/UpdateUser";
-import useDelete from "../../hooks/use-delete";
 import { signOut } from "firebase/auth";
-// import { getUserRecipes } from "../../utils/utils";
+import LoginPage from "../../pages/LoginPage/LoginPage";
+import useDelete from "../../hooks/use-delete";
 import useUpdate from "../../hooks/use-update";
 import Spinner from "../Spinner/Spinner";
-// import Spinner from "../Spinner/Spinner";
+import "./UserInfo.css";
 
 function UserInfo({ currentUser: user, dispatchUsers }) {
   const navigate = useNavigate();
@@ -49,16 +45,13 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
   }, [user]);
   return (
     <>
-      {/* if (isLoading || isUpdatingUser) return <Spinner />; */}
       {isDeleting && <Spinner />}
       {isUpdatingUser && <Spinner />}
       <div className="profile-main-box main-content flex">
-        {/* <div> */}
-        {/* <div className="flex"> */}
         <div>
           <img
             className="btn-pic"
-            src={process.env.PUBLIC_URL + "/assets/user-avatar-new.png"}
+            src="https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/assets%2Fuser-avatar.png?alt=media&token=7e45390b-7805-4d0b-a31b-508583923459"
             alt=""
           />
         </div>
@@ -99,7 +92,7 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
           <NavLink to={"/new-recipe"}>
             <img
               className="btn-pic plus-btn"
-              src={process.env.PUBLIC_URL + "/assets/spices-btn.png"}
+              src="https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/assets%2Fspices-btn.png?alt=media&token=57a1a540-2453-4347-8615-26db7d9548be"
               alt="mypic"
             />
             <br />

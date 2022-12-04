@@ -7,7 +7,8 @@
 }
 .recipe-settings-box {
   /* background-color: ; */
-  /* background: url("../../../public/assets/new-recipe.png") center center/cover; */
+  background: url("https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/assets%2Fnew-recipe.png?alt=media&token=c7241d48-d060-4a00-b938-3c00eb132cb6")
+    center center/cover;
   position: relative;
   border-radius: 10px;
   padding: 1rem;

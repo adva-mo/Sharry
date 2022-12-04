@@ -5,7 +5,7 @@ import useAuth from "../../hooks/use-auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Spinner from "../../components/Spinner/Spinner";
-// import Error from "../../components/error/Error";
+
 function LoginPage() {
   const [isNewUser, setIsNewUser] = useState(true);
 
@@ -62,11 +62,6 @@ function LoginPage() {
 
   return (
     <div className="login-page">
-      <img
-        className="login-hero-img"
-        src={process.env.PUBLIC_URL + "/assets/login-hero.png"}
-        alt=""
-      />
       {registerError && (
         <div
           onClick={() => {

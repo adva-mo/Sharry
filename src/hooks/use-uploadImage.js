@@ -1,23 +1,17 @@
 import { useState } from "react";
 import { ref, uploadBytes } from "firebase/storage";
 import { storage } from "../utils/database-config";
-const UseUploadImage = (path, imageObj) => {
+
+const UseUploadImage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [eror, setError] = useState(null);
-  console.log(path);
-  console.log(imageObj);
 
-  const imageRef = ref(
-    storage,
-    // `recipes-pics/${currentRecipe.id}/${imageUpload.name + v4()}`
-    path
-  );
-
-  const uploadImage = async () => {
-    // if (imageUpload === null) return;
+  const uploadImage = async (imageObj, path) => {
+    const imageRef = ref(storage, path);
+    console.log(path);
     setIsLoading(true);
     try {
-      await uploadBytes(imageRef, imageObj.name);
+      await uploadBytes(imageRef, imageObj);
       setIsLoading(false);
     } catch (e) {
       console.log(e.message);
