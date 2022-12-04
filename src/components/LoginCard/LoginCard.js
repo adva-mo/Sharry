@@ -57,15 +57,23 @@ function Logincard({
 
   let isFormValid = false;
 
-  if (
-    isEmailValid &&
-    isPasswordValid &&
-    !confirmedPasswordHasError
-    // confirmedPasswordValue === passwordValue
-  ) {
-    isFormValid = true;
+  // if (isEmailValid && isPasswordValid && !confirmedPasswordHasError) {
+  //   isFormValid = true;
+  // }
+  // if (isNewUser) {
+  //   if (isEmailValid && isPasswordValid && !confirmedPasswordHasError) {
+  //     isFormValid = true;
+  //   }
+  // } else {
+  //   if (isEmailValid && isPasswordValid) {
+  //     isFormValid = true;
+  //   }
+  // }
+  if (isEmailValid && isPasswordValid) {
+    if (isNewUser) {
+      if (!confirmedPasswordHasError) isFormValid = true;
+    } else isFormValid = true;
   }
-
   const formSubmissionHandler = (e) => {
     e.preventDefault();
     if (!isFormValid) return;
@@ -111,18 +119,22 @@ function Logincard({
         {passwordHasError && (
           <p className="error-text">password must contain at least 6 digits</p>
         )}
-        <label htmlFor="confirmedPassword">password</label>
-        <input
-          className={confirmedPasswordClasses}
-          placeholder="repeat your password"
-          type="text"
-          name="confirmedPassword"
-          value={confirmedPasswordValue}
-          onChange={confirmedpasswordChangeHandler}
-          onBlur={confirmedpasswordBlurHandler}
-        />
-        {confirmedPasswordHasError && (
-          <p className="error-text">password must be the same</p>
+        {isNewUser && (
+          <>
+            <label htmlFor="confirmedPassword">password</label>
+            <input
+              className={confirmedPasswordClasses}
+              placeholder="repeat your password"
+              type="text"
+              name="confirmedPassword"
+              value={confirmedPasswordValue}
+              onChange={confirmedpasswordChangeHandler}
+              onBlur={confirmedpasswordBlurHandler}
+            />
+            {confirmedPasswordHasError && (
+              <p className="error-text">password must be the same</p>
+            )}
+          </>
         )}
 
         <button disabled={!isFormValid} className="red-round-btn">
@@ -137,7 +149,7 @@ function Logincard({
             setEmailToRegister(null);
           }}
         >
-          {isNewUser ? "I already have an account" : "new account"}
+          {isNewUser ? "Already have an account? SIGN IN" : "new account"}
         </button>
       </form>
     </>

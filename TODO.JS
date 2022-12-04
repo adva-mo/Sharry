@@ -1,5 +1,6 @@
 //! logic
 //  hide api keys
+//  hide repeat password section if !isnewuser
 //  how to skip the top of the page
 //  refactor add/get/delete/update hooks
 //  use context for the app reducer instead of passing throu props
