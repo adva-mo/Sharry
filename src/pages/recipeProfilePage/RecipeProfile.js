@@ -101,7 +101,7 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
               </div>
             </div>
           </div>
-          {currentRecipe.owner === auth.currentUser.uid && (
+          {currentRecipe.owner === auth.currentUser?.uid && (
             <div className="flex gap top-gap">
               <button
                 className="blue-btn "
