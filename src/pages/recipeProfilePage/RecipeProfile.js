@@ -37,6 +37,11 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
     setCurrentRecipe(getRecipeById(recipes, params.id));
   }, [recipes, params.id]);
 
+  // useEffect(() => {
+  //   //  scroll to top on page load
+  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  // }, []);
+
   const deleteHandler = async () => {
     await deleteFromCollection();
     navigate(`/users/${auth.currentUser.uid}`);

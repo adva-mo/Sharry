@@ -110,7 +110,7 @@ function Logincard({
         <input
           className={passwordClasses}
           placeholder="enter your password"
-          type="text"
+          type="password"
           name="password"
           value={passwordValue}
           onChange={passwordChangeHandler}
@@ -125,7 +125,7 @@ function Logincard({
             <input
               className={confirmedPasswordClasses}
               placeholder="repeat your password"
-              type="text"
+              type="password"
               name="confirmedPassword"
               value={confirmedPasswordValue}
               onChange={confirmedpasswordChangeHandler}
