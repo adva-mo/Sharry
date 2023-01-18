@@ -27,20 +27,13 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
 
   const { addToCollection } = useUpdate("recipes", dispatchRecipes, params.id);
 
-  // const {
-  //   uploadImage,
-  //   isLoading: isUploadingImage,
-  //   // eror: uploadingImageError,
-  // } = UseUploadImage();
-
   useEffect(() => {
     setCurrentRecipe(getRecipeById(recipes, params.id));
   }, [recipes, params.id]);
 
-  // useEffect(() => {
-  //   //  scroll to top on page load
-  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [params.id]);
 
   const deleteHandler = async () => {
     await deleteFromCollection();
