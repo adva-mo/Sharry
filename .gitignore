@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 TODO.js
+async
 
 # testing
 /coverage
