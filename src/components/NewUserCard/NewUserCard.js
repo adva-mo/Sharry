@@ -27,14 +27,12 @@ function NewUserCard({ dispatchUsers, setCurrentUser, users }) {
       await addToCollection({
         ...newUser,
         email: auth.currentUser.email,
-        // recipes: [],
       });
       await dispatchUsers({
         type: "ADD",
         playload: {
           ...newUser,
           email: auth.currentUser.email,
-          // recipes: [],
           id: auth.currentUser.uid,
         },
       });

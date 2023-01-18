@@ -8,7 +8,7 @@ import { auth } from "../../utils/database-config";
 import useUpdate from "../../hooks/use-update";
 import Spinner from "../../components/Spinner/Spinner";
 
-function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
+function RecipeProfile({ recipes, dispatchRecipes }) {
   const [currentRecipe, setCurrentRecipe] = useState(null);
   const [editMood, setEditMood] = useState(false);
 

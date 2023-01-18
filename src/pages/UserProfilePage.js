@@ -12,15 +12,11 @@ function UserProfilePage({ users, recipes, dispatchUsers }) {
   let currentUserProfile;
   if (users) currentUserProfile = getUserById(users, params.id);
 
-  // console.log(users);
-
   useEffect(() => {
     if (!users || !params.id) navigate("/home");
-    // console.log("in use effect");
     if (currentUserProfile) setCurrentUser(currentUserProfile);
     // eslint-disable-next-line
   }, []);
-  // console.log(currentUser);
   return (
     <>
       {!currentUser && users && (

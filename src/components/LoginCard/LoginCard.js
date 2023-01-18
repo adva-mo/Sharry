@@ -1,12 +1,10 @@
 import React from "react";
 import "./LoginCard.css";
 import useInput from "../../hooks/use-input";
-//todo: display errors
 
 const isEmailInputValid = (value) => value.trim() !== "" && value.includes("@");
 const isPasswordInputValid = (value) =>
   value.trim() !== "" && value.length >= 6;
-// const isPasswordConfirmed = (password1, password2) => password1 === password2;
 
 function Logincard({
   setPasswordToRegister,
@@ -57,18 +55,6 @@ function Logincard({
 
   let isFormValid = false;
 
-  // if (isEmailValid && isPasswordValid && !confirmedPasswordHasError) {
-  //   isFormValid = true;
-  // }
-  // if (isNewUser) {
-  //   if (isEmailValid && isPasswordValid && !confirmedPasswordHasError) {
-  //     isFormValid = true;
-  //   }
-  // } else {
-  //   if (isEmailValid && isPasswordValid) {
-  //     isFormValid = true;
-  //   }
-  // }
   if (isEmailValid && isPasswordValid) {
     if (isNewUser) {
       if (!confirmedPasswordHasError) isFormValid = true;
@@ -100,11 +86,7 @@ function Logincard({
           onBlur={emailBlurHndler}
         />
         {emailHasError && (
-          <p className="error-text">
-            please enter a valid email
-            <br />
-            for example: example@example.com
-          </p>
+          <p className="error-text">please enter a valid email</p>
         )}
         <label htmlFor="password">password</label>
         <input

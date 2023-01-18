@@ -61,11 +61,9 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
             <input
               className="red-round-bg name-input cap"
               defaultValue={name}
-              // value={name}
               readOnly={!editMood}
               ref={nameRef}
             />
-            {/* <span> */}
             <h6 onClick={(e) => editProfileHandler(e)}>
               {editMood ? (
                 <>
@@ -77,14 +75,11 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
                 </>
               )}{" "}
             </h6>
-            {/* </span> */}
             <br />
             EMAIL: {email || "not-available"}
             <br />
-            {/* {level + " "} */}
             <i className="fa-solid fa-fire-flame-curved"></i>
             <h6 onClick={(e) => deleteProfileHandler(e)}>DELETE PROFILE</h6>
-            {/* </span> */}
           </p>
         </div>
 

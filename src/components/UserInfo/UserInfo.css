@@ -32,6 +32,7 @@
 @media (max-width: 450px) {
   .profile-main-box {
     flex-direction: column;
+    width: 100%;
   }
   .plus-btn {
     width: 3rem;

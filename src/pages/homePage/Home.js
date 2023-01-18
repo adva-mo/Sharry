@@ -5,17 +5,15 @@ import useGet from "../../hooks/use-get";
 import "./home.css";
 
 function Home({ recipes, dispatchRecipes, dispatchUsers, users, loggedUser }) {
-  const {
-    isLoading: isRecipesLoading,
-    // error: isRecipesError,
-    getFromCollection: getRecipes,
-  } = useGet("recipes", dispatchRecipes);
+  const { isLoading: isRecipesLoading, getFromCollection: getRecipes } = useGet(
+    "recipes",
+    dispatchRecipes
+  );
 
-  const {
-    isLoading: isUsersLoading,
-    // error: isUsersError,
-    getFromCollection: getUsers,
-  } = useGet("users", dispatchUsers);
+  const { isLoading: isUsersLoading, getFromCollection: getUsers } = useGet(
+    "users",
+    dispatchUsers
+  );
 
   useEffect(() => {
     if (users || recipes) return;
@@ -37,10 +35,6 @@ function Home({ recipes, dispatchRecipes, dispatchUsers, users, loggedUser }) {
           alt="hero-img"
         />
       </div>
-      {/* <img
-        className="hero-img"
-        src={process.env.PUBLIC_URL + "/assets/new-recipe.png"}
-      /> */}
       <Snapshot
         description="discover a whole world of amazing recipes!"
         navigateTo={"explore"}

@@ -7,8 +7,7 @@ function UserRecipes({ userId, recipes }) {
 
   useEffect(() => {
     if (!userId || !recipes) return;
-    console.log(getUserRecipes(recipes, userId)); // change the function
-    setUserRecipes(getUserRecipes(recipes, userId)); // change the function
+    setUserRecipes(getUserRecipes(recipes, userId));
   }, [recipes, userId]);
 
   return (

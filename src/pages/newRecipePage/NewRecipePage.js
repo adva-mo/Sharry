@@ -15,11 +15,12 @@ function NewRecipePage({ dispatchRecipes }) {
   const newRecipeId = Math.random() + "";
   const navigate = useNavigate();
 
-  const {
-    isLoading,
-    // error,
-    addToCollection: addRecipe,
-  } = useAdd("recipes", dispatchRecipes, newRecipeId, setDoc);
+  const { isLoading, addToCollection: addRecipe } = useAdd(
+    "recipes",
+    dispatchRecipes,
+    newRecipeId,
+    setDoc
+  );
 
   useEffect(() => {
     if (newRecipe === null) return;
@@ -41,7 +42,6 @@ function NewRecipePage({ dispatchRecipes }) {
   if (isLoading) return <Spinner />;
   return (
     <div className="new-recipe-page">
-      {/* {isLoading && <Spinner />} */}
       {!isLoading && loggedUserCtx?.uid ? (
         <NewRecipeForm setNewRecipe={setNewRecipe} newRecipeId={newRecipeId} />
       ) : (
