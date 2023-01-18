@@ -7,12 +7,10 @@ import useDelete from "../../hooks/use-delete";
 import { auth } from "../../utils/database-config";
 import useUpdate from "../../hooks/use-update";
 import Spinner from "../../components/Spinner/Spinner";
-// import UseUploadImage from "../../hooks/use-uploadImage";
 
 function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
   const [currentRecipe, setCurrentRecipe] = useState(null);
   const [editMood, setEditMood] = useState(false);
-  // const [imageUpload, setImageUpload] = useState(null);
 
   const params = useParams();
   const navigate = useNavigate();
@@ -28,8 +26,9 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
   const { addToCollection } = useUpdate("recipes", dispatchRecipes, params.id);
 
   useEffect(() => {
+    if (!recipes) return navigate("/");
     setCurrentRecipe(getRecipeById(recipes, params.id));
-  }, [recipes, params.id]);
+  }, [recipes, params.id, navigate]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -53,7 +52,6 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
     return (
       <>
         {isLoading && <Spinner />}
-        {/* {isUploadingImage && <Spinner />} */}
         <div className="main-content bottom-border gap recipe-page">
           <div className="flex-column gap">
             <h1 className="cap">{currentRecipe.name || "DISH NAME"}</h1>
@@ -117,29 +115,11 @@ function RecipeProfile({ recipes, dispatchUsers, dispatchRecipes }) {
               >
                 DELETE
               </button>
-              {/* <button
-                onClick={() => {
-                  if (!imageUpload) return;
-                  uploadImage(
-                    imageUpload,
-                    `recipes-pics/${currentRecipe?.id}/${
-                      imageUpload?.name + v4()
-                    }`
-                  );
-                }}
-              >
-                upload image
-              </button>
-              <input
-                type="file"
-                onChange={(e) => setImageUpload(e.target.files[0])}
-              /> */}
             </div>
           )}
           <div className="main-content instructions-container">
             <h3>INSTRUCTIONS:</h3>
             <textarea
-              // className="main-content"
               className={editMood ? "main-content edit" : "main-content"}
               ref={instructionsRef}
               type="text"
