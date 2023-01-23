@@ -22,9 +22,6 @@ a {
 button {
   font-family: "Poppins", sans-serif;
 }
-.recipes-container {
-  width: 90vw;
-}
 input,
 textarea {
   outline: none;
@@ -61,7 +58,6 @@ textarea {
 }
 .hero-img {
   width: 100vw;
-  /* height: 30rem; */
   max-height: 30rem;
 }
 .red-round-btn {
@@ -109,7 +105,6 @@ textarea {
 }
 .soon {
   display: inline-block;
-  /* transform: rotate(-30deg); */
   transform: rotate(40deg);
   font-size: small;
 }
@@ -128,4 +123,9 @@ textarea {
   padding: 3rem;
   border-radius: 10px;
   border: var(--red) 2px solid;
+}
+@media (max-width: 500px) {
+  .recipes-container {
+    width: 100vw !important;
+  }
 }

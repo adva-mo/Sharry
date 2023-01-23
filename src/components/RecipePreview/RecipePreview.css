@@ -16,7 +16,6 @@
 }
 @media (max-width: 500px) {
   .recipes-container {
-    width: 100%;
+    width: 100vw !important;
   }
 }
-/* src={process.env.PUBLIC_URL + "/pizza.png"} */
