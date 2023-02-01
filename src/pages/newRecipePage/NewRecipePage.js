@@ -7,7 +7,6 @@ import currentLoggedUser from "../../context/loggedUserContext";
 import useAdd from "../../hooks/use-add";
 import { auth } from "../../utils/database-config";
 import LoginPage from "../LoginPage/LoginPage";
-import "./newRecipePage.css";
 
 function NewRecipePage({ dispatchRecipes }) {
   const [newRecipe, setNewRecipe] = useState(null);

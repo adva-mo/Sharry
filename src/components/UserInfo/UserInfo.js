@@ -51,7 +51,7 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
         <div>
           <img
             className="btn-pic"
-            src="https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/assets%2Fuser-avatar.png?alt=media&token=7e45390b-7805-4d0b-a31b-508583923459"
+            src={process.env.PUBLIC_URL + "/assets/user-avatar.png"}
             alt=""
           />
         </div>
@@ -87,7 +87,7 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
           <NavLink to={"/new-recipe"}>
             <img
               className="btn-pic plus-btn"
-              src="https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/assets%2Fspices-btn.png?alt=media&token=57a1a540-2453-4347-8615-26db7d9548be"
+              src={process.env.PUBLIC_URL + "/assets/spices-btn.png"}
               alt="mypic"
             />
             <br />

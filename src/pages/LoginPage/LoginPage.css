@@ -1,7 +1,6 @@
 .login-page {
   position: relative;
-  background: url("https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/assets%2Flogin-hero.png?alt=media&token=b51ee76d-2954-424c-8422-d38f3845f8ee")
-    center center/cover;
+  background: url("../../../public/assets/login-hero.jpeg") center center/cover;
   height: 100vh;
   display: flex !important;
   justify-content: center !important;

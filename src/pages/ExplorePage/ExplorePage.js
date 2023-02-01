@@ -24,7 +24,7 @@ function ExplorePage({ recipes }) {
     <div className="explore-hero flex-column">
       <img
         className="hero-img"
-        src="https://firebasestorage.googleapis.com/v0/b/sharry-1319e.appspot.com/o/assets%2Fexplore-hero.png?alt=media&token=25a2d2d0-7558-4ea9-9647-1e13a156f75a"
+        src={process.env.PUBLIC_URL + "/assets/explore-hero.png"}
         alt=""
       />
       <SearchDish
