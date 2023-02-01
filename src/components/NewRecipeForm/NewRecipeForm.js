@@ -130,7 +130,6 @@ function NewRecipeForm({ setNewRecipe, newRecipeId }) {
           <input
             onChange={(e) => setImageToUpload(() => e.target.files[0])}
             type="file"
-            // name="img"
             className="text-box"
           />
         </label>

@@ -11,12 +11,10 @@ function useDelete(collectionName, dispatch, id) {
     try {
       const userDoc = doc(db, collectionName, id);
       await deleteDoc(userDoc);
-      console.log("deleted from DB");
       dispatch({ type: "DELETE", playload: id });
       setIsLoading((prev) => false);
     } catch (e) {
       setIsLoading((prev) => false);
-      console.log(e);
       setError(e.message);
     }
   };

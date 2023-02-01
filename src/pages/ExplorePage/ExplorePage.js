@@ -15,7 +15,7 @@ function ExplorePage({ recipes }) {
   );
 
   useEffect(() => {
-    if (!recipes) navigate("/home");
+    if (!recipes) navigate("/");
     if (searchInput === "") setrecipesToDisplay(recipesToDisplay);
     else setrecipesToDisplay(filteredRecipes(recipes, searchInput)); // eslint-disable-next-line
   }, [searchInput]);

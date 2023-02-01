@@ -13,7 +13,7 @@ function UserProfilePage({ users, recipes, dispatchUsers }) {
   if (users) currentUserProfile = getUserById(users, params.id);
 
   useEffect(() => {
-    if (!users || !params.id) navigate("/home");
+    if (!users || !params.id) navigate("/");
     if (currentUserProfile) setCurrentUser(currentUserProfile);
     // eslint-disable-next-line
   }, []);

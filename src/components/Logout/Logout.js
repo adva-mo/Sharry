@@ -8,7 +8,7 @@ function Logout() {
   const logout = async () => {
     try {
       await signOut(auth);
-      Navigate("/home");
+      Navigate("/");
     } catch (error) {
       console.log(error);
     }

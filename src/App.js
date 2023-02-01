@@ -31,10 +31,10 @@ function App() {
         <Navbar />
         <>
           <Routes>
-            <Route path="/" element={<Navigate replace to="/home" />} />
-            <Route path="*" element={<Navigate replace to="/home" />} />
+            {/* <Route path="/" element={<Navigate replace to="/home" />} /> */}
+            <Route path="*" element={<Navigate replace to="/" />} />
             <Route
-              path="/home"
+              path="/"
               element={
                 <Home
                   recipes={recipes}

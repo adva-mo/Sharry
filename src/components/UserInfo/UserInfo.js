@@ -37,7 +37,7 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
     console.log("delete function");
     await deleteFromCollection();
     await signOut(auth);
-    navigate("/home");
+    navigate("/");
   };
 
   useEffect(() => {
