@@ -12,10 +12,10 @@
 }
 .recipes-container {
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
-@media (max-width: 500px) {
+/* @media (max-width: 500px) {
   .recipes-container {
     width: 100vw !important;
-  }
-}
+  } */
+/* } */

@@ -15,6 +15,9 @@ body {
   font-family: "Poppins", sans-serif;
   color: var(--black);
 }
+textarea {
+  resize: none;
+}
 a {
   color: var(--black);
   text-decoration: none;

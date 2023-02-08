@@ -63,6 +63,18 @@ function NewRecipeForm({ setNewRecipe, newRecipeId }) {
           <input type="radio" name="share" value="true" required /> yes&nbsp;
           <input type="radio" name="share" value="false" /> no
         </label>
+
+        <label htmlFor="link">
+          <h4>In a RUSH?!</h4>
+          <p>save the link to the recipe and edit it later!</p>
+          &nbsp;
+          <input
+            type="text"
+            name="link"
+            className="text-box"
+            style={{ width: "100%" }}
+          />
+        </label>
         <div className="flex recipe-settings-box">
           <div className="radio-input-box">
             <label htmlFor="time">
@@ -118,12 +130,6 @@ function NewRecipeForm({ setNewRecipe, newRecipeId }) {
             </label>
           </div>
         </div>
-        {/* <label htmlFor="img">
-          <h4>In a RUSH?!</h4>
-          <p>save the link to the recipe and edit it later!</p>
-          link: &nbsp;
-          <input type="text" name="img" className="text-box" />
-        </label> */}
         <label htmlFor="img">
           <p>show us your recipe!</p>
           link: &nbsp;

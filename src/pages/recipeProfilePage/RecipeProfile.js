@@ -51,6 +51,7 @@ function RecipeProfile({ recipes, dispatchRecipes }) {
   if (currentRecipe)
     return (
       <>
+        {console.log(currentRecipe)}
         {isLoading && <Spinner />}
         <div className="main-content bottom-border gap recipe-page">
           <div className="flex-column gap">
@@ -115,6 +116,16 @@ function RecipeProfile({ recipes, dispatchRecipes }) {
               >
                 DELETE
               </button>
+              {currentRecipe.link && (
+                <button
+                  className="blue-btn"
+                  onClick={() =>
+                    window.open(currentRecipe.link, "_blank", "noreferrer")
+                  }
+                >
+                  LINK
+                </button>
+              )}
             </div>
           )}
           <div className="main-content instructions-container">
@@ -125,11 +136,15 @@ function RecipeProfile({ recipes, dispatchRecipes }) {
               type="text"
               defaultValue={currentRecipe.instructions}
               readOnly={!editMood}
+              style={{
+                backgroundColor: "rgba(241, 241, 241, 1)",
+                width: "100%",
+              }}
             />
           </div>
         </div>
         <h2 className="sub-title">MORE DISHES</h2>
-        <div className="recipes-container flex">
+        <div className="flex more-recipes recipes-container">
           {recipes?.map((recipe) => {
             //
             return <RecipePreview key={recipe.id} {...recipe} id={recipe.id} />;

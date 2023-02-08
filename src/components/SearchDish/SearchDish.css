@@ -10,3 +10,9 @@
   border: var(--black) 2px solid;
   padding: 0 1rem;
 }
+@media (max-width: 450px) {
+  .search-box {
+    width: 80vw;
+    height: 4rem;
+  }
+}

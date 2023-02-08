@@ -15,7 +15,7 @@ function UserRecipes({ userId, recipes }) {
       <h3>
         <span style={{ fontSize: "small" }}>YOUR RECIPES COLLECTION</span>{" "}
       </h3>
-      <div className="recipes-container flex">
+      <div className="recipes-container flex more-recipes">
         {userRecipes &&
           userRecipes.map((recipe) => {
             return <RecipePreview key={recipe.id} {...recipe} id={recipe.id} />;

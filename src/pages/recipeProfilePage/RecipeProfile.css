@@ -23,6 +23,9 @@
   background-color: var(--light-gray);
   z-index: -1;
 }
+.more-recipes {
+  justify-content: space-around !important;
+}
 .ingrediants-container {
   position: absolute;
   top: 10%;
@@ -52,7 +55,10 @@
     padding: 0;
     margin: 1rem 0;
   }
-  .main-content {
+  /* .main-content {
     margin: 0;
+  } */
+  .more-recipes {
+    justify-content: space-around !important;
   }
 }
