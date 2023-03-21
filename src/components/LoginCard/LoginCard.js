@@ -71,6 +71,12 @@ function Logincard({
     resetConfirmedPassword();
   };
 
+  const loginGuset = async () => {
+    await setIsNewUser(false);
+    await setEmailToRegister("guest@gmail.com");
+    await setPasswordToRegister("123456");
+  };
+
   return (
     <>
       <form onSubmit={formSubmissionHandler} className="flex-column login-card">
@@ -118,10 +124,30 @@ function Logincard({
             )}
           </>
         )}
+        <div className="flex" style={{ gap: "0.5rem" }}>
+          <button
+            disabled={!isFormValid}
+            className="red-round-btn"
+            style={{
+              height: "3rem ",
+            }}
+          >
+            {isNewUser ? "Sign up" : "Login"}
+          </button>
+          <button
+            style={{
+              fontSize: "12px",
+              height: "3rem ",
+            }}
+            className="red-round-btn"
+            onClick={() => {
+              loginGuset();
+            }}
+          >
+            enter as a Guest
+          </button>
+        </div>
 
-        <button disabled={!isFormValid} className="red-round-btn">
-          {isNewUser ? "Sign up" : "Login"}
-        </button>
         <button
           type="button"
           className="blue-btn"
