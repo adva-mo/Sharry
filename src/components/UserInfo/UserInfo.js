@@ -76,10 +76,9 @@ function UserInfo({ currentUser: user, dispatchUsers }) {
               )}{" "}
             </h6>
             <br />
-            EMAIL: {email || "not-available"}
-            <br />
-            <i className="fa-solid fa-fire-flame-curved"></i>
-            <h6 onClick={(e) => deleteProfileHandler(e)}>DELETE PROFILE</h6>
+            <h6 onClick={(e) => deleteProfileHandler(e)}>
+              DELETE PROFILE <i className="fa-solid fa-trash-can"></i>
+            </h6>
           </p>
         </div>
 
