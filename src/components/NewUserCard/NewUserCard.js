@@ -37,7 +37,7 @@ function NewUserCard({ dispatchUsers, setCurrentUser, users }) {
         },
       });
       setTimeout(() => {
-        navigate(``);
+        navigate(`/`);
       }, 0);
       setCurrentUser((prev) => getUserById(users, auth.currentUser.id));
     } catch (e) {
