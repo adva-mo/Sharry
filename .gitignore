@@ -13,6 +13,8 @@ async
 
 # production
 /build
+capacitor.config.ts
+/android
 
 # misc
 .DS_Store
